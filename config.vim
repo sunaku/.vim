@@ -16,6 +16,9 @@ set backspace=indent,eol,start " make backspace work as you'd expect
 noremap <leader>tt :NERDTreeToggle<CR>
 noremap <leader>tf :NERDTreeFind<CR>
 
+let MRU_Exclude_Files='\.git/COMMIT_EDITMSG$'
+noremap <leader>fr :MRU<CR>
+
 "-------------------------------------------------------------------------------
 " appearance
 "-------------------------------------------------------------------------------
@@ -97,7 +100,7 @@ function! StripTrailingWhitespace()
 endfunction
 
 " Tell vim to remember certain things when we exit
-set viminfo='1000,<1000,:100,h,%
+set viminfo='1000,<1000,:100,h
 
 " restore cursor position when re-opening file
 " http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
