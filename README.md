@@ -33,6 +33,10 @@ into separate files that each focus on a single topic and _do one thing well_.
   * [Updating](#updating)
   * [Tracking](#tracking)
   * [Locking](#locking)
+* [Shortcuts](#shortcuts)
+  * [Control](#control)
+  * [Selection](#selection)
+  * [Clipboard](#clipboard)
 * [Manuals](#manuals)
   * [bin/clean](#binclean)
   * [bin/delete](#bindelete)
@@ -253,6 +257,26 @@ Unlock a locked *BUNDLE*, so it can be updated again, by checking out `master`:
     cd BUNDLE
     git checkout master
 
+## Shortcuts
+
+This branch of the Vim configuration defines the following shortcuts.
+
+### Control
+
+* Run `stty -ixon` before starting Vim to use `<C-S>` and `<C-Q>` keys.
+
+* `<C-L>` clears search highlighting; recalculates hunks when diffing.
+
+### Selection
+
+* `gV` visually selects the most recently pasted text.
+* `gn` selects the nearest search result after the cursor.
+* `gN` selects the nearest search result before the cursor.
+
+### Clipboard
+
+* `Y` yanks from cursor to end of line, like Vim's native `C` and `D` keys.
+
 ## Manuals
 
 The usage manual for each script is reproduced here, for your convenience.
@@ -392,6 +416,9 @@ Formats usage information from all scripts for injection into README.
 * [Plugin Layout in the Dark Ages][modular] by Steve Losh.
 
 [modular]: http://learnvimscriptthehardway.stevelosh.com/chapters/42.html
+
+* [Configuring Vim right](http://items.sjbach.com/319/configuring-vim-right)
+  by Stephen Bach.
 
 ## License
 
