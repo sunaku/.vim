@@ -1,0 +1,9 @@
+#!/bin/sh -e
+#
+# Deletes scraps found by the fellow scraps script.
+#
+# Usage: ./clean        # asks you for confirmation
+# Usage: ./clean -f     # no confirmation; force it
+#
+test "$1" = '-f' && option='-t' || option='-p'
+./scraps | xargs -rn1 $option rm -r

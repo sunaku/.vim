@@ -1,0 +1,28 @@
+#!/bin/bash -e
+#
+# Renames existing bundles whose names match the given regular expression.
+#
+# Usage: ./rename BUNDLE_NAME_REGEXP [OPTIONS_FOR_EGREP...]
+#
+
+git ls-files -c -o | grep '\.get$' | egrep -i "$@" | while read get; do
+
+  dir=${get%.get}
+  read -p "(rename) " -i "$dir" -e rename </dev/tty
+  test -z "$rename" -o "$rename" = "$dir" && continue
+
+  rename() {
+    mkdir -p "${2%/*}"
+    git mv "$@" 2>/dev/null || mv -vi "$@" </dev/tty
+  }
+
+  # if the user agrees to rename the directory
+  # rename "$dir" "$rename" &&
+  # then also rename its associated *.get file
+  for match in "$dir"*; do
+    suffix=${match##*.}
+    test "$suffix" = "$match" && unset suffix
+    rename "$match" "$rename${suffix+.}$suffix"
+  done
+
+done

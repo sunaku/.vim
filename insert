@@ -1,0 +1,46 @@
+#!/bin/sh -e
+#
+# Inserts a new bundle into your Vim configuration.
+# You can specify USER/REPO for GitHub repositories.
+#
+# Usage: ./insert URL bundle/CATEGORY
+# Usage: ./insert URL bundle/CATEGORY/BUNDLE_NAME
+# Usage: ./insert URL ftbundle/FILETYPE
+# Usage: ./insert URL ftbundle/FILETYPE/BUNDLE_NAME
+# Usage: ./insert USER/REPO bundle/CATEGORY
+# Usage: ./insert USER/REPO bundle/CATEGORY/BUNDLE_NAME
+# Usage: ./insert USER/REPO ftbundle/FILETYPE
+# Usage: ./insert USER/REPO ftbundle/FILETYPE/BUNDLE_NAME
+
+# parse the command line arguments and options
+test $# -ge 2
+
+url=$1
+test -n "${url##*://*}" -a -n "${url##*@*:*}" && url="https://github.com/$url"
+test -z "${url##*://github.com*}" && url="${url%.git}.git"
+
+dir=${2%%/*}
+name=${2##*/}
+category=${2%/*}
+if test "$category" = "$dir"; then
+  category=$name
+  unset name
+else
+  category=${category#**/}
+fi
+
+# supply an appropriate name for the bundle
+test -z "$name" && name=$(basename "$url" .git)
+name=${name#vim-} # drop redundant vim- prefix
+name=${name%.vim} # drop redundant .vim suffix
+name=${name%.zip} # drop redundant .zip suffix
+
+# insert the bundle by creating a `*.get` file
+mkdir -p "$dir"
+get="$dir/$category/$name.get"
+echo "$url" > "$get"
+git add -f "$get"
+git status "$get"
+
+# clone the newly inserted bundle immediately
+./update "$get"

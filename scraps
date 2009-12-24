@@ -1,0 +1,10 @@
+#!/bin/sh
+#
+# Lists unknown `*.get` files and bundles that lack `*.get` files.
+#
+
+git ls-files --others '*bundle/*.get'
+
+git ls-files --others '*bundle/*/' | while read dir; do
+  test -f ${dir%/}.get || echo "$dir"
+done
