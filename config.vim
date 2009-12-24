@@ -13,9 +13,18 @@ let mapleader=','              " defines the value of <leader> key
 set mouse=a                    " enable mouse clicking & selection
 set backspace=indent,eol,start " make backspace work as you'd expect
 
+" buffer tabs
+let g:buftabs_only_basename=1
+let g:buftabs_active_highlight_group="Visual"
+
+set laststatus=2
+let g:buftabs_in_statusline=1
+
+" file system browser
 noremap <leader>t :NERDTreeToggle<CR>
 noremap <leader>T :NERDTreeFind<CR>
 
+" most recently used files
 let MRU_Exclude_Files='\.git/COMMIT_EDITMSG$'
 noremap <leader>r :MRU<CR>
 
