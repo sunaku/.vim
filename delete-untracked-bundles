@@ -1,0 +1,11 @@
+#!/bin/sh -e
+#
+# Deletes any untracked bundles reported by `./list-untracked-bundles`.
+#
+# Usage: ./delete-untracked-bundles        # asks you for confirmation
+# Usage: ./delete-untracked-bundles -f     # no confirmation; force it
+#
+# Written in 2010 by Suraj N. Kurapati <https://github.com/sunaku>
+
+test "$1" = '-f' && option='-t' || option='-p'
+./list-untracked-bundles | xargs -r -n 1 $option rm -r

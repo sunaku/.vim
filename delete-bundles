@@ -1,0 +1,23 @@
+#!/bin/sh -e
+#
+# Deletes existing bundles whose names match the given regular expression.
+#
+# Usage: ./delete-bundles [OPTIONS_FOR_GREP...] BUNDLE_NAME_REGEXP
+#
+# Written in 2010 by Suraj N. Kurapati <https://github.com/sunaku>
+
+git ls-files --cached --others '*.get' | grep -i "${@-.}" | while read get; do
+
+  # if the user agrees to remove the get file
+  head -v "$get"
+  rm -vi "$get" </dev/tty
+
+  # then also remove its associated directory
+  if ! test -e "$get"; then
+    dir=${get%.get}
+    set -- "$get" "$dir" "$dir".*
+    git rm --cached --ignore-unmatch "$@"
+    rm -rf "$@"
+  fi
+
+done

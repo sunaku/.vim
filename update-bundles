@@ -1,0 +1,59 @@
+#!/bin/sh -e
+#
+# Clones or updates the Git repositories specified in `./**/*.get` files,
+# starting from the most recently modified file down to the earliest one,
+# and then runs make(1) inside cloned directories that have a `Makefile`.
+#
+# This is done in parallel, at up to half of the maximum process limit,
+# unless the `UPDATE_BUNDLES_SEQUENTIALLY` environment variable is set.
+#
+# Usage: ./update-bundles [DIRECTORY|GET_FILE]...
+#
+# Written in 2010 by Suraj N. Kurapati <https://github.com/sunaku>
+
+max_parallel_processes=$(ulimit -a | awk '/process/ { print int( $NF / 2 ) }')
+
+# add color to the output when stdout is connected to a terminal device
+test -t 1 && colorize='
+  s/.* Updating .*\.\..*/\x1b[32m&\x1b[0m/;          # green
+  s/.* Frozen at commit .*/\x1b[33m&\x1b[0m/;        # yellow
+  s/.* Failed with exit status .*/\x1b[31m&\x1b[0m/; # red
+' || unset colorize
+
+git ls-files -c -o "$@" | grep '\.get$' | xargs ls -t | { while read get; do
+
+  url=$(cat "$get")
+  dir=${get%.get}
+  {
+    {
+      mkdir -p "$dir"
+      cd "$dir"
+      test -d .git || git clone --recursive "$url" .
+      if git symbolic-ref -q HEAD >/dev/null; then
+        git remote set-url origin "$url" &&
+        git fetch --quiet origin &&
+        git merge --ff-only origin/master &&
+        git submodule update --recursive &&
+        if test -f [mM]akefile -a \
+          '(' ! -f .make -o .make -ot .git/refs/remotes/origin/master ')'
+        then
+          touch .make
+          make
+        fi
+        # vimballs?! we don't need no stinkin' vimballs! 8^)
+        git clean --force '*.vmb'
+        git ls-files '*.vmb' | xargs -r git checkout
+      else
+        echo "Frozen at commit $(git show-ref -s7 HEAD)."
+      fi
+    } 2>&1 || echo "Failed with exit status $?."
+  } | sed "/^Already up-to-date\.$/d; s!^!$dir: !; $colorize" &
+
+  test -n "$UPDATE_BUNDLES_SEQUENTIALLY" ||
+  # throttle process creation to avoid exceeding system process limit
+  # which results in "fork: Resource temporarily unavailable" errors
+  test $(pgrep -c -u "$USER") -gt "$max_parallel_processes" && wait
+
+done
+wait
+}

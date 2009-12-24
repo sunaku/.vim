@@ -1,0 +1,24 @@
+#!/bin/sh -e
+#
+# Activates the given BRANCH and installs any bundles it defines.
+#
+# Usage: ./select-config [BRANCH]
+#
+# Usage: ./select-config master  # bare bones
+# Usage: ./select-config config  # bare bones + my config
+# Usage: ./select-config bundle  # bare bones + my config + my bundles
+# Usage: ./select-config spacey  # bare bones + my config + my bundles + space
+#
+# Written in 2015 by Suraj N. Kurapati <https://github.com/sunaku>
+
+# ensure working tree is clean
+git rebase HEAD --quiet
+
+# switch to the desired branch
+if test $# -gt 0; then
+  git checkout -b "$1" origin/"$1" ||
+  git checkout "$1"
+fi
+
+# install any bundles therein
+./update-bundles

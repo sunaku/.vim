@@ -1,0 +1,9 @@
+#!/bin/sh -e
+#
+# Updates everything: the configuration and bundles contained therein.
+#
+# Usage: ./update    # asks for confirmation to delete-untracked-bundles
+# Usage: ./update -f # no confirmation; force it
+#
+
+./update-config && ./delete-untracked-bundles "$@" && ./update-bundles

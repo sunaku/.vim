@@ -1,0 +1,10 @@
+#!/bin/sh -e
+#
+# Displays help and usage information for fellow scripts.
+#
+# Usage: ./help-usage [SCRIPT]
+#
+# Written in 2015 by Suraj N. Kurapati <https://github.com/sunaku>
+
+test $# -gt 0 || set -- "$0"
+sed '1d; /^[^#]\|^$/,$d; s/^# \?//' "$@"

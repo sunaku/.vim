@@ -1,0 +1,11 @@
+#!/bin/sh -e
+#
+# Inserts any untracked bundles reported by `./list-untracked-bundles`.
+#
+# Usage: ./insert-untracked-bundles        # asks you for confirmation
+# Usage: ./insert-untracked-bundles -f     # no confirmation; force it
+#
+# Written in 2015 by Suraj N. Kurapati <https://github.com/sunaku>
+
+test "$1" = '-f' && option='-t' || option='-p'
+git ls-files --others '*bundle/*.get' | xargs -r -n 1 $option git add -f

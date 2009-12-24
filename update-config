@@ -1,0 +1,17 @@
+#!/bin/sh -e
+#
+# Replays local commits atop the newest changes from upstream.
+#
+# Usage: ./update-config
+#
+# Written in 2010 by Suraj N. Kurapati <https://github.com/sunaku>
+
+# download new commits from upstream
+remote=upstream
+git remote show $remote >/dev/null 2>&1 || git remote add $remote .
+git remote set-url $remote https://github.com/sunaku/.vim.git
+git fetch $remote
+
+# rebase current branch atop upstream
+branch=$(git name-rev --name-only HEAD)
+./git-rebase-autocon "$remote/$branch"
