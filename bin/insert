@@ -1,0 +1,51 @@
+#!/bin/sh -eu
+#
+# Inserts a new package, optionally named PACKAGE_NAME, into the given CATEGORY.
+# You can specify USER/REPO in place of URL to insert from GitHub repositories.
+#
+# Usage: bin/insert [URL|USER/REPO] CATEGORY/[FILETYPE=][PACKAGE_NAME]
+#
+# Written in 2010 by Suraj N. Kurapati <https://github.com/sunaku>
+
+# parse the command line arguments and options
+: ${1?a URL or GitHub USER/REPO must be specified}
+url=$1
+test -n "${url##*://*}" -a -n "${url##*@*:*}" && url="https://github.com/$url"
+test -z "${url##*://github.com*}" && url="${url%.git}.git"
+
+: ${2?a target pack/CATEGORY/<start|opt> location must be specified}
+dir=${2%/*}
+name=${2##*/}
+test "$dir" = "$name" && name=
+filetype=
+case "$name" in
+  (*=)
+    filetype=$name
+    name=
+    dir=pack/filetype/opt
+    ;;
+  (start|opt)
+    dir=$2
+    name=
+    ;;
+esac
+test -n "${dir##pack/*}" && dir="pack/$dir"
+test -n "${dir%%*/start}" -a -n "${dir%%*/opt}" && dir="$dir/start"
+
+# supply an appropriate name for the package
+test -z "$name" && name=$(basename "$url" .git)
+name=${name#vim-}  # drop redundant vim- prefix
+name=${name%.vim}  # drop redundant .vim suffix
+name=${name#nvim-} # drop redundant nvim- prefix
+name=${name%.nvim} # drop redundant .nvim suffix
+name=${name%.zip}  # drop redundant .zip suffix
+
+# insert the package by creating a `*.get` file
+mkdir -p "$dir"
+get="$dir/$filetype$name.get"
+echo "$url" > "$get"
+git add -f "$get"
+git status "$get"
+
+# clone the newly inserted package immediately
+${0%/*}/update "$get"

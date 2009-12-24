@@ -1,0 +1,9 @@
+#!/bin/sh -eu
+#
+# Finds all known and untracked '*.get' files.
+#
+# Usage: bin/manifest [OPTIONAL_FILTER_REGEXP]
+#
+# Written in 2020 by Suraj N. Kurapati <https://github.com/sunaku>
+
+git ls-files --others --cached | grep '\.get$' | grep -i "${@-.}"

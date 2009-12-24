@@ -1,0 +1,10 @@
+#!/bin/sh -eu
+#
+# Displays help and usage information for this and fellow scripts.
+#
+# Usage: bin/usage [SCRIPT]
+#
+# Written in 2015 by Suraj N. Kurapati <https://github.com/sunaku>
+
+test $# -gt 0 || set -- "$0"
+sed -e '1d' -e '/^[^#]\|^$/,$d' -e 's/^# \?//' -e '/^Written in /d' "$@"

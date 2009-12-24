@@ -1,0 +1,22 @@
+#!/bin/sh -eu
+#
+# Renames the given *.get file and all associated files to the new name.
+#
+# Usage: bin/rename-fromto CURRENT_GET_FILE NEW_GET_FILE
+#
+# Written in 2015 by Suraj N. Kurapati <https://github.com/sunaku>
+
+test "$1" = "$2" -o ! -f "$1" -o -f "$2" && exit
+
+for old in "$1" "${1%.get}"*; do
+  test -e "$old" || continue
+
+  ext=${old##*.}
+  test -z "$ext" -o "$ext" = "$old" && unset ext
+  new="${2%.get}${ext+.}${ext-}"
+
+  mkdir -p "${new%/*}"
+  git mv "$old" "$new" 2>/dev/null || mv -iv "$old" "$new" </dev/tty
+
+  test ! -e "$old" # abort if the rename had failed or was cancelled
+done

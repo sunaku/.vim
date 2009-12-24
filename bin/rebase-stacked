@@ -1,0 +1,33 @@
+#!/bin/sh -eu
+#
+# Rebases the main branches, going from conventional to divergent.
+#
+# Written in 2010 by Suraj N. Kurapati <https://github.com/sunaku>
+
+# ensure that working tree is clean
+git rebase HEAD --quiet
+git --no-pager branch -v # for user's reference
+
+# reapply stacked branch architecture
+base=
+for branch in origin basics qwerty dvorak engram master; do
+  if test -n "$base"; then
+    git checkout $branch
+    commit=$(git rev-parse --short HEAD)
+
+    if ! git rebase $base --quiet >/dev/null 2>&1; then
+      # "solve" conflicts by skipping conflicting commits
+      while test -d .git/rebase-apply; do
+        conflict=$(cat .git/rebase-apply/original-commit)
+        echo "Skipping conflicting commit: $conflict"
+        git rebase --skip >/dev/null 2>&1 || true
+      done
+
+      # show what has changed after conflicts were solved
+      if ! git diff --quiet $commit; then
+        git --no-pager diff --patch-with-stat $commit
+      fi
+    fi
+  fi
+  base=$branch
+done
