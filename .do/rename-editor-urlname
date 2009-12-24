@@ -1,0 +1,15 @@
+#!/bin/sh -Ceu
+#
+# Attempts to rename bundles back to their URL basenames.
+#
+# Usage: .do/rename-editor-urlname [OPTIONS_FOR_VIM...]
+#
+# Written in 2016 by Suraj N. Kurapati <https://github.com/sunaku>
+
+git ls-files --cached --others '*.get' | sort | while read -r get; do
+  url=$(cat "$get")
+  name=$(basename "$url" .git)
+  echo "${get%/*}/$name.get"
+done > rename-editor.new
+
+${0%/*}/rename-editor "$@"

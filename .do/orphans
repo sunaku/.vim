@@ -1,0 +1,11 @@
+#!/bin/sh -eu
+#
+# Lists untracked `*.get` files and bundles lacking `*.get` files.
+#
+# Usage: .do/orphans
+#
+# Written in 2010 by Suraj N. Kurapati <https://github.com/sunaku>
+
+git ls-files --cached --others '*bundle/*/*.get' '*bundle/*/*/' |
+sed -e 's/\.get$//' -e 's|/$||' -e 's/$/*/' | sort | uniq -u |
+xargs -r git ls-files --others

@@ -1,0 +1,16 @@
+#!/bin/sh -eu
+#
+# Deletes untracked `*.get` files and bundles lacking `*.get` files,
+# as well as any files or directories seen as waste by git-clean(1).
+#
+# Usage: .do/clean        # asks you for confirmation
+# Usage: .do/clean -f     # no confirmation; force it
+#
+# Written in 2010 by Suraj N. Kurapati <https://github.com/sunaku>
+
+test $# -gt 0 && test "$1" = '-f' && option='-t' || option='-p'
+{
+  ${0%/*}/orphans
+  git clean -d -n | sed -n 's/^Would remove //p'
+} |
+xargs -r -n 1 $option rm -r

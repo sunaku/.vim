@@ -1,0 +1,20 @@
+#!/bin/sh -eu
+#
+# Formats usage information from all scripts for injection into README.
+#
+# Written in 2016 by Suraj N. Kurapati <https://github.com/sunaku>
+
+git ls-files --cached .do | xargs -t -n 1 .do/usage 2>&1 | awk '
+
+  /^.do/ {
+    print "\n####",
+    $2; next
+  }
+
+  /^Usage:/ {
+    print "    "$0
+    next
+  }
+
+  { print }
+'

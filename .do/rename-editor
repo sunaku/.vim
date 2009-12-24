@@ -1,0 +1,28 @@
+#!/bin/sh -eu
+#
+# Lets you rename all *.get files in one fell swoop, from the comfort of Vim.
+#
+# Usage: .do/rename-editor [OPTIONS_FOR_VIM...]
+#
+# Simply rename the lines you're interested in and then save and quit, but be
+# careful not to change the order or amount of lines presented in the editor!
+#
+# To cancel without performing any renames, type "ggdG:wqa" followed by ENTER.
+#
+# Written in 2016 by Suraj N. Kurapati <https://github.com/sunaku>
+
+old=${0##*/}.old
+test -s "$old" || git ls-files --cached --others '*.get' | sort > "$old"
+
+new=${0##*/}.new
+test -s "$new" || cp "$old" "$new"
+
+vim "$@" -c 'diffthis | vsplit | bnext | diffthis | normal! zR' "$old" "$new"
+
+if test -s "$old" -a -s "$new" -a $(wc -l < "$old") -eq $(wc -l < "$new"); then
+  paste "$old" "$new" | awk '$1 != $2' | while read -r old_name new_name; do
+    ${0%/*}/rename "$old_name" "$new_name"
+  done
+fi
+
+rm "$old" "$new"
