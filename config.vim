@@ -5,27 +5,40 @@
 
 set nocompatible               " explicitly get out of vi-compatible mode
 
-if has('gui_running')
-  colorscheme wombat
-  set guifont=Monospace\ 11
-  set gcr+=a:blinkwait0        " prevent cursor from blinking
-else
-  set background=dark          " use brighter colors on dark background
-endif
+"-------------------------------------------------------------------------------
+" controls
+"-------------------------------------------------------------------------------
 
 let mapleader=','              " defines the value of <leader> key
 set mouse=a                    " enable mouse clicking & selection
-set backspace=indent,eol,start " make backspace more flexible
+set backspace=indent,eol,start " make backspace work as you'd expect
 
-set confirm                    " ask user before aborting an action
-set shortmess=atI              " disable "Press ENTER or type command" prompt
-set autochdir                  " switch to current file's directory
-set hidden                     " you can change buffers without saving
+"-------------------------------------------------------------------------------
+" appearance
+"-------------------------------------------------------------------------------
+
+if has('gui_running')
+  set gcr+=a:blinkwait0        " prevent cursor from blinking
+  set guifont=Monospace\ 11
+  colorscheme wombat
+else
+  set background=dark          " make colors readable in dark terminals
+endif
 
 set number                     " show line numbers
 set novisualbell               " don't flash the screen
 set list listchars=tab:>-      " reveal TAB characters
 set scrolloff=3                " maintain more context around the cursor
+
+"-------------------------------------------------------------------------------
+" interaction
+"-------------------------------------------------------------------------------
+
+set confirm                    " ask user before aborting an action
+set shortmess=atI              " disable "Press ENTER" prompt after :%! filters
+
+set autochdir                  " switch to current file's parent directory
+set hidden                     " you can change buffers without saving
 
 set wildmenu                   " turn on command line completion wild style
 set wildmode=list:longest,full " turn on wild mode huge list
@@ -38,6 +51,10 @@ set foldenable
 set foldmethod=indent
 set foldlevel=100              " open (almost) all folds by default
 
+"-------------------------------------------------------------------------------
+" formatting
+"-------------------------------------------------------------------------------
+
 set autoindent                 " enable auto-indentation of input
 set formatoptions+=o           " retain comment marker when adding new lines
 set textwidth=80               " hard-wrap long lines as you type them
@@ -48,6 +65,10 @@ set expandtab                  " insert spaces when TAB is pressed
 set softtabstop=2              " ... this many spaces
 set shiftwidth=2               " indentation amount for << and >> commands
 
+"-------------------------------------------------------------------------------
+" file types
+"-------------------------------------------------------------------------------
+
 syntax on                      " enable syntax highlighting
 filetype on                    " auto-detect the file type
 filetype plugin on             " enable file type specific plugins
@@ -55,6 +76,10 @@ filetype indent on             " indent according to file type
 
 autocmd FileType make set noexpandtab
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+
+"-------------------------------------------------------------------------------
+" saving & loading
+"-------------------------------------------------------------------------------
 
 " remove trailing spaces before saving the file
 " and preserve the cursor position while doing so
