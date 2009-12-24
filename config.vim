@@ -13,6 +13,9 @@ let mapleader=','              " defines the value of <leader> key
 set mouse=a                    " enable mouse clicking & selection
 set backspace=indent,eol,start " make backspace work as you'd expect
 
+noremap <leader>tt :NERDTreeToggle<CR>
+noremap <leader>tf :NERDTreeFind<CR>
+
 "-------------------------------------------------------------------------------
 " appearance
 "-------------------------------------------------------------------------------
