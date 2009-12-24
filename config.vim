@@ -13,11 +13,11 @@ let mapleader=','              " defines the value of <leader> key
 set mouse=a                    " enable mouse clicking & selection
 set backspace=indent,eol,start " make backspace work as you'd expect
 
-noremap <leader>tt :NERDTreeToggle<CR>
-noremap <leader>tf :NERDTreeFind<CR>
+noremap <leader>t :NERDTreeToggle<CR>
+noremap <leader>T :NERDTreeFind<CR>
 
 let MRU_Exclude_Files='\.git/COMMIT_EDITMSG$'
-noremap <leader>fr :MRU<CR>
+noremap <leader>r :MRU<CR>
 
 "-------------------------------------------------------------------------------
 " appearance
