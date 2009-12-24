@@ -41,8 +41,6 @@ set scrolloff=3                " maintain more context around the cursor
 "-------------------------------------------------------------------------------
 
 set confirm                    " ask user before aborting an action
-set shortmess=atI              " disable "Press ENTER" prompt after :%! filters
-
 set autochdir                  " switch to current file's parent directory
 set hidden                     " you can change buffers without saving
 
