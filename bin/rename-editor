@@ -1,0 +1,50 @@
+#!/bin/sh -eu
+#
+# Lets you rename all *.get files in one fell swoop, from the comfort of Vim.
+#
+# Usage: bin/rename-editor
+#
+# The editor will present you with 3 split windows (left, middle, and right):
+# 1. The left window lists the current names for your reference (read-only)
+# 2. The middle window lists the current names for you to rename (writable)
+# 3. The right window lists the default names for your reference (read-only)
+#
+# Edit the names in the middle window and then save the file before exiting.
+# To cancel or avoid performing any renames, exit the editor without saving.
+#
+# Note: DO NOT change the order or amount of lines presented in the editor!
+#
+# Written in 2016 by Suraj N. Kurapati <https://github.com/sunaku>
+
+listing=$(git ls-files --cached --others '*.get' | sort)
+
+default=${0##*/}.default
+test -s "$default" || echo "$listing" | while read -r get; do {
+
+  url=$(cat "$get")
+  name=$(basename "$url" .git)
+  echo "${get%/*}/$name.get"
+
+} </dev/null
+done > "$default"
+
+current=${0##*/}.current
+test -s "$current" || echo "$listing" > "$current"
+
+renames=${0##*/}.renames
+test -s "$renames" || cp "$current" "$renames"
+
+chmod -w "$current" "$default"
+vimdiff "$current" "$renames" "$default" \
+  -c 'execute "silent file ".expand("%")."//2"' \
+  -c 'execute "normal! \<C-W>W"' \
+  -c 'execute "silent file ".expand("%")."//3"' \
+  -c 'execute "normal! \<C-W>W"'
+
+if test $(wc -l < "$current") -eq $(wc -l < "$renames"); then
+  paste "$current" "$renames" | awk '$1 != $2' | while read -r old new; do
+    ${0%/*}/rename-fromto "$old" "$new"
+  done
+fi
+
+rm -f "$default" "$current" "$renames"

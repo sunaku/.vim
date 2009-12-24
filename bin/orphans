@@ -1,0 +1,12 @@
+#!/bin/sh -eu
+#
+# Lists untracked `*.get` files and bundles lacking `*.get` files.
+# If a REGEX is provided, it will filter the output of this script.
+#
+# Usage: bin/orphans [OPTIONS_FOR_GREP...] [REGEX]
+#
+# Written in 2010 by Suraj N. Kurapati <https://github.com/sunaku>
+
+git ls-files --cached --others '*bundle/*/*.get' '*bundle/*/*/' |
+sed -e 's/\.get$//' -e 's|/$||' -e 's/$/*/' | sort | uniq -u |
+xargs -r git ls-files --others --exclude-standard | grep -i "${@-.}"

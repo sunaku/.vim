@@ -1,0 +1,21 @@
+#!/bin/bash -eu
+#
+# Renames existing bundles whose names match the given regular expression.
+#
+# Usage: bin/rename [OPTIONS_FOR_GREP...] BUNDLE_NAME_REGEXP
+#
+# At the prompt, edit the bundle location and press ENTER to rename it so.
+# If you no longer wish to rename the bundle, just press ENTER to skip it.
+# If you made a mistake and want to abort the rename, press Control and C.
+#
+# Written in 2015 by Suraj N. Kurapati <https://github.com/sunaku>
+
+git ls-files --cached --others '*.get' | grep -i "${@-.}" | while read -r get
+do {
+
+  read -p "(rename) " -i "$get" -e rename </dev/tty
+  test -z "$rename" -o "$rename" = "$get" && continue
+  ${0%/*}/rename-fromto "$get" "$rename"
+
+} </dev/null
+done

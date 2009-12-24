@@ -1,0 +1,94 @@
+#!/bin/sh -eu
+#
+# Usage: bin/update [BUNDLE_NAME|DIRECTORY|GET_FILE]...
+# Usage: env UPDATE_BUNDLES_SEQUENTIALLY=1 bin/update
+#
+# Clones or updates the Git repositories specified in `./**/*.get` files:
+# optionally matching the given BUNDLE_NAME, DIRECTORY, or GET_FILE path,
+# starting from the most recently modified file down to the earliest one,
+# checking out the branch or commit named in related `./**/*.set` files.
+# After that, it runs corresponding `./**/*.run` scripts for those repos.
+#
+# This is done in parallel, at up to half of the maximum process limit,
+# unless the `UPDATE_BUNDLES_SEQUENTIALLY` environment variable is set.
+#
+# Written in 2010 by Suraj N. Kurapati <https://github.com/sunaku>
+
+parallel_processes=$(ulimit -a | awk '/process/ { print int( $NF / 2 ) }')
+
+# add color to the output when stdout is connected to a terminal device
+test -t 1 && colorize='
+  s/.* Cloning into .*/\x1b[32m&\x1b[0m/;             # green
+  s/.* Updating .*\.\..*/\x1b[32m&\x1b[0m/;           # green
+  s/.* Frozen at commit .*/\x1b[33m&\x1b[0m/;         # yellow
+  s/.* Already up.to.date\.$/\x1b[34m&\x1b[0m/;       # blue
+  s/.* fatal: .*/\x1b[31m&\x1b[0m/;                   # red
+  s/.* Failed with exit status .*/\x1b[31m&\x1b[0m/;  # red
+' || colorize=
+
+failures=0
+failures_receiver_pid=$$
+trap 'failures=$(( failures + 1 ))' USR1
+
+git ls-files --cached --others '*.get' | grep -i "${@-.}" | xargs -r ls -t | {
+  while read -r get; do {
+
+    # avoid GitHub login prompt when fetching a repo that no longer exists
+    # by supplying a bogus username and password in the repo URL if needed
+    # https://github.com/junegunn/vim-plug/wiki/faq#whats-the-deal-with-git-in-the-url
+    url=$(sed 's|\(://\)\(github.com\)|\1:@\2|' "$get")
+    dir=${get%.get}
+    set="$dir".set
+    test -s "$set" && set=$(cat "$set") || set=
+    {
+      (
+        # XXX: The sh -e flag from the #! line above has no effect in this
+        # backgrounded subshell for some reason.  Even an explicit `set -e`
+        # has no effect!  So just work around this conundrum using exit $?.
+        set -e; false # <-- for example, this has no effect; Y U NO fail?!!
+
+        mkdir -p "$dir"                                           || exit $?
+        cd "$dir"                                                 || exit $?
+
+        # clone or update the bundle as necessary
+        if ! test -d .git; then
+          git clone --shallow-submodules "$url" "$PWD"            || exit $?
+        elif git symbolic-ref -q HEAD >/dev/null; then
+          git remote set-url origin "$url"                        || exit $?
+          git fetch --quiet                                       || exit $?
+          git merge --ff-only '@{u}'                              ||
+          git pull --rebase                                       || exit $?
+        fi
+
+        # use the specified version of the bundle
+        if test -n "$set"; then
+          git checkout --quiet "$set"                             || exit $?
+          echo "Frozen at commit $(git show-ref -s7 HEAD)."
+        fi
+
+        # run user-defined commands after updating
+        run=../${dir##*/}.run
+        ref=.git/refs/heads/master
+        if test -s "$run" -a "$run" -ot "$ref"; then
+          sh -eux "$run"                                          || exit $?
+          touch "$run" -r "$ref"                                  || exit $?
+        fi
+
+      ) || {
+        echo "Failed with exit status $?."
+        kill -USR1 $failures_receiver_pid
+      }
+    } 2>&1 | awk -v prefix="$dir:" '{ print prefix, $0 }' | sed "$colorize" &
+
+    test -n "${UPDATE_BUNDLES_SEQUENTIALLY:-}" ||
+    # throttle process creation to avoid exceeding system process limit
+    # which results in "fork: Resource temporarily unavailable" errors
+    test $(pgrep -u "$USER" | wc -l) -gt "$parallel_processes" && wait
+
+  } </dev/null
+  done
+
+  wait # putting it here allows ^C interrupt to take effect immediately
+}
+
+test $failures -eq 0

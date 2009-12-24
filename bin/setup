@@ -1,0 +1,24 @@
+#!/bin/sh -eu
+#
+# Activates the given BRANCH and installs any bundles it defines.
+#
+# Usage: bin/setup [BRANCH]
+#
+# Usage: bin/setup         # bare bones
+# Usage: bin/setup basics  # bare bones + basic config
+# Usage: bin/setup qwerty  # bare bones + basic config + the usual
+# Usage: bin/setup dvorak  # bare bones + basic config + the usual + my flair
+#
+# Written in 2015 by Suraj N. Kurapati <https://github.com/sunaku>
+
+# ensure working tree is clean
+git rebase HEAD --quiet
+
+# switch to the desired branch
+if test $# -gt 0; then
+  git checkout -b "$1" origin/"$1" ||
+  git checkout "$1"
+fi
+
+# install any bundles therein
+${0%/*}/update

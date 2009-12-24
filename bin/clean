@@ -1,0 +1,13 @@
+#!/bin/sh -eu
+#
+# Deletes untracked `*.get` files and bundles lacking `*.get` files.
+# If REGEX is provided, it will filter the candidates for deletion.
+#
+# Usage: bin/clean [-f] [OPTIONS_FOR_GREP...] [REGEX]
+# Usage: bin/clean        # asks you for confirmation
+# Usage: bin/clean -f     # no confirmation; force it
+#
+# Written in 2010 by Suraj N. Kurapati <https://github.com/sunaku>
+
+test $# -gt 0 && test "$1" = '-f' && option='-t' && shift || option='-p'
+${0%/*}/orphans "$@" | xargs -r -n 1 $option rm -r

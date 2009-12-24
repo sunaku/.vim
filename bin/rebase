@@ -1,0 +1,22 @@
+#!/bin/sh -eu
+#
+# Replays local commits atop the newest changes from upstream.
+#
+# Usage: bin/rebase      # asks to confirm bin/clean
+# Usage: bin/rebase -f   # no confirmation; force it
+#
+# Written in 2010 by Suraj N. Kurapati <https://github.com/sunaku>
+
+# download new commits from upstream
+remote=upstream
+source=https://github.com/sunaku/.vim
+git remote add $remote "$source" 2>/dev/null ||
+git remote set-url $remote "$source"
+git fetch $remote
+
+# rebase current branch atop upstream
+branch=$(git name-rev --name-only HEAD)
+${0%/*}/rebase-autocon "$remote/$branch"
+
+# try to clean up any orphaned bundles
+${0%/*}/clean "$@"

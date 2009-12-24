@@ -1,0 +1,53 @@
+#!/bin/sh -eu
+#
+# Inserts a new bundle, optionally named BUNDLE_NAME, into the given CATEGORY.
+# You can specify USER/REPO in place of URL to insert from GitHub repositories.
+#
+# Usage: bin/insert [URL|USER/REPO] [ft]bundle/CATEGORY[/BUNDLE_NAME]
+#
+# Usage: bin/insert URL bundle/CATEGORY
+# Usage: bin/insert URL bundle/CATEGORY/BUNDLE_NAME
+# Usage: bin/insert URL ftbundle/FILETYPE
+# Usage: bin/insert URL ftbundle/FILETYPE/BUNDLE_NAME
+#
+# Usage: bin/insert USER/REPO bundle/CATEGORY
+# Usage: bin/insert USER/REPO bundle/CATEGORY/BUNDLE_NAME
+# Usage: bin/insert USER/REPO ftbundle/FILETYPE
+# Usage: bin/insert USER/REPO ftbundle/FILETYPE/BUNDLE_NAME
+#
+# Written in 2010 by Suraj N. Kurapati <https://github.com/sunaku>
+
+# parse the command line arguments and options
+test $# -ge 2
+
+url=$1
+test -n "${url##*://*}" -a -n "${url##*@*:*}" && url="https://github.com/$url"
+test -z "${url##*://github.com*}" && url="${url%.git}.git"
+
+dir=${2%%/*}
+name=${2##*/}
+category=${2%/*}
+if test "$category" = "$dir"; then
+  category=$name
+  name=
+else
+  category=${category#**/}
+fi
+
+# supply an appropriate name for the bundle
+test -z "$name" && name=$(basename "$url" .git)
+name=${name#vim-}  # drop redundant vim- prefix
+name=${name%.vim}  # drop redundant .vim suffix
+name=${name#nvim-} # drop redundant nvim- prefix
+name=${name%.nvim} # drop redundant .nvim suffix
+name=${name%.zip}  # drop redundant .zip suffix
+
+# insert the bundle by creating a `*.get` file
+mkdir -p "$dir/$category"
+get="$dir/$category/$name.get"
+echo "$url" > "$get"
+git add -f "$get"
+git status "$get"
+
+# clone the newly inserted bundle immediately
+${0%/*}/update "$get"
