@@ -1,0 +1,21 @@
+#!/bin/sh -eu
+#
+# Lists untracked `*.get` files and bundles lacking `*.get` files.
+#
+# Usage: bin/orphans
+#
+# Written in 2010 by Suraj N. Kurapati <https://github.com/sunaku>
+
+git ls-files --others | grep '[^/]*bundle/.*\.get$' ||:
+
+for dir in *bundle/*/*/; do
+  # directory is a container for other tracked files
+  git ls-files "$dir" | grep -q . && continue
+
+  # directory has a corresponding tracked *.get file
+  get=${dir%/}.get
+  test -e "$get" && git ls-files "$get" | grep -q . && continue
+
+  # directory is an orphan, so report it to the user
+  echo "$dir"
+done
