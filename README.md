@@ -3,6 +3,8 @@
 Unlike most Vim configurations you find online, this one is _modular_: it's
 *not* a monolithic `vimrc` file!  May it help you journey the lands of Vim.
 
+Don't forget to check out the handy [list of shortcuts](#shortcuts) below!
+
 ## Features
 
 * Modularity of bundles, filetypes, colorschemes, and Vim settings.
@@ -49,6 +51,8 @@ Configuration
 * `ftbundle/*/*.vim` configure your ftbundles _before_ they are loaded.
 
 * `ftplugin/{*,/*}.vim` configure your filetypes _when_ they are loaded.
+
+* `recolor/*.vim` configure your colorschemes _after_ they are applied.
 
 * `after/plugin/**/*.vim` configure Vim _after_ it finishes starting up.
 
@@ -191,6 +195,157 @@ Unlock a locked *BUNDLE* so that it can be updated again:
     cd BUNDLE
     git checkout master
 
+## Shortcuts
+
+This branch of the Vim configuration defines the following shortcuts.
+
+Tips:
+* `<C-c>` is like `<Esc>` but it doesn't break macros containing the Alt key.
+* Run `stty -ixon` before launching Vim to use `<C-s>` and `<C-q>` shortcuts.
+
+### Leader
+
+* `,` is the `<Leader>`: a prefix for shortcuts in this configuration.
+* Press it and wait for 2 seconds for listing of all leader shortcuts.
+
+### Command
+
+* `;` puts Vim into command mode. It is a shift-less alternative to `:`.
+* `!` puts Vim into command mode, ready to run an external shell command.
+
+### Undo
+
+* `U` re-does the last undone change.  It is the same as `<C-r>` in Vim.
+
+### Quit
+
+* `<C-q>` quits Vim.
+* `<Leader><C-q>` closes all buffers and all windows _without_ quitting Vim.
+
+### Window
+
+* `<Leader>1` maximizes current window by collapsing others.
+* `<Leader>!` closes all windows except current window.
+* `<Leader>2` creates new window below current window.
+* `<Leader>3` creates new window to the right of current window.
+* `<Leader>4` closes current window.
+* `<Leader>0` divides screen equally amongst all windows.
+
+Focus:
+* `<A-PageUp>` focuses next window.
+* `<A-PageDown>` focuses previous window.
+
+Scroll:
+* `<C-Left>` scrolls window left.
+* `<C-Right>` scrolls window right.
+* `<C-S-Left>` scrolls window all the way left.
+* `<C-S-Right>` scrolls window all the way right.
+
+### Tab
+
+* `<Leader><PageUp>` selects previous tab.
+* `<Leader><PageDown>` selects next tab.
+
+### Buffer
+
+* `<C-s>` strips trailing whitespace from current buffer and writes to disk.
+* `<Leader><C-s>` strips trailing whitespace from current buffer.
+* `<Leader>$` closes current buffer while retaining current window.
+* `<Leader>7` discards unsaved changes and reloads current buffer from disk.
+* `<C-PageUp>` displays previous buffer in current window.
+* `<C-PageDown>` displays next buffer in current window.
+
+### Fold
+
+Jump:
+* `<C-Up>` jumps to nearest fold above current line.
+* `<C-Down>` jumps to nearest fold below current line.
+* `<C-S-Up>` jumps to nearest section above current line.
+* `<C-S-Down>` jumps to nearest section below current line.
+
+Fold:
+* `<A-Down>` opens current fold.
+* `<A-S-Down>` opens current fold and any folds contained therein.
+* `<A-Up>` closes current fold.
+* `<A-S-Up>` closes current fold and any folds contained therein.
+
+Level:
+* `<A-Left>` closes folds at current level.
+* `<A-S-Left>` closes all folds.
+* `<A-Right>` opens folds at next level.
+* `<A-S-Right>` opens all folds.
+* `<Leader>z` closes all folds except those containing cursor.
+
+### Search
+
+* `<C-l>` clears search result highlighting.
+* `<Leader>c/` finds merge conflict markers.
+* `-` repeats the current `f`,`F`,`t`,`T` forward like the original `;` does.
+* `_` repeats the current `f`,`F`,`t`,`T` backward like the original `,` does.
+
+### Select
+
+* `gV` selects last edited or pasted region.
+* `g/` selects next nearest search result.
+* `g?` selects previous nearest search result.
+
+### Yank
+
+* `Y` yanks from cursor to end of line, like Vim's `C` and `D` shortcuts.
+* `<Leader>y` copies the current visual selection to the system clipboard.
+
+### Format
+
+Indent:
+* `<Leader>=<Tab>` disables "2 spaces equals 1 tab" indentation style.
+* `<Leader>=<Space>` enables "2 spaces equals 1 tab" indentation style.
+
+Decorate:
+* `<Leader>=-` inserts or updates section separator at end of current line.
+* `<Leader>=_` repeats last character to the maximum width of current line.
+
+Markdown:
+* `<Leader>=1` formats current line as a top-level heading in Markdown.
+* `<Leader>=2` formats current line as a second-level heading in Markdown.
+* `<Leader>=`\` converts Markdown indented code block into fenced code block.
+* `<Leader>=|` converts Markdown table heading into a heading/body separator.
+
+### Toggle
+
+Options:
+* `coN` toggles relative line numbering.
+* `cof` toggles automatic formatting.
+* `cop` toggles paste mode.
+* `cos` toggles spell check.
+* `coz` toggles code folding.
+
+### Diff
+
+* `<Leader>db` diffs current buffer.
+* `<Leader>df` diffs current buffer against original file.
+* `<Leader>dl` puts change into left-hand buffer in 3-way diff.
+* `<Leader>dr` puts change into right-hand buffer in 3-way diff.
+* `<Leader>dL` obtains change from left-hand buffer in 3-way diff.
+* `<Leader>dR` obtains change from right-hand buffer in 3-way diff.
+* `<Leader>du` updates differences; run this after you make changes.
+* `<Leader>dq` quits diff mode.
+
+## URxvt integration
+
+If you use Vim in the URxvt terminal emulator, then load the following
+snippet into xrdb(1) so you can use all the shortcuts defined in this
+Vim configuration:
+
+    xrdb -merge ~/.vim/urxvt.xrdb
+
 ## References
 
 * http://learnvimscriptthehardway.stevelosh.com/chapters/42.html
+* http://vim.wikia.com/wiki/Example_vimrc
+* http://items.sjbach.com/319/configuring-vim-right
+* http://push.cx/2008/256-color-xterms-in-ubuntu
+* http://tammersaleh.com/posts/the-modern-vim-config-with-pathogen
+* http://vim.wikia.com/wiki/Single_tags_file_for_a_source_tree
+* http://vimcasts.org/episodes/bubbling-text/
+* https://sunaku.github.io/switching-from-jedit-to-vim.html
+* https://sunaku.github.io/vim-script-management-system.html
