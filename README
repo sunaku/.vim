@@ -1,0 +1,19 @@
+sunaku's Vim configuration
+==========================
+
+At long last, I have completely switched from jEdit to Vim,
+and this is the Vim configuration that made it all possible.
+
+Dependencies:
+
+  Vim 7.2 or newer
+
+Installation:
+
+  # backup
+  mv ~/.vim ~/.vim.bak
+  mv ~/.vimrc ~/.vimrc.bak
+
+  # install
+  git clone git://github.com/sunaku/vimrc.git ~/.vim
+  ln -s ~/.vim/config.vim ~/.vimrc
