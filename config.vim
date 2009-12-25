@@ -34,9 +34,15 @@ nnoremap <leader>st :TlistToggle<CR>
 nnoremap <leader>si :TlistShowTag<CR>
 nnoremap <leader>sI :TlistShowPrototype<CR>
 
-" switch between single and double quotes (surround plugin)
-nmap <leader>' cs"'
-nmap <leader>" cs'"
+" switch between single and double quotes using the surround plugin
+"
+" NOTE: we explictly set a temporary marker (z) and restore it after
+"       the surround operation because the surround plugin does not
+"       restore the cursor position after the surround operation; it
+"       leaves the cursor at the opening quote of the operand instead!
+"
+nmap <leader>' mz cs"' `z
+nmap <leader>" mz cs'" `z
 
 "-------------------------------------------------------------------------------
 " appearance
