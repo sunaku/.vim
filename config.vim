@@ -6,12 +6,15 @@
 set nocompatible               " explicitly get out of vi-compatible mode
 
 "-------------------------------------------------------------------------------
-" plugins
+" plugins & shortcuts
 "-------------------------------------------------------------------------------
 
 let mapleader=','              " use comma as the <leader> key
 
-" buffer tabs
+" buffer management
+nnoremap <leader>b :ls<CR>:buffer<Space>
+
+" tabs for buffers
 let g:buftabs_only_basename=1
 let g:buftabs_active_highlight_group='Visual'
 
@@ -19,17 +22,17 @@ set laststatus=2
 let g:buftabs_in_statusline=1
 
 " file system browser
-noremap <leader>ft :NERDTreeToggle<CR>
-noremap <leader>fT :NERDTreeFind<CR>
+nnoremap <leader>ft :NERDTreeToggle<CR>
+nnoremap <leader>fT :NERDTreeFind<CR>
 
 " recently opened files
 let MRU_Exclude_Files='\.git/COMMIT_EDITMSG$'
-noremap <leader>fr :MRU<CR>
+nnoremap <leader>fr :MRU<CR>
 
 " source code browser
-noremap <leader>st :TlistToggle<CR>
-noremap <leader>si :TlistShowTag<CR>
-noremap <leader>sI :TlistShowPrototype<CR>
+nnoremap <leader>st :TlistToggle<CR>
+nnoremap <leader>si :TlistShowTag<CR>
+nnoremap <leader>sI :TlistShowPrototype<CR>
 
 "-------------------------------------------------------------------------------
 " appearance
