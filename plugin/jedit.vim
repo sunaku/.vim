@@ -25,8 +25,8 @@ noremap <C-Backspace> zc
 noremap <CS-Backspace> zM zv zc
 
 " buffer navigation
-noremap <C-PageUp> :bp<CR>
-noremap <C-PageDown> :bn<CR>
+noremap <C-PageUp> :bprevious<Enter>
+noremap <C-PageDown> :bnext<Enter>
 " TODO: buffer switcher / fuzzy finder
 
 " split navigation

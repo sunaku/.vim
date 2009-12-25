@@ -6,50 +6,6 @@
 set nocompatible               " explicitly get out of vi-compatible mode
 
 "-------------------------------------------------------------------------------
-" plugins & shortcuts
-"-------------------------------------------------------------------------------
-
-let mapleader=','              " use comma as the <leader> key
-
-" buffer management
-nnoremap <leader>b :ls<CR>:buffer<Space>
-
-" toggle line numbering
-nnoremap <leader>n :set number!<CR>
-
-" list all occurrences of word under cursor in current buffer
-nnoremap <leader>* [I
-
-" tabs for buffers
-let g:buftabs_only_basename=1
-let g:buftabs_active_highlight_group='Visual'
-
-set laststatus=2
-let g:buftabs_in_statusline=1
-
-" file system browser
-nnoremap <leader>t :NERDTreeToggle<CR>
-nnoremap <leader>T :NERDTreeFind<CR>
-
-" recently opened files
-let MRU_Exclude_Files='\.git/'
-nnoremap <leader>f :MRU<CR>
-
-" source code browser
-nnoremap <leader>t :TlistToggle<CR>
-nnoremap <leader>T :TlistShowPrototype<CR>
-
-" switch between single and double quotes using the surround plugin
-"
-" NOTE: we explictly set a temporary marker (z) and restore it after
-"       the surround operation because the surround plugin does not
-"       restore the cursor position after the surround operation; it
-"       leaves the cursor at the opening quote of the operand instead!
-"
-nmap <leader>' mz cs"' `z
-nmap <leader>" mz cs'" `z
-
-"-------------------------------------------------------------------------------
 " appearance
 "-------------------------------------------------------------------------------
 
@@ -71,6 +27,7 @@ set scrolloff=3                " maintain more context around the cursor
 " interaction
 "-------------------------------------------------------------------------------
 
+let mapleader=','              " use comma as the <leader> key
 set mouse=a                    " enable mouse clicking & selection
 set backspace=indent,eol,start " make backspace work as you'd expect
 
@@ -163,3 +120,46 @@ augroup JumpCursorOnEdit
         \   unlet b:doopenfold      |
         \ endif
 augroup END
+
+"-------------------------------------------------------------------------------
+" plugins & shortcuts
+"-------------------------------------------------------------------------------
+
+" buffer management
+nnoremap <leader>b :ls<Enter>:buffer<Space>
+
+" toggle line numbers
+nnoremap <leader>n :set number!<Enter>
+
+" list all occurrences of word under cursor in current buffer
+nnoremap <leader>* [I
+
+" tabs for buffers
+let g:buftabs_only_basename=1
+let g:buftabs_active_highlight_group='Visual'
+
+set laststatus=2
+let g:buftabs_in_statusline=1
+
+" file system browser
+nnoremap <leader>t :NERDTreeToggle<Enter>
+nnoremap <leader>T :NERDTreeFind<Enter>
+
+" recently opened files
+let MRU_Exclude_Files='\.git/'
+nnoremap <leader>f :MRU<Enter>
+
+" source code browser
+nnoremap <leader>t :TlistToggle<Enter>
+nnoremap <leader>T :TlistShowPrototype<Enter>
+
+" switch between single and double quotes using the surround plugin
+"
+" NOTE: we explictly set a temporary marker (z) and restore it after
+"       the surround operation because the surround plugin does not
+"       restore the cursor position after the surround operation; it
+"       leaves the cursor at the opening quote of the operand instead!
+"
+nmap <leader>' mz cs"' `z
+nmap <leader>" mz cs'" `z
+
