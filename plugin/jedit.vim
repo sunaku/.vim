@@ -1,12 +1,28 @@
 " jEdit emulation for Vim
 
-" paragraph navigation
-noremap <C-Up> {
-noremap <C-Down> }
-
 " fold navigation
-"noremap <A-Up>
-"noremap <A-Down>
+"
+" These shortcuts are supposed to be prefixed
+" with <Alt> (as in jEdit) but Vim does not
+" allow this (in the case of <Alt><Enter> and
+" <Alt><Shift><Enter>) so our next-best
+" alternative is to prefix them to <Control>.
+"
+" Also, the <Left> and <Right> keys have
+" been improvised to respectively decrease
+" and increase the fold level globally in
+" the buffer.  This is not found in jEdit.
+"
+noremap <C-Up> zk
+noremap <C-Down> zj
+noremap <C-Left> zm
+noremap <CS-Left> zM
+noremap <C-Right> zr
+noremap <CS-Right> zR
+noremap <C-Enter> zo
+noremap <CS-Enter> zO
+noremap <C-Backspace> zc
+noremap <CS-Backspace> zM zv zc
 
 " buffer navigation
 noremap <C-PageUp> :bp<CR>

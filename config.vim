@@ -83,8 +83,8 @@ set ignorecase                 " make searching case insensitive
 set smartcase                  " ... unless the query contains capital letters
 
 set foldenable
-set foldmethod=indent
-set foldlevel=100              " open (almost) all folds by default
+set foldmethod=syntax          " use syntax highlighting rules to define folds
+set foldlevel=1                " start out with only root-level folds open
 
 "-------------------------------------------------------------------------------
 " formatting
