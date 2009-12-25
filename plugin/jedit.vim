@@ -28,4 +28,3 @@ noremap <A-PageDown> <C-W>w
 noremap <A-1> <C-W>o
 noremap <A-2> <C-W>s <C-W><Down>
 noremap <A-3> <C-W>v <C-W><Right>
-noremap <A-0> <C-W>c
