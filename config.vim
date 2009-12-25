@@ -34,6 +34,10 @@ nnoremap <leader>st :TlistToggle<CR>
 nnoremap <leader>si :TlistShowTag<CR>
 nnoremap <leader>sI :TlistShowPrototype<CR>
 
+" switch between single and double quotes (surround plugin)
+nmap <leader>' cs"'
+nmap <leader>" cs'"
+
 "-------------------------------------------------------------------------------
 " appearance
 "-------------------------------------------------------------------------------
