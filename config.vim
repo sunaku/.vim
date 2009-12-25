@@ -14,6 +14,9 @@ let mapleader=','              " use comma as the <leader> key
 " buffer management
 nnoremap <leader>b :ls<CR>:buffer<Space>
 
+" list all occurrences of word under cursor in current buffer
+nnoremap <leader>* [I
+
 " tabs for buffers
 let g:buftabs_only_basename=1
 let g:buftabs_active_highlight_group='Visual'
