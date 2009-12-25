@@ -14,6 +14,9 @@ let mapleader=','              " use comma as the <leader> key
 " buffer management
 nnoremap <leader>b :ls<CR>:buffer<Space>
 
+" toggle line numbering
+nnoremap <leader>n :set number!<CR>
+
 " list all occurrences of word under cursor in current buffer
 nnoremap <leader>* [I
 
