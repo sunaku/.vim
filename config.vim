@@ -6,27 +6,30 @@
 set nocompatible               " explicitly get out of vi-compatible mode
 
 "-------------------------------------------------------------------------------
-" controls
+" plugins
 "-------------------------------------------------------------------------------
 
-let mapleader=','              " defines the value of <leader> key
-set mouse=a                    " enable mouse clicking & selection
-set backspace=indent,eol,start " make backspace work as you'd expect
+let mapleader=','              " use comma as the <leader> key
 
 " buffer tabs
 let g:buftabs_only_basename=1
-let g:buftabs_active_highlight_group="Visual"
+let g:buftabs_active_highlight_group='Visual'
 
 set laststatus=2
 let g:buftabs_in_statusline=1
 
 " file system browser
-noremap <leader>t :NERDTreeToggle<CR>
-noremap <leader>T :NERDTreeFind<CR>
+noremap <leader>ft :NERDTreeToggle<CR>
+noremap <leader>fT :NERDTreeFind<CR>
 
-" most recently used files
+" recently opened files
 let MRU_Exclude_Files='\.git/COMMIT_EDITMSG$'
-noremap <leader>r :MRU<CR>
+noremap <leader>fr :MRU<CR>
+
+" source code browser
+noremap <leader>st :TlistToggle<CR>
+noremap <leader>si :TlistShowTag<CR>
+noremap <leader>sI :TlistShowPrototype<CR>
 
 "-------------------------------------------------------------------------------
 " appearance
@@ -48,6 +51,9 @@ set scrolloff=3                " maintain more context around the cursor
 "-------------------------------------------------------------------------------
 " interaction
 "-------------------------------------------------------------------------------
+
+set mouse=a                    " enable mouse clicking & selection
+set backspace=indent,eol,start " make backspace work as you'd expect
 
 set confirm                    " ask user before aborting an action
 set autochdir                  " switch to current file's parent directory
