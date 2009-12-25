@@ -20,7 +20,8 @@ endif
 set showcmd                    " show what you're typing in normal & visual mode
 set number                     " show line numbers
 set novisualbell               " don't flash the screen
-set list listchars=tab:>-      " reveal TAB characters
+set list                       " reveal invisible characters:
+set listchars=tab:>-,trail:~   " ... TABs and trailing spaces
 set scrolloff=3                " maintain more context around the cursor
 
 "-------------------------------------------------------------------------------
