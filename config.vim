@@ -29,7 +29,7 @@ nnoremap <leader>ft :NERDTreeToggle<CR>
 nnoremap <leader>fT :NERDTreeFind<CR>
 
 " recently opened files
-let MRU_Exclude_Files='\.git/COMMIT_EDITMSG$'
+let MRU_Exclude_Files='\.git/'
 nnoremap <leader>fr :MRU<CR>
 
 " source code browser
