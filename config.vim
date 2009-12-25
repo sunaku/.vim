@@ -61,6 +61,7 @@ else
   set background=dark          " make colors readable in dark terminals
 endif
 
+set showcmd                    " show what you're typing in normal & visual mode
 set number                     " show line numbers
 set novisualbell               " don't flash the screen
 set list listchars=tab:>-      " reveal TAB characters
