@@ -25,17 +25,16 @@ set laststatus=2
 let g:buftabs_in_statusline=1
 
 " file system browser
-nnoremap <leader>ft :NERDTreeToggle<CR>
-nnoremap <leader>fT :NERDTreeFind<CR>
+nnoremap <leader>t :NERDTreeToggle<CR>
+nnoremap <leader>T :NERDTreeFind<CR>
 
 " recently opened files
 let MRU_Exclude_Files='\.git/'
-nnoremap <leader>fr :MRU<CR>
+nnoremap <leader>f :MRU<CR>
 
 " source code browser
-nnoremap <leader>st :TlistToggle<CR>
-nnoremap <leader>si :TlistShowTag<CR>
-nnoremap <leader>sI :TlistShowPrototype<CR>
+nnoremap <leader>t :TlistToggle<CR>
+nnoremap <leader>T :TlistShowPrototype<CR>
 
 " switch between single and double quotes using the surround plugin
 "
