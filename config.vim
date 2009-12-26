@@ -14,8 +14,11 @@ if has('gui_running')
   set guifont=Monospace\ 11
   colorscheme wombat
 else
-  set background=dark          " make colors readable in dark terminals
-  colorscheme desert256
+  if &term =~ '^xterm\|256'
+    colorscheme desert256
+  else
+    set background=dark        " make colors readable in dark terminals
+  endif
 endif
 
 set showcmd                    " show what you're typing in normal & visual mode
