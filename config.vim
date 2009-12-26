@@ -15,6 +15,7 @@ if has('gui_running')
   colorscheme wombat
 else
   set background=dark          " make colors readable in dark terminals
+  colorscheme desert256
 endif
 
 set showcmd                    " show what you're typing in normal & visual mode
