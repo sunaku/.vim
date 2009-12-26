@@ -28,6 +28,7 @@ set scrolloff=3                " maintain more context around the cursor
 " interaction
 "-------------------------------------------------------------------------------
 
+
 let mapleader=','              " use comma as the <leader> key
 set mouse=a                    " enable mouse clicking & selection
 set backspace=indent,eol,start " make backspace work as you'd expect

@@ -41,6 +41,17 @@ noremap <A-PageDown> <C-W>w
 "
 " [1]: http://www.mail-archive.com/vim_use@googlegroups.com/msg06174.html
 "
+
+" make Vim recognize <Alt-Digit> shortcuts
+" http://vim.wikia.com/wiki/Fix_meta-keys_that_break_out_of_Insert_mode
+if !has('gui_running')
+  let i = 0
+  while i < 10
+    exec "set <A-". toupper(i) .">=\e". i
+    let i = i + 1
+  endwhile
+endif
+
 noremap <A-1> <C-W>o
 noremap <A-2> <C-W>s <C-W><Down>
 noremap <A-3> <C-W>v <C-W><Right>
