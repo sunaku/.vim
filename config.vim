@@ -11,15 +11,14 @@ set nocompatible               " explicitly get out of vi-compatible mode
 "-------------------------------------------------------------------------------
 
 if has('gui_running') || &t_Co > 2
-  syntax on                    " enable syntax highlighting
+  syntax on                    " enable syntax highlighting for source code
 
   if has('gui_running')
-    set gcr+=a:blinkwait0      " prevent cursor from blinking
-    set guifont=Monospace\ 11
     colorscheme wombat
-
   elseif &t_Co == 256
     colorscheme wombat256
+  else
+    set background=dark        " optimize colors for dark background terminals
   endif
 endif
 
@@ -29,6 +28,11 @@ set novisualbell               " don't flash the screen
 set list                       " reveal invisible characters:
 set listchars=tab:>-,trail:~   " ... TABs and trailing spaces
 set scrolloff=3                " maintain more context around the cursor
+
+if has('gui_running')
+  set guicursor+=a:blinkwait0  " prevent the cursor from blinking
+  set guifont=Monospace\ 11
+end
 
 "-------------------------------------------------------------------------------
 " interaction
@@ -60,7 +64,7 @@ set foldlevel=1                " start out with only root-level folds open
 set autoindent                 " enable auto-indentation of input
 set formatoptions+=o           " retain comment marker when adding new lines
 set textwidth=79               " hard-wrap long lines as you type them
-match ErrorMsg '\%>80v.\+'     " highlight overflow beyond 80 characters
+match ErrorMsg '\%>80v.\+'     " visually indicate overflow beyond 80 characters
 
 set tabstop=8                  " render TABs using this many spaces
 set expandtab                  " insert spaces when TAB is pressed
@@ -84,7 +88,9 @@ autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 
 " remove trailing spaces before saving the file
 " and preserve the cursor position while doing so
+"
 " http://vim.wikia.com/wiki/Remove_trailing_spaces
+"
 autocmd BufWritePre * :call StripTrailingWhitespace()
 function! StripTrailingWhitespace()
   normal mz
