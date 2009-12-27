@@ -166,6 +166,5 @@ nnoremap <leader>T :TlistShowPrototype<Enter>
 "       restore the cursor position after the surround operation; it
 "       leaves the cursor at the opening quote of the operand instead!
 "
-nmap <leader>' mz cs"' `z
-nmap <leader>" mz cs'" `z
-
+nmap <leader>' mzcs"'`z
+nmap <leader>" mzcs'"`z
