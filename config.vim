@@ -156,8 +156,8 @@ let MRU_Exclude_Files='\.git/'
 nnoremap <leader>o :MRU<Enter>
 
 " source code browser
-nnoremap <leader>t :TlistToggle<Enter>
-nnoremap <leader>T :TlistShowPrototype<Enter>
+nnoremap <leader>s :TlistToggle<Enter>
+nnoremap <leader>S :TlistShowPrototype<Enter>
 
 " switch between single and double quotes using the surround plugin
 "
