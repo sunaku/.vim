@@ -15,6 +15,7 @@ if has('gui_running') || &t_Co > 2
 
   if has('gui_running')
     colorscheme wombat
+    hi String gui=none
   elseif &t_Co == 256
     colorscheme wombat256
   else
