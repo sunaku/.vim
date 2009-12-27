@@ -153,7 +153,7 @@ nnoremap <leader>T :NERDTreeFind<Enter>
 
 " recently opened files
 let MRU_Exclude_Files='\.git/'
-nnoremap <leader>f :MRU<Enter>
+nnoremap <leader>o :MRU<Enter>
 
 " source code browser
 nnoremap <leader>t :TlistToggle<Enter>

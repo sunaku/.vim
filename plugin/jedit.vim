@@ -13,7 +13,7 @@ noremap <A-Up> zk
 noremap <A-Down> zj
 
 " buffers
-noremap <C-PageUp> :bprevious<Enter>
+noremap <C-PageUp> :bprev<Enter>
 noremap <C-PageDown> :bnext<Enter>
 
 " splits
