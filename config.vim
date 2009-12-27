@@ -2,6 +2,7 @@
 " http://vim.wikia.com/wiki/Vim_Tips_Wiki
 " http://stackoverflow.com/questions/tagged/vim
 " http://items.sjbach.com/319/configuring-vim-right
+" http://push.cx/2008/256-color-xterms-in-ubuntu
 
 set nocompatible               " explicitly get out of vi-compatible mode
 
@@ -9,15 +10,16 @@ set nocompatible               " explicitly get out of vi-compatible mode
 " appearance
 "-------------------------------------------------------------------------------
 
-if has('gui_running')
-  set gcr+=a:blinkwait0        " prevent cursor from blinking
-  set guifont=Monospace\ 11
-  colorscheme wombat
-else
-  if &term =~ '^xterm\|256'
+if has('gui_running') || &t_Co > 2
+  syntax on                    " enable syntax highlighting
+
+  if has('gui_running')
+    set gcr+=a:blinkwait0      " prevent cursor from blinking
+    set guifont=Monospace\ 11
+    colorscheme wombat
+
+  elseif &t_Co == 256
     colorscheme desert256
-  else
-    set background=dark        " make colors readable in dark terminals
   endif
 endif
 
@@ -69,7 +71,6 @@ set shiftwidth=2               " indentation amount for << and >> commands
 " file types
 "-------------------------------------------------------------------------------
 
-syntax on                      " enable syntax highlighting
 filetype on                    " auto-detect the file type
 filetype plugin on             " enable file type specific plugins
 filetype indent on             " indent according to file type
