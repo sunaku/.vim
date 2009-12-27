@@ -101,6 +101,9 @@ noremap <A-6> <C-W>_
 " expand current split horizontally
 noremap <A-7> <C-W><Bar>
 
+" show all buffers in splits
+noremap <A-8> :ball<Enter>
+
 "-------------------------------------------------------------------------------
 " searching
 "-------------------------------------------------------------------------------
