@@ -63,7 +63,6 @@ set foldlevel=1                " start out with only root-level folds open
 "-------------------------------------------------------------------------------
 
 set autoindent                 " enable auto-indentation of input
-set formatoptions+=o           " retain comment marker when adding new lines
 set textwidth=79               " hard-wrap long lines as you type them
 match ErrorMsg '\%>80v.\+'     " visually indicate overflow beyond 80 characters
 
