@@ -78,7 +78,6 @@ set shiftwidth=2               " indentation amount for << and >> commands
 
 filetype on                    " auto-detect the file type
 filetype plugin on             " enable file type specific plugins
-filetype indent on             " indent according to file type
 
 autocmd FileType make set noexpandtab
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
