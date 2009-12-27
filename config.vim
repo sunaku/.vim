@@ -19,7 +19,7 @@ if has('gui_running') || &t_Co > 2
     colorscheme wombat
 
   elseif &t_Co == 256
-    colorscheme desert256
+    colorscheme wombat256
   endif
 endif
 
