@@ -29,14 +29,11 @@ noremap <A-PageDown> <C-W>w
 " (in the case of <Alt><Enter> and <Alt><Shift><Enter>) so
 " our next-best alternative is to omit the prefix completely.
 
-" toggle fold
-noremap <Space> za
-
 " open fold
-noremap <Enter> zo
+noremap <Space> zo
 
 " open fold recursively
-noremap <S-Enter> zO
+noremap <S-Space> zO
 
 " close fold
 noremap <Backspace> zc
