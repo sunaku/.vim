@@ -84,14 +84,14 @@ autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
 autocmd FileType gitcommit setlocal textwidth=50
 
 "------------------------------------------------------------------------------
-" saving & loading
+" saving
 "------------------------------------------------------------------------------
 
-" remove trailing spaces before saving the file
-" and preserve the cursor position while doing so
-"
+" keep a history of this Vim session
+set viminfo='1000,<500,:1000,/1000,h
+
+" remove trailing spaces before saving text files
 " http://vim.wikia.com/wiki/Remove_trailing_spaces
-"
 autocmd BufWritePre * :call StripTrailingWhitespace()
 function! StripTrailingWhitespace()
   if !&binary && &filetype != 'diff'
@@ -103,10 +103,11 @@ function! StripTrailingWhitespace()
   endif
 endfunction
 
-" Tell vim to remember certain things when we exit
-set viminfo='1000,<1000,:100,h
+"------------------------------------------------------------------------------
+" loading
+"------------------------------------------------------------------------------
 
-" restore cursor position when re-opening file
+" restore cursor position when re-opening files
 " http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
 augroup JumpCursorOnEdit
   autocmd!
@@ -140,18 +141,6 @@ augroup END
 " plugins & shortcuts
 "------------------------------------------------------------------------------
 
-" comment header
-nmap <Leader>- 78A-<Esc>,cc^
-
-" buffer management
-nnoremap <Leader>b :ls<Enter>:buffer<Space>
-
-" toggle line numbers
-nnoremap <Leader>n :set number!<Enter>
-
-" list all occurrences of word under cursor in current buffer
-nnoremap <Leader>* [I
-
 " tabs for buffers
 let g:buftabs_only_basename=1
 let g:buftabs_active_highlight_group='Visual'
@@ -182,3 +171,15 @@ nnoremap <Leader>S :TlistShowPrototype<Enter>
 "
 nmap <Leader>' mzcs"'`z
 nmap <Leader>" mzcs'"`z
+
+" insert comment header
+nmap <Leader>- 78A-<Esc>,cc^
+
+" manage open buffers
+nnoremap <Leader>b :ls<Enter>:buffer<Space>
+
+" toggle line numbers
+nnoremap <Leader>n :set number!<Enter>
+
+" grep word under cursor in current buffer
+nnoremap <Leader>* [I
