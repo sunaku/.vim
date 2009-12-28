@@ -6,9 +6,9 @@
 
 set nocompatible               " explicitly get out of vi-compatible mode
 
-"-------------------------------------------------------------------------------
+"------------------------------------------------------------------------------
 " appearance
-"-------------------------------------------------------------------------------
+"------------------------------------------------------------------------------
 
 if has('gui_running') || &t_Co > 2
   syntax on                    " enable syntax highlighting for source code
@@ -23,7 +23,7 @@ if has('gui_running') || &t_Co > 2
   endif
 endif
 
-set showcmd                    " show what you're typing in normal & visual mode
+set showcmd                    " show your keystrokes in normal & visual mode
 set number                     " show line numbers
 set novisualbell               " don't flash the screen
 set list                       " reveal invisible characters:
@@ -35,9 +35,9 @@ if has('gui_running')
   set guifont=Monospace\ 11
 end
 
-"-------------------------------------------------------------------------------
+"------------------------------------------------------------------------------
 " interaction
-"-------------------------------------------------------------------------------
+"------------------------------------------------------------------------------
 
 let mapleader=','              " use comma as the <leader> key
 set mouse=a                    " enable mouse clicking & selection
@@ -58,22 +58,22 @@ set foldenable
 set foldmethod=syntax          " use syntax highlighting rules to define folds
 set foldlevel=1                " start out with only root-level folds open
 
-"-------------------------------------------------------------------------------
+"------------------------------------------------------------------------------
 " formatting
-"-------------------------------------------------------------------------------
+"------------------------------------------------------------------------------
 
 set autoindent                 " enable auto-indentation of input
 set textwidth=79               " hard-wrap long lines as you type them
-match ErrorMsg '\%>80v.\+'     " visually indicate overflow beyond 80 characters
+match ErrorMsg '\%<81v.\%>80v' " visually indicate the hard-wrap limit
 
 set tabstop=8                  " render TABs using this many spaces
 set expandtab                  " insert spaces when TAB is pressed
 set softtabstop=2              " ... this many spaces
 set shiftwidth=2               " indentation amount for << and >> commands
 
-"-------------------------------------------------------------------------------
+"------------------------------------------------------------------------------
 " file types
-"-------------------------------------------------------------------------------
+"------------------------------------------------------------------------------
 
 filetype on                    " auto-detect the file type
 filetype plugin on             " enable file type specific plugins
@@ -82,9 +82,9 @@ autocmd FileType make setlocal noexpandtab
 autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
 autocmd FileType gitcommit setlocal textwidth=50
 
-"-------------------------------------------------------------------------------
+"------------------------------------------------------------------------------
 " saving & loading
-"-------------------------------------------------------------------------------
+"------------------------------------------------------------------------------
 
 " remove trailing spaces before saving the file
 " and preserve the cursor position while doing so
@@ -133,9 +133,9 @@ augroup JumpCursorOnEdit
         \ endif
 augroup END
 
-"-------------------------------------------------------------------------------
+"------------------------------------------------------------------------------
 " plugins & shortcuts
-"-------------------------------------------------------------------------------
+"------------------------------------------------------------------------------
 
 " buffer management
 nnoremap <leader>b :ls<Enter>:buffer<Space>
