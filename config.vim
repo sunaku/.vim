@@ -78,9 +78,9 @@ set shiftwidth=2               " indentation amount for << and >> commands
 filetype on                    " auto-detect the file type
 filetype plugin on             " enable file type specific plugins
 
-autocmd FileType make set noexpandtab
-autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-autocmd FileType gitcommit set textwidth=50
+autocmd FileType make setlocal noexpandtab
+autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
+autocmd FileType gitcommit setlocal textwidth=50
 
 "-------------------------------------------------------------------------------
 " saving & loading
