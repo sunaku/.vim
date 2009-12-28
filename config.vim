@@ -150,9 +150,6 @@ nnoremap <leader>* [I
 let g:buftabs_only_basename=1
 let g:buftabs_active_highlight_group='Visual'
 
-set laststatus=2
-let g:buftabs_in_statusline=1
-
 " file system browser
 nnoremap <leader>t :NERDTreeToggle<Enter>
 nnoremap <leader>T :NERDTreeFind<Enter>
