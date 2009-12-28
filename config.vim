@@ -40,7 +40,7 @@ end
 " interaction
 "------------------------------------------------------------------------------
 
-let mapleader=','              " use comma as the <Leader> key
+let mapleader=','              " the <Leader> key used in shortcuts
 set mouse=a                    " enable mouse clicking & selection
 set backspace=indent,eol,start " make backspace work as you'd expect
 
@@ -156,13 +156,13 @@ nnoremap <Leader>* [I
 let g:buftabs_only_basename=1
 let g:buftabs_active_highlight_group='Visual'
 
-" file system browser
-nnoremap <Leader>t :NERDTreeToggle<Enter>
-nnoremap <Leader>T :NERDTreeFind<Enter>
-
 " recently opened files
 let MRU_Exclude_Files='\.git/'
 nnoremap <Leader>o :MRU<Enter>
+
+" file system browser
+nnoremap <Leader>f :NERDTreeToggle<Enter>
+nnoremap <Leader>F :NERDTreeFind<Enter>
 
 " source code browser
 nnoremap <Leader>s :TlistToggle<Enter>
