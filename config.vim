@@ -80,6 +80,7 @@ filetype plugin on             " enable file type specific plugins
 
 autocmd FileType make set noexpandtab
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+autocmd FileType gitcommit set textwidth=50
 
 "-------------------------------------------------------------------------------
 " saving & loading
