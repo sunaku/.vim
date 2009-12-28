@@ -15,5 +15,5 @@ Installation:
   mv ~/.vimrc ~/.vimrc.bak
 
   # install
-  git clone git://github.com/sunaku/vimrc.git ~/.vim
+  git clone git://github.com/sunaku/.vim.git ~/.vim
   ln -s ~/.vim/config.vim ~/.vimrc
