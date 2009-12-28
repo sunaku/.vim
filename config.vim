@@ -94,11 +94,13 @@ autocmd FileType gitcommit setlocal textwidth=50
 "
 autocmd BufWritePre * :call StripTrailingWhitespace()
 function! StripTrailingWhitespace()
-  normal mz
-  normal Hmy
-  %s/\s\+$//e
-  normal 'yz<Enter>
-  normal `z
+  if !&binary && &filetype != 'diff'
+    normal mz
+    normal Hmy
+    %s/\s\+$//e
+    normal 'yz<Enter>
+    normal `z
+  endif
 endfunction
 
 " Tell vim to remember certain things when we exit
