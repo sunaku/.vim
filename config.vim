@@ -140,6 +140,9 @@ augroup END
 " plugins & shortcuts
 "------------------------------------------------------------------------------
 
+" comment header
+nmap <leader>- 78A-<Esc>,cc^
+
 " buffer management
 nnoremap <leader>b :ls<Enter>:buffer<Space>
 
