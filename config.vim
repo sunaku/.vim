@@ -40,7 +40,7 @@ end
 " interaction
 "------------------------------------------------------------------------------
 
-let mapleader=','              " use comma as the <leader> key
+let mapleader=','              " use comma as the <Leader> key
 set mouse=a                    " enable mouse clicking & selection
 set backspace=indent,eol,start " make backspace work as you'd expect
 
@@ -141,32 +141,32 @@ augroup END
 "------------------------------------------------------------------------------
 
 " comment header
-nmap <leader>- 78A-<Esc>,cc^
+nmap <Leader>- 78A-<Esc>,cc^
 
 " buffer management
-nnoremap <leader>b :ls<Enter>:buffer<Space>
+nnoremap <Leader>b :ls<Enter>:buffer<Space>
 
 " toggle line numbers
-nnoremap <leader>n :set number!<Enter>
+nnoremap <Leader>n :set number!<Enter>
 
 " list all occurrences of word under cursor in current buffer
-nnoremap <leader>* [I
+nnoremap <Leader>* [I
 
 " tabs for buffers
 let g:buftabs_only_basename=1
 let g:buftabs_active_highlight_group='Visual'
 
 " file system browser
-nnoremap <leader>t :NERDTreeToggle<Enter>
-nnoremap <leader>T :NERDTreeFind<Enter>
+nnoremap <Leader>t :NERDTreeToggle<Enter>
+nnoremap <Leader>T :NERDTreeFind<Enter>
 
 " recently opened files
 let MRU_Exclude_Files='\.git/'
-nnoremap <leader>o :MRU<Enter>
+nnoremap <Leader>o :MRU<Enter>
 
 " source code browser
-nnoremap <leader>s :TlistToggle<Enter>
-nnoremap <leader>S :TlistShowPrototype<Enter>
+nnoremap <Leader>s :TlistToggle<Enter>
+nnoremap <Leader>S :TlistShowPrototype<Enter>
 
 " switch between single and double quotes using the surround plugin
 "
@@ -175,5 +175,5 @@ nnoremap <leader>S :TlistShowPrototype<Enter>
 "       restore the cursor position after the surround operation; it
 "       leaves the cursor at the opening quote of the operand instead!
 "
-nmap <leader>' mzcs"'`z
-nmap <leader>" mzcs'"`z
+nmap <Leader>' mzcs"'`z
+nmap <Leader>" mzcs'"`z
