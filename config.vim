@@ -17,6 +17,7 @@ if has('gui_running') || &t_Co > 2
     colorscheme wombat
     highlight String gui=none
     highlight ErrorMsg guibg=#e5786d
+    highlight link MyTagListFileName Pmenu
   elseif &t_Co == 256
     colorscheme wombat256
   else
@@ -165,6 +166,12 @@ nnoremap <Leader>f :NERDTreeToggle<Enter>
 nnoremap <Leader>F :NERDTreeFind<Enter>
 
 " source code browser
+let Tlist_Sort_Type = 'name'
+let Tlist_Compact_Format = 1
+let Tlist_Use_Right_Window = 1
+let Tlist_Enable_Fold_Column = 0
+let Tlist_GainFocus_On_ToggleOpen = 1
+let Tlist_Exit_OnlyWindow = 1
 nnoremap <Leader>s :TlistToggle<Enter>
 nnoremap <Leader>S :TlistShowPrototype<Enter>
 
