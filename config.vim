@@ -25,7 +25,7 @@ if has('gui_running') || &t_Co > 2
   endif
 endif
 
-set showcmd                    " show your keystrokes in normal & visual mode
+set showcmd                    " show your keystrokes in command mode
 set number                     " show line numbers
 set novisualbell               " don't flash the screen
 set list                       " reveal invisible characters:
@@ -55,10 +55,6 @@ set wildmode=list:longest,full " turn on wild mode huge list
 set incsearch                  " highlight matches while searching
 set ignorecase                 " make searching case insensitive
 set smartcase                  " ... unless the query contains capital letters
-
-set foldenable
-set foldmethod=syntax          " define folds using syntax highlighting rules
-set foldlevelstart=99          " start out with all folds open
 
 "------------------------------------------------------------------------------
 " formatting
@@ -140,11 +136,63 @@ augroup JumpCursorOnEdit
 augroup END
 
 "------------------------------------------------------------------------------
-" plugins & shortcuts
+" shortcuts
 "------------------------------------------------------------------------------
 
 " be consistent with the other capitalized EOL operators (C and D)
 noremap Y y$
+
+" make the non-graphical Vim recognize <Alt> key combinations
+" http://vim.wikia.com/wiki/Fix_meta-keys_that_break_out_of_Insert_mode
+if ! has('gui_running')
+  for key in [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+    exec "set <A-". key .">=\e". key
+  endfor
+endif
+
+" buffers
+noremap <C-PageUp> :bprev<Enter>
+noremap <C-PageDown> :bnext<Enter>
+noremap <A-6> :FufBuffer<Enter>
+
+" splits
+noremap <A-PageUp> <C-W>W
+noremap <A-PageDown> <C-W>w
+noremap <A-1> <C-W>o
+noremap <A-2> <C-W>s <C-W><Down>
+noremap <A-3> <C-W>v <C-W><Right>
+noremap <A-4> <C-W>c
+noremap <A-5> <C-W>=
+noremap <A-7> <C-W>_
+noremap <A-8> <C-W>1_
+noremap <A-9> <C-W><Bar>
+noremap <A-0> <C-W>1<Bar>
+
+" folds
+noremap z<Up> zk
+noremap z<Down> zj
+noremap zn zk
+noremap zp zj
+
+" insert comment header
+nmap <Leader>- 78A-<Esc>,cc^
+
+" toggle line numbers
+nnoremap <Leader>n :set number!<Enter>
+
+" grep word under cursor in current buffer
+nnoremap <Leader>* [I
+
+" switch between single and double quotes using the surround plugin
+"
+" NOTE: we explictly set a temporary marker (z) and restore
+"       it after the surround operation because otherwise the
+"       surround plugin will move the cursor to the opening
+"       quote of the operand after the operation, instead of
+"       keeping the cursor where it was before the operation
+"
+nmap <Leader>' mzcs"'`z
+nmap <Leader>" mzcs'"`z
 
 " tabs for buffers
 let g:buftabs_only_basename=1
@@ -167,25 +215,3 @@ let Tlist_GainFocus_On_ToggleOpen = 1
 let Tlist_Exit_OnlyWindow = 1
 nnoremap <Leader>s :TlistToggle<Enter>
 nnoremap <Leader>S :TlistShowPrototype<Enter>
-
-" switch between single and double quotes using the surround plugin
-"
-" NOTE: we explictly set a temporary marker (z) and restore it after
-"       the surround operation because the surround plugin does not
-"       restore the cursor position after the surround operation; it
-"       leaves the cursor at the opening quote of the operand instead!
-"
-nmap <Leader>' mzcs"'`z
-nmap <Leader>" mzcs'"`z
-
-" insert comment header
-nmap <Leader>- 78A-<Esc>,cc^
-
-" manage open buffers
-nnoremap <Leader>b :ls<Enter>:buffer<Space>
-
-" toggle line numbers
-nnoremap <Leader>n :set number!<Enter>
-
-" grep word under cursor in current buffer
-nnoremap <Leader>* [I
