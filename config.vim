@@ -159,10 +159,19 @@ nnoremap <Leader>* [I
 nmap <Leader>' mzcs"'`z
 nmap <Leader>" mzcs'"`z
 
-" recently opened files
-let MRU_Exclude_Files='\.git/'
-let MRU_Use_Current_Window = 1
-nnoremap <Leader>o :MRU<Enter>
+" fuzzy finder
+let g:fuf_modesDisable = [ 'mrucmd' ]
+let g:fuf_keyPreview = '<A-1>'
+let g:fuf_keyOpenSplit = '<A-2>'
+let g:fuf_keyOpenVsplit = '<A-3>'
+
+" XXX: the first line was copied from `:help g:fuf_file_exclude@en`
+let g:fuf_mrufile_exclude =
+      \ '\v\~$|\.(bak|sw[po])$|^(\/\/|\\\\|\/mnt\/|\/media\/)'
+      \ . '|\.git'
+
+nnoremap <Leader>o :FufFile<Enter>
+nnoremap <Leader>O :FufMruFile<Enter>
 
 " file system browser
 nnoremap <Leader>f :NERDTreeToggle<Enter>
