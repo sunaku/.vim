@@ -6,9 +6,9 @@
 
 source ~/.vim/vimrc_example.vim
 
-"------------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " appearance
-"------------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 
 if &t_Co == 256 || has('gui_running')
   let g:zenburn_high_Contrast = 1
@@ -33,9 +33,9 @@ set novisualbell               " don't flash the screen
 set list                       " reveal invisible characters:
 set listchars=tab:>-,trail:~   " ... TABs and trailing spaces
 
-"------------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " interaction
-"------------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 
 let mapleader=','              " the <Leader> key used in shortcuts
 
@@ -50,21 +50,21 @@ set wildmode=list:longest,full " turn on wild mode huge list
 set ignorecase                 " make searching case insensitive
 set smartcase                  " ... unless the query contains capital letters
 
-"------------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " formatting
-"------------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 
-set textwidth=79               " hard-wrap long lines as you type them
-match ErrorMsg '\%<81v.\%>80v' " visually indicate the hard-wrap limit
+set textwidth=78               " hard-wrap long lines as you type them
+match ErrorMsg '\%<80v.\%>79v' " visually indicate the hard-wrap limit
 
 set tabstop=8                  " render TABs using this many spaces
 set expandtab                  " insert spaces when TAB is pressed
 set softtabstop=2              " ... this many spaces
 set shiftwidth=2               " indentation amount for << and >> commands
 
-"------------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " file types
-"------------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 
 if has('autocmd')
   autocmd FileType make setlocal noexpandtab
@@ -72,9 +72,9 @@ if has('autocmd')
   autocmd FileType gitcommit setlocal textwidth=50
 endif
 
-"------------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " saving
-"------------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 
 " remove trailing spaces before saving text files
 " http://vim.wikia.com/wiki/Remove_trailing_spaces
@@ -89,9 +89,9 @@ function! StripTrailingWhitespace()
   endif
 endfunction
 
-"------------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " shortcuts
-"------------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
 
 " be consistent with the other capitalized EOL operators (C and D)
 noremap Y y$
