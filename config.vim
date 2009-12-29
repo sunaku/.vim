@@ -88,7 +88,8 @@ autocmd FileType gitcommit setlocal textwidth=50
 "------------------------------------------------------------------------------
 
 " keep a history of this Vim session
-set viminfo='1000,<500,:1000,/1000,h
+set history=1000
+exec "set viminfo='1000,<500,:". &history . ",/" . &history . ",h"
 
 " remove trailing spaces before saving text files
 " http://vim.wikia.com/wiki/Remove_trailing_spaces
