@@ -11,16 +11,17 @@ set nocompatible               " explicitly get out of vi-compatible mode
 "------------------------------------------------------------------------------
 
 if has('gui_running') || &t_Co > 2
-  syntax on                    " enable syntax highlighting for source code
+  syntax on                    " enable syntax highlighting
 
-  if has('gui_running')
-    colorscheme wombat
-    highlight String gui=none
-    highlight link MyTagListFileName Pmenu
-  elseif &t_Co == 256
+  if has('gui_running') || &t_Co == 256
+    let g:zenburn_high_Contrast = 1
+    colorscheme zenburn
+
+  elseif &t_Co == 88
     colorscheme wombat256
+
   else
-    set background=dark        " optimize colors for dark background terminals
+    set background=dark        " optimize colors for dark terminals
   endif
 endif
 
