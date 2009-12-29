@@ -194,10 +194,6 @@ nnoremap <Leader>* [I
 nmap <Leader>' mzcs"'`z
 nmap <Leader>" mzcs'"`z
 
-" tabs for buffers
-let g:buftabs_only_basename=1
-let g:buftabs_active_highlight_group='Visual'
-
 " recently opened files
 let MRU_Exclude_Files='\.git/'
 let MRU_Use_Current_Window = 1
