@@ -1,4 +1,5 @@
 " http://www.vi-improved.org/vimrc.php
+" http://vim.wikia.com/wiki/Example_vimrc
 " http://vim.wikia.com/wiki/Vim_Tips_Wiki
 " http://stackoverflow.com/questions/tagged/vim
 " http://items.sjbach.com/319/configuring-vim-right
@@ -97,6 +98,11 @@ endfunction
 
 " be consistent with the other capitalized EOL operators (C and D)
 noremap Y y$
+
+" map <C-L> (redraw screen) to also turn off
+" search highlighting until the next search
+" http://vim.wikia.com/wiki/Example_vimrc
+nnoremap <C-L> :nohlsearch<Enter><C-L>
 
 " make the non-graphical Vim recognize <Alt> key combinations
 " http://vim.wikia.com/wiki/Fix_meta-keys_that_break_out_of_Insert_mode
