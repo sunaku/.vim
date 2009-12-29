@@ -132,7 +132,10 @@ noremap zp zj
 nmap <Leader>- 78A-<Esc>,cc^
 
 " toggle line numbers
-nnoremap <Leader>n :set number!<Enter>
+nnoremap <Leader>tn :set number!<Enter>
+
+" toggle search highlight
+nnoremap <Leader>th :set hlsearch!<Enter>
 
 " grep word under cursor in current buffer
 nnoremap <Leader>* [I
