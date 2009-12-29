@@ -4,47 +4,42 @@
 " http://items.sjbach.com/319/configuring-vim-right
 " http://push.cx/2008/256-color-xterms-in-ubuntu
 
-set nocompatible               " explicitly get out of vi-compatible mode
+source ~/.vim/vimrc_example.vim
 
 "------------------------------------------------------------------------------
 " appearance
 "------------------------------------------------------------------------------
 
-if has('gui_running') || &t_Co > 2
-  syntax on                    " enable syntax highlighting
+if &t_Co == 256 || has('gui_running')
+  let g:zenburn_high_Contrast = 1
+  colorscheme zenburn
 
-  if has('gui_running') || &t_Co == 256
-    let g:zenburn_high_Contrast = 1
-    colorscheme zenburn
+elseif &t_Co == 88
+  colorscheme wombat256
 
-  elseif &t_Co == 88
-    colorscheme wombat256
-
-  else
-    set background=dark        " optimize colors for dark terminals
-  endif
+elseif &t_Co > 2
+  set background=dark          " optimize colors for dark terminals
 endif
-
-set showcmd                    " show your keystrokes in command mode
-set number                     " show line numbers
-set novisualbell               " don't flash the screen
-set list                       " reveal invisible characters:
-set listchars=tab:>-,trail:~   " ... TABs and trailing spaces
-set scrolloff=3                " maintain more context around the cursor
 
 if has('gui_running')
   set guicursor+=a:blinkwait0  " prevent the cursor from blinking
   set guifont=Monospace\ 11
 end
 
+set number                     " show line numbers
+set scrolloff=3                " context lines around cursor
+set novisualbell               " don't flash the screen
+
+set list                       " reveal invisible characters:
+set listchars=tab:>-,trail:~   " ... TABs and trailing spaces
+
 "------------------------------------------------------------------------------
 " interaction
 "------------------------------------------------------------------------------
 
 let mapleader=','              " the <Leader> key used in shortcuts
-set mouse=a                    " enable mouse clicking & selection
-set backspace=indent,eol,start " make backspace work as you'd expect
 
+set history=1000               " remember this many commands & searches
 set confirm                    " ask user before aborting an action
 set autochdir                  " switch to current file's parent directory
 set hidden                     " you can change buffers without saving
@@ -52,7 +47,6 @@ set hidden                     " you can change buffers without saving
 set wildmenu                   " turn on command line completion wild style
 set wildmode=list:longest,full " turn on wild mode huge list
 
-set incsearch                  " highlight matches while searching
 set ignorecase                 " make searching case insensitive
 set smartcase                  " ... unless the query contains capital letters
 
@@ -60,7 +54,6 @@ set smartcase                  " ... unless the query contains capital letters
 " formatting
 "------------------------------------------------------------------------------
 
-set autoindent                 " enable auto-indentation of input
 set textwidth=79               " hard-wrap long lines as you type them
 match ErrorMsg '\%<81v.\%>80v' " visually indicate the hard-wrap limit
 
@@ -73,20 +66,15 @@ set shiftwidth=2               " indentation amount for << and >> commands
 " file types
 "------------------------------------------------------------------------------
 
-filetype on                    " auto-detect the file type
-filetype plugin on             " enable file type specific plugins
-
-autocmd FileType make setlocal noexpandtab
-autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
-autocmd FileType gitcommit setlocal textwidth=50
+if has('autocmd')
+  autocmd FileType make setlocal noexpandtab
+  autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
+  autocmd FileType gitcommit setlocal textwidth=50
+endif
 
 "------------------------------------------------------------------------------
 " saving
 "------------------------------------------------------------------------------
-
-" keep a history of this Vim session
-set history=1000
-exec "set viminfo='1000,<500,:". &history . ",/" . &history . ",h"
 
 " remove trailing spaces before saving text files
 " http://vim.wikia.com/wiki/Remove_trailing_spaces
@@ -100,40 +88,6 @@ function! StripTrailingWhitespace()
     normal `z
   endif
 endfunction
-
-"------------------------------------------------------------------------------
-" loading
-"------------------------------------------------------------------------------
-
-" restore cursor position when re-opening files
-" http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
-augroup JumpCursorOnEdit
-  autocmd!
-
-  " when we reload, tell vim to restore the cursor to the saved position
-  autocmd BufReadPost *
-        \ if expand("<afile>:p:h") !=? $TEMP                                             |
-        \   if line("'\"") > 1 && line("'\"") <= line("$")                               |
-        \     let JumpCursorOnEdit_foo = line("'\"")                                     |
-        \     let b:doopenfold = 1                                                       |
-        \     if (foldlevel(JumpCursorOnEdit_foo) > foldlevel(JumpCursorOnEdit_foo - 1)) |
-        \        let JumpCursorOnEdit_foo = JumpCursorOnEdit_foo - 1                     |
-        \        let b:doopenfold = 2                                                    |
-        \     endif                                                                      |
-        \     exe JumpCursorOnEdit_foo                                                   |
-        \   endif                                                                        |
-        \ endif
-
-  " Need to postpone using "zv" until after reading the modelines.
-  autocmd BufWinEnter *
-        \ if exists("b:doopenfold") |
-        \   exe "normal zv"         |
-        \   if(b:doopenfold > 1)    |
-        \       exe "+".1           |
-        \   endif                   |
-        \   unlet b:doopenfold      |
-        \ endif
-augroup END
 
 "------------------------------------------------------------------------------
 " shortcuts
