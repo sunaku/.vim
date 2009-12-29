@@ -143,6 +143,9 @@ augroup END
 " plugins & shortcuts
 "------------------------------------------------------------------------------
 
+" be consistent with the other capitalized EOL operators (C and D)
+noremap Y y$
+
 " tabs for buffers
 let g:buftabs_only_basename=1
 let g:buftabs_active_highlight_group='Visual'
