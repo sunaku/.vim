@@ -185,3 +185,9 @@ let Tlist_GainFocus_On_ToggleOpen = 1
 let Tlist_Exit_OnlyWindow = 1
 nnoremap <Leader>s :TlistToggle<Enter>
 nnoremap <Leader>S :TlistShowPrototype<Enter>
+
+" helper for testing out new shortcuts
+function! TestShortcut(shortcut)
+  let label = substitute(a:shortcut, '[<>]', ' ', 'g')
+  exec "noremap ". a:shortcut ." :echo '". label ."'<Enter>"
+endfunction
