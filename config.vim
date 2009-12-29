@@ -55,7 +55,9 @@ set smartcase                  " ... unless the query contains capital letters
 "-----------------------------------------------------------------------------
 
 set textwidth=78               " hard-wrap long lines as you type them
-match ErrorMsg '\%<80v.\%>79v' " visually indicate the hard-wrap limit
+
+" visually indicate the hard-wrap limit
+exec "match ErrorMsg '\%>". &textwidth ."v.'"
 
 set tabstop=8                  " render TABs using this many spaces
 set expandtab                  " insert spaces when TAB is pressed
@@ -129,7 +131,7 @@ noremap zn zk
 noremap zp zj
 
 " insert comment header
-nmap <Leader>- 78A-<Esc>,cc^
+nmap <Leader>- 80A-<Esc>,cc:exec 's/\%>'. &textwidth .'v.//g'<Enter>
 
 " toggle line numbers
 nnoremap <Leader>tn :set number!<Enter>
