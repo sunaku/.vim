@@ -14,6 +14,8 @@ source ~/.vim/vimrc_example.vim
 if &t_Co == 256 || has('gui_running')
   let g:zenburn_high_Contrast = 1
   colorscheme zenburn
+  highlight Comment gui=none
+  highlight link MyTagListFileName Pmenu
 
 elseif &t_Co == 88
   colorscheme wombat256
