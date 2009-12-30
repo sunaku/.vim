@@ -81,6 +81,10 @@ source ~/.vim/vimrc_example.vim
 " saving
 "-----------------------------------------------------------------------------
 
+  " avoid putting backup & swap files beside edited files
+  set backupdir-=.
+  set backupdir+=.
+
   " remove trailing spaces before saving text files
   " http://vim.wikia.com/wiki/Remove_trailing_spaces
   autocmd BufWritePre * :call StripTrailingWhitespace()
