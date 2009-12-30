@@ -57,6 +57,7 @@ source ~/.vim/vimrc_example.vim
 " formatting
 "-----------------------------------------------------------------------------
 
+  set autoindent                 " automatically indent new lines
   set textwidth=78               " hard-wrap long lines as you type them
 
   " visually indicate the hard-wrap limit
