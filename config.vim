@@ -239,3 +239,10 @@ source ~/.vim/vimrc_example.vim
 
     " insert or update comment header / section separator
     nmap <Leader>- 80A-<Esc>,cu,cc:exec 's/\%>'. &textwidth .'v.//g'<Enter>
+
+  "---------------------------------------------------------------------------
+  " rails
+  "---------------------------------------------------------------------------
+
+    nnoremap <Leader>r :R
+    nnoremap <Leader>R :A
