@@ -77,7 +77,7 @@ source ~/.vim/vimrc_example.vim
   set textwidth=78               " hard-wrap long lines as you type them
 
   " visually indicate the hard-wrap limit
-  exec "match ErrorMsg '\%>". &textwidth ."v.'"
+  exec "match WarningMsg '\\%>". &textwidth ."v.'"
 
   set tabstop=8                  " render TABs using this many spaces
   set expandtab                  " insert spaces when TAB is pressed
