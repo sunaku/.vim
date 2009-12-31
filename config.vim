@@ -92,6 +92,7 @@ source ~/.vim/vimrc_example.vim
     autocmd FileType make setlocal noexpandtab
     autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
     autocmd FileType gitcommit setlocal textwidth=50
+    autocmd FileType yaml setlocal foldmethod=indent
   endif
 
 "-----------------------------------------------------------------------------
