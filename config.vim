@@ -21,6 +21,9 @@ source ~/.vim/vimrc_example.vim
     " make cursor noticable
     highlight Cursor guibg=#e5786d guifg=#000000
 
+    highlight clear Search
+    highlight link Search PmenuSel
+
   elseif &t_Co == 256
     let g:zenburn_high_Contrast = 1
     colorscheme zenburn
