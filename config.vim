@@ -159,6 +159,9 @@ source ~/.vim/vimrc_example.vim
     " http://vim.wikia.com/wiki/Example_vimrc
     nnoremap <C-L> :nohlsearch<Enter><C-L>
 
+    nnoremap <Leader>th :set nohlsearch!<Enter>
+    nnoremap <Leader>tn :set number!<Enter>
+
   "---------------------------------------------------------------------------
   " tags
   "---------------------------------------------------------------------------
@@ -169,8 +172,8 @@ source ~/.vim/vimrc_example.vim
     let Tlist_GainFocus_On_ToggleOpen = 1
     let Tlist_Exit_OnlyWindow = 1
 
-    nnoremap <Leader>t :TlistToggle<Enter>
-    nnoremap <Leader>T :TlistShowPrototype<Enter>
+    nnoremap <Leader>s :TlistToggle<Enter>
+    nnoremap <Leader>S :TlistShowPrototype<Enter>
 
   "---------------------------------------------------------------------------
   " files
