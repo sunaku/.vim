@@ -189,8 +189,8 @@ source ~/.vim/vimrc_example.vim
     nnoremap <A-6> :FufBuffer<Enter>
     nnoremap <Leader>4 :bdelete<Enter>
     nnoremap <Leader>l :checktime<Enter>
-    nnoremap <Leader>s :write<Enter>
-    nnoremap <Leader>S :saveas<Space>
+    nnoremap <Leader>w :write<Enter>
+    nnoremap <Leader>W :saveas<Space>
 
   "---------------------------------------------------------------------------
   " splits
