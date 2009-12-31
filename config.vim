@@ -169,6 +169,7 @@ source ~/.vim/vimrc_example.vim
     "      was copied from `:help g:fuf_file_exclude@en`
     let g:fuf_mrufile_exclude =
           \ '\v\~$|\.(bak|sw[po])$|^(\/\/|\\\\|\/mnt\/|\/media\/)'
+          \ . '|^/tmp/|^/var/tmp/|^\~/tmp/'
           \ . '|\.git'
 
     nnoremap <Leader>o :FufFile<Enter>
