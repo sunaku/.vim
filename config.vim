@@ -18,6 +18,9 @@ source ~/.vim/vimrc_example.vim
     highlight String gui=none
     highlight Comment gui=none
 
+    " make cursor noticable
+    highlight Cursor guibg=#e5786d guifg=#000000
+
   elseif &t_Co == 256
     let g:zenburn_high_Contrast = 1
     colorscheme zenburn
