@@ -11,11 +11,19 @@ source ~/.vim/vimrc_example.vim
 " appearance
 "-----------------------------------------------------------------------------
 
-  if &t_Co == 256 || has('gui_running')
+  if has('gui_running')
+    colorscheme wombat
+
+    " remove italic style
+    highlight String gui=none
+    highlight Comment gui=none
+
+  elseif &t_Co == 256
     let g:zenburn_high_Contrast = 1
     colorscheme zenburn
+
+    " remove italic style
     highlight Comment gui=none
-    highlight link MyTagListFileName Pmenu
 
   elseif &t_Co == 88
     colorscheme wombat256
@@ -23,6 +31,8 @@ source ~/.vim/vimrc_example.vim
   elseif &t_Co > 2
     set background=dark          " optimize colors for dark terminals
   endif
+
+  highlight link MyTagListFileName Pmenu
 
   if has('gui_running')
     set guicursor+=a:blinkwait0  " prevent the cursor from blinking
