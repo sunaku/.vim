@@ -102,8 +102,9 @@ source ~/.vim/vimrc_example.vim
 "-----------------------------------------------------------------------------
 
   " keep backup & swap files in Vim config dir
-  set backupdir=~/.vim/backup
-  silent execute "!mkdir -p ". &backupdir
+  set backupdir=~/.vim/tmp
+  execute "set directory=". &backupdir
+  silent execute '!mkdir -p '. &backupdir
 
   " remove trailing spaces before saving text files
   " http://vim.wikia.com/wiki/Remove_trailing_spaces
