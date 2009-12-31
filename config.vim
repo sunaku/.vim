@@ -184,7 +184,7 @@ source ~/.vim/vimrc_example.vim
 
     " fuzzy finder
     let g:fuf_modesDisable = [ 'mrucmd' ]
-    let g:fuf_keyPreview = '<A-1>'
+    let g:fuf_previewHeight = 0
     let g:fuf_keyOpenSplit = '<A-2>'
     let g:fuf_keyOpenVsplit = '<A-3>'
 
