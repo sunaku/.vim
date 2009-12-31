@@ -235,8 +235,8 @@ source ~/.vim/vimrc_example.vim
 
     nnoremap z<Up> zk
     nnoremap z<Down> zj
-    nnoremap zn zk
-    nnoremap zp zj
+    nnoremap zp zk
+    nnoremap zn zj
 
     "nnoremap <Space> zo
     "nnoremap <S-Space> zO
