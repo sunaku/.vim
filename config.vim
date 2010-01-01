@@ -162,6 +162,22 @@ source ~/.vim/vimrc_example.vim
     " http://vim.wikia.com/wiki/Example_vimrc
     nnoremap <C-L> :nohlsearch<Enter><C-L>
 
+    nnoremap <Leader>tc :call CycleTerminalPaletteSize()<Enter>
+    function! CycleTerminalPaletteSize()
+      if &t_Co == 256
+        set t_Co=88
+
+      elseif &t_Co == 88
+        set t_Co=8
+
+      elseif &t_Co == 8
+        set t_Co=256
+      endif
+
+      redraw
+      echo &t_Co
+    endfunction
+
     nnoremap <Leader>th :set nohlsearch!<Enter>
     nnoremap <Leader>tn :set number!<Enter>
 
