@@ -53,6 +53,10 @@ source ~/.vim/vimrc_example.vim
   set list                       " reveal invisible characters:
   set listchars=tab:>-,trail:~   " ... TABs and trailing spaces
 
+  set foldenable
+  set foldmethod=syntax          " syntax highlighting rules define folds
+  set foldlevelstart=3           " close folds below this depth, initially
+
 "-----------------------------------------------------------------------------
 " interaction
 "-----------------------------------------------------------------------------
@@ -180,6 +184,7 @@ source ~/.vim/vimrc_example.vim
 
     nnoremap <Leader>th :set nohlsearch!<Enter>
     nnoremap <Leader>tn :set number!<Enter>
+    nnoremap <Leader>tz :set foldenable!<Enter>
 
   "---------------------------------------------------------------------------
   " tags
@@ -256,16 +261,18 @@ source ~/.vim/vimrc_example.vim
     nnoremap z<Down> zj
     nnoremap zp zk
     nnoremap zn zj
+    nnoremap <A-Up> zk
+    nnoremap <A-Down> zj
 
-    "nnoremap <Space> zo
-    "nnoremap <S-Space> zO
-    "nnoremap <Backspace> zc
-    "nnoremap <S-Backspace> zM zv zc
+    nnoremap <Space> zo
+    nnoremap <S-Space> zO
+    nnoremap <Backspace> zc
+    nnoremap <S-Backspace> zM zv zc
 
-    "nnoremap <A-Left> zm
-    "nnoremap <AS-Left> zM
-    "nnoremap <A-Right> zr
-    "nnoremap <AS-Right> zR
+    nnoremap <A-Left> zm
+    nnoremap <AS-Left> zM
+    nnoremap <A-Right> zr
+    nnoremap <AS-Right> zR
 
   "---------------------------------------------------------------------------
   " editing
