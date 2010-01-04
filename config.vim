@@ -168,16 +168,18 @@ source ~/.vim/vimrc_example.vim
 
     nnoremap <Leader>tc :call CycleTerminalPaletteSize()<Enter>
     function! CycleTerminalPaletteSize()
-      if &t_Co == 256
+      " choose new palette size
+      if &t_Co == 8
         set t_Co=88
 
       elseif &t_Co == 88
-        set t_Co=8
-
-      elseif &t_Co == 8
         set t_Co=256
+
+      elseif &t_Co == 256
+        set t_Co=8
       endif
 
+      " show new palette size
       redraw
       echo &t_Co
     endfunction
