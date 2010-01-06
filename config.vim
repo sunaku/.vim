@@ -148,13 +148,6 @@ source ~/.vim/vimrc_example.vim
 " shortcuts
 "-----------------------------------------------------------------------------
 
-  let s:dumb_terminal = &term !~ 'xterm' && ! has('gui_running')
-
-  function! s:nnoremap(normal_key_seq, dumb_terminal_key_seq, action)
-    let key_seq = s:dumb_terminal ? a:dumb_terminal_key_seq : a:normal_key_seq
-    execute 'nnoremap '. key_seq .' '. a:action
-  endfunction
-
   "---------------------------------------------------------------------------
   " editor
   "---------------------------------------------------------------------------
@@ -230,8 +223,11 @@ source ~/.vim/vimrc_example.vim
   " buffers
   "---------------------------------------------------------------------------
 
-    call s:nnoremap('<C-PageUp>',   "\e[5^", ':bprev<Enter>')
-    call s:nnoremap('<C-PageDown>', "\e[6^", ':bnext<Enter>')
+    nnoremap <C-PageUp> :bprev<Enter>
+    execute "nnoremap \e[5^ :bprev<Enter>"
+
+    nnoremap <C-PageDown> :bnext<Enter>
+    execute "nnoremap \e[6^ :bnext<Enter>"
 
     nnoremap <A-6> :FufBuffer<Enter>
     nnoremap <Leader>4 :bdelete<Enter>
@@ -243,8 +239,11 @@ source ~/.vim/vimrc_example.vim
   " splits
   "---------------------------------------------------------------------------
 
-    call s:nnoremap('<A-PageUp>',   "\e\e[5~", '<C-W>W')
-    call s:nnoremap('<A-PageDown>', "\e\e[6~", '<C-W>w')
+    nnoremap <A-PageUp> <C-W>W
+    execute "nnoremap \e\e[5~ <C-W>W"
+
+    nnoremap <A-PageDown> <C-W>w
+    execute "nnoremap \e\e[6~ <C-W>w"
 
     nnoremap <A-1> <C-W>o
     nnoremap <A-2> <C-W>s <C-W><Down>
