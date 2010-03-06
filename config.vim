@@ -90,13 +90,12 @@ source ~/.vim/vimrc_example.vim
 " file types
 "-----------------------------------------------------------------------------
 
-  if has('autocmd')
-    autocmd FileType make setlocal noexpandtab
-    autocmd FileType gitcommit setlocal textwidth=50 nofoldenable
-    autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
-    autocmd FileType text,yaml,haml,sass setlocal foldmethod=indent
-    autocmd FileType mail setlocal textwidth=72
-  endif
+  autocmd FileType make setlocal noexpandtab
+  autocmd FileType gitcommit setlocal textwidth=50 nofoldenable
+  autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
+  autocmd FileType text,yaml,haml,sass setlocal foldmethod=indent
+  autocmd FileType mail setlocal textwidth=72
+  autocmd FileType diff setlocal textwidth+=1 " extra char for +/-/ indicators
 
 "-----------------------------------------------------------------------------
 " saving
