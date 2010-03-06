@@ -25,7 +25,6 @@ source ~/.vim/vimrc_example.vim
     highlight link Search PmenuSel
 
   elseif &t_Co == 256
-    let g:zenburn_high_Contrast = 1
     colorscheme zenburn
 
     " remove italic style
