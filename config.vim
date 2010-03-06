@@ -81,10 +81,6 @@ source ~/.vim/vimrc_example.vim
   set autoindent                 " automatically indent new lines
   set formatoptions+=o           " continue comment marker in new lines
   set textwidth=78               " hard-wrap long lines as you type them
-
-  " visually indicate the hard-wrap limit
-  exec "match WarningMsg '\\%>". &textwidth ."v.'"
-
   set tabstop=8                  " render TABs using this many spaces
   set expandtab                  " insert spaces when TAB is pressed
   set softtabstop=2              " ... this many spaces
@@ -181,6 +177,26 @@ source ~/.vim/vimrc_example.vim
     nnoremap <Leader>th :set nohlsearch!<Enter>
     nnoremap <Leader>tn :set number!<Enter>
     nnoremap <Leader>tz :set foldenable!<Enter>
+
+    " highlight text that exceeds the textwidth limit
+    " http://vim.wikia.com/wiki/Highlight_long_lines
+    autocmd BufWinEnter * :call ApplyTextWidthOverflowHighlighting()
+    function! ApplyTextWidthOverflowHighlighting()
+      if &textwidth > 0 && !exists('w:text_width_overflow_highlighting')
+        let w:text_width_overflow_highlighting =
+              \ matchadd('WarningMsg', '\%>'. &textwidth .'v.\+', -1)
+      endif
+    endfunction
+
+    nnoremap <Leader>tw :call ToggleTextWidthOverflowHighlighting()<Enter>
+    function! ToggleTextWidthOverflowHighlighting()
+      if exists('w:text_width_overflow_highlighting')
+        call matchdelete(w:text_width_overflow_highlighting)
+        unlet w:text_width_overflow_highlighting
+      else
+        call ApplyTextWidthOverflowHighlighting()
+      endif
+    endfunction
 
   "---------------------------------------------------------------------------
   " tags
