@@ -92,9 +92,13 @@ source ~/.vim/vimrc_example.vim
   autocmd FileType make setlocal noexpandtab
   autocmd FileType gitcommit setlocal textwidth=72 nofoldenable
   autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
-  autocmd FileType text,yaml,haml,sass setlocal foldmethod=indent
+  autocmd FileType text,yaml,eruby,haml,sass setlocal foldmethod=indent
   autocmd FileType mail setlocal textwidth=72
   autocmd FileType diff setlocal textwidth+=1 " extra char for +/-/ indicators
+
+  " allow leading space before the initial "%" in shorthand eRuby directives
+  " this snippet is originally from /usr/share/vim/vim72/syntax/eruby.vim:58
+  autocmd FileType eruby exe 'syn region  erubyOneLiner   matchgroup=erubyDelimiter start="^ *%\{1,'.b:eruby_nest_level.'\}%\@!"    end="$"     contains=@rubyTop        containedin=ALLBUT,@erubyRegions keepend oneline'
 
 "-----------------------------------------------------------------------------
 " saving
