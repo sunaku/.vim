@@ -312,8 +312,8 @@ source ~/.vim/vimrc_example.vim
     nmap <Leader>' mzcs"'`z
     nmap <Leader>" mzcs'"`z
 
-    " insert or update comment header / section separator
-    nmap <Leader>- 80A-<Esc>,cu,cc:exec 's/\%>'. &textwidth .'v.//g'<Enter>
+    " insert or update section separator at end of current line
+    nnoremap <Leader>- 80A-<Esc>:execute 's/\%>'. &textwidth .'v.//g'<Enter>
 
   "---------------------------------------------------------------------------
   " rails
