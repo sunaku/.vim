@@ -90,7 +90,7 @@ source ~/.vim/vimrc_example.vim
 "-----------------------------------------------------------------------------
 
   autocmd FileType make setlocal noexpandtab
-  autocmd FileType gitcommit setlocal textwidth=50 nofoldenable
+  autocmd FileType gitcommit setlocal textwidth=72 nofoldenable
   autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
   autocmd FileType text,yaml,haml,sass setlocal foldmethod=indent
   autocmd FileType mail setlocal textwidth=72
