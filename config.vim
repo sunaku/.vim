@@ -54,7 +54,7 @@ source ~/.vim/vimrc_example.vim
 
   set foldenable
   set foldmethod=syntax          " syntax highlighting rules define folds
-  set foldlevelstart=3           " close folds below this depth, initially
+  set foldlevelstart=10          " close folds below this depth, initially
 
 "-----------------------------------------------------------------------------
 " interaction
