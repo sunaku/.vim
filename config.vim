@@ -180,6 +180,7 @@ source ~/.vim/vimrc_example.vim
     nnoremap <Leader>th :set nohlsearch!<Enter>
     nnoremap <Leader>tn :set number!<Enter>
     nnoremap <Leader>tz :set foldenable!<Enter>
+    nnoremap <Leader>tp :set paste!<Enter>
 
     " highlight text that exceeds the textwidth limit
     " http://vim.wikia.com/wiki/Highlight_long_lines
