@@ -93,6 +93,7 @@ source ~/.vim/vimrc_example.vim
   autocmd FileType gitcommit setlocal textwidth=72 nofoldenable
   autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
   autocmd FileType text,yaml,eruby,haml,sass setlocal foldmethod=indent
+  autocmd FileType haml setlocal textwidth=0
   autocmd FileType mail setlocal textwidth=72
   autocmd FileType diff setlocal textwidth+=1 " extra char for +/-/ indicators
 
