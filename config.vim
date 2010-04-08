@@ -11,24 +11,11 @@ source ~/.vim/vimrc_example.vim
 " appearance
 "-----------------------------------------------------------------------------
 
-  if has('gui_running')
-    colorscheme wombat
+  if &t_Co == 256 || has('gui_running')
+    colorscheme lucius
 
-    " remove italic style
-    highlight String gui=none
-    highlight Comment gui=none
-
-    " make cursor noticable
-    highlight Cursor guibg=#e5786d guifg=#000000
-
-    highlight clear Search
-    highlight link Search PmenuSel
-
-  elseif &t_Co == 256
-    colorscheme zenburn
-
-    " remove italic style
-    highlight Comment gui=none
+    " make comments brighter
+    highlight Comment ctermfg=244 guifg=#808080
 
   elseif &t_Co == 88
     colorscheme wombat256
