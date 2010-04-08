@@ -1,7 +1,7 @@
 " Vim color file
 " Maintainer:   Jonathan Filip <jfilip1024@gmail.com>
-" Last Modified: Wed Oct 21, 2009  11:39AM
-" Version: 3.1
+" Last Modified: Thu Jan 21, 2010  10:57AM
+" Version: 3.2
 "
 " GUI / 256 color terminal
 "
@@ -65,10 +65,10 @@ hi Float            ctermfg=116                                     cterm=none
 " Identifier Group
 " ----------------
 " any variable name
-hi Identifier       guifg=#efaf7f                                   gui=none
+hi Identifier       guifg=#e6c080                                   gui=none
 hi Identifier       ctermfg=216                                     cterm=none
 " function, method, class
-hi Function         guifg=#efaf7f                                   gui=none
+hi Function         guifg=#e6c080                                   gui=none
 hi Function         ctermfg=216                                     cterm=none
 
 
@@ -100,19 +100,19 @@ hi Keyword          ctermfg=150                                     cterm=none
 " Preprocessor Group
 " ------------------
 " generic preprocessor
-hi PreProc          guifg=#f0dfaf                                   gui=none
+hi PreProc          guifg=#e9dfaf                                   gui=none
 hi PreProc          ctermfg=223                                     cterm=none
 " #include
-hi Include          guifg=#f0dfaf                                   gui=none
+hi Include          guifg=#e9dfaf                                   gui=none
 hi Include          ctermfg=223                                     cterm=none
 " #define
-hi Define           guifg=#f0dfaf                                   gui=none
+hi Define           guifg=#e9dfaf                                   gui=none
 hi Define           ctermfg=223                                     cterm=none
 " same as define
-hi Macro            guifg=#f0dfaf                                   gui=none
+hi Macro            guifg=#e9dfaf                                   gui=none
 hi Macro            ctermfg=223                                     cterm=none
 " #if, #else, #endif
-hi PreCondit        guifg=#f0dfaf                                   gui=none
+hi PreCondit        guifg=#e9dfaf                                   gui=none
 hi PreCondit        ctermfg=223                                     cterm=none
 
 
@@ -247,7 +247,7 @@ hi NonText          ctermfg=235                                     cterm=none
 hi Question         guifg=fg                                        gui=none
 hi Question         ctermfg=fg                                      cterm=none
 " meta and special keys used with map, unprintable characters
-hi SpecialKey       guifg=#404040
+hi SpecialKey       guifg=#405060
 hi SpecialKey       ctermfg=237
 " titles for output from :set all, :autocmd, etc
 hi Title            guifg=#62bdde                                   gui=none
