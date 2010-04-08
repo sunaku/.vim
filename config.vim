@@ -49,9 +49,6 @@ source ~/.vim/vimrc_example.vim
   set novisualbell               " don't flash the screen
   set laststatus=2               " always show status line
 
-  set list                       " reveal invisible characters:
-  set listchars=tab:>-,trail:~   " ... TABs and trailing spaces
-
   set foldenable
   set foldmethod=syntax          " syntax highlighting rules define folds
   set foldlevelstart=10          " close folds below this depth, initially
