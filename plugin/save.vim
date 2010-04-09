@@ -19,3 +19,9 @@ function! StripTrailingWhitespace()
     call winrestview(l:cursor)
   endif
 endfunction
+
+Shortcut save file as...
+      \ nnoremap <silent> <Space>yf :call feedkeys(':saveas '.expand('%'), 't')<CR>
+
+Shortcut save copy of file as...
+      \ nnoremap <silent> <Space>Yf :call feedkeys(':write '.expand('%'), 't')<CR>

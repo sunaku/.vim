@@ -2,6 +2,27 @@ set foldenable
 set foldmethod=indent " indentation defines folds
 set foldlevelstart=99 " close folds below this depth, initially
 
+" go to adjacent folds
+nnoremap <C-Up> zk
+nnoremap <C-S-Up> [[
+nnoremap <C-Down> zj
+nnoremap <C-S-Down> ]]
+
+" open and close folds
+nnoremap <A-Down> zo
+nnoremap <A-S-Down> zO
+nnoremap <A-Up> zc
+nnoremap <A-S-Up> zC
+
+" " change the foldlevel
+" nnoremap <A-Left> zm
+" nnoremap <A-S-Left> zM
+" nnoremap <A-Right> zr
+" nnoremap <A-S-Right> zR
+
+Shortcut close all other folds in buffer
+      \ nnoremap <Space>Dz zMzv
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Don't screw up folds when inserting text that might affect them, until
 " leaving insert mode. Foldmethod is local to the window. Protect against

@@ -8,3 +8,7 @@ set smartcase  " ... unless the query has capital letters
 " and also redraw any pending diff updates
 " https://github.com/tpope/vim-sensible
 nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+
+" auto-center each search result we jump to
+nnoremap n nzz
+nnoremap N Nzz
