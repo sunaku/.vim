@@ -5,7 +5,11 @@ autocmd ColorScheme * execute 'runtime recolor/'. g:colors_name .'.vim'
 set colorcolumn=+1
 
 " terminals that I typically use have a dark background color
-set background=dark
+try
+  execute 'set background=' . readfile(expand('~/.theme'))[0]
+catch
+  set background=dark
+endtry
 
 if &term =~ '256color'
   " disable Background Color Erase (BCE) so that color schemes
