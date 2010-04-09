@@ -1,0 +1,26 @@
+#!/bin/sh
+#
+# Lists all <Space> shortcuts available in this Vim configuration.
+#
+# Written in 2015 by Suraj N. Kurapati <https://github.com/sunaku>
+
+git grep -hG "^\s*call shortcut#map(['\"].\+,.\+)" |
+sed "
+  # parentheses
+  s/^[^(]*(//;
+  s/)[^)]*$//;
+
+  # quotations
+  s/^ *[\"']//;
+  s/[\"'] *$//;
+  s/[\"'], [\"']/\t/g;
+
+  # entities http://www.w3.org/TR/REC-xml/#sec-predefined-ent
+  s/&/\&amp;/g;
+  s/\"/\&quot;/g;
+  s/'/\&apos;/g;
+  s/</\&lt;/g;
+  s/>/\&gt;/g;
+" |
+awk -F '\t' '{ gsub("\\S+", "<kbd>&</kbd>", $1); print $1, "|", $2 }' |
+tr -s '[:space:]'

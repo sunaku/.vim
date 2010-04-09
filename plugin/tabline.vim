@@ -1,3 +1,5 @@
+finish " 2020-07-08 DEPRECATED: replaced by https://github.com/gcmt/taboo.vim
+
 " My custom tabline that shows tab numbers for easy jumping to tab with [N]gt
 " and also highlights tab names that contain unsaved changes (dirty buffers).
 " See :help setting-tabline and :help 'guitablabel' and :help highlight-groups

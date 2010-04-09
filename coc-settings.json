@@ -1,0 +1,4 @@
+{
+  "coc.source.emoji.filetypes": ["markdown", "gitcommit"],
+  "yank.priority": 10
+}

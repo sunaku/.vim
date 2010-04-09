@@ -10,8 +10,11 @@ if match(cmdline, '\v (-S|--?)( |$)') != -1
   finish
 endif
 
-if filereadable('Session.vim')
-  silent! source Session.vim
+let session_file = 'Session.vim'
+if filereadable(session_file)
+
+  " restore previous session by loading it from file
+  execute 'source' session_file
 
   " do some adjustments after restoring the session
   autocmd VimEnter * call s:after_restoring_session()

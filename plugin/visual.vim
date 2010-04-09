@@ -9,3 +9,6 @@ if v:version < 704
   nnoremap gn //e<CR>v??<CR>
   nnoremap gN ??e<CR>v??<CR>
 endif
+
+Shortcut visually select entire buffer
+      \ nnoremap <Space>vb m'ggVG

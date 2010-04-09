@@ -4,7 +4,11 @@ if has('termguicolors') && has('nvim') && $TERM != 'linux'
 endif
 
 " terminals that I typically use have a dark background color
-set background=dark
+try
+  let &background=readfile(expand('~/.themes/background'))[0]
+catch
+  set background=dark
+endtry
 
 if &term =~ '256color'
   " disable Background Color Erase (BCE) so that color schemes

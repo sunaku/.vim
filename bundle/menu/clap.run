@@ -1,0 +1,6 @@
+# just like ":Clap install-binary!" but without python
+# if command -v cargo; then
+#   make maple   # build binary from source
+# else
+  ./install.sh # download prebuilt binary
+# fi
