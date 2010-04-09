@@ -4,6 +4,10 @@
 " http://stackoverflow.com/questions/tagged/vim
 " http://items.sjbach.com/319/configuring-vim-right
 " http://push.cx/2008/256-color-xterms-in-ubuntu
+" http://tammersaleh.com/posts/the-modern-vim-config-with-pathogen
+
+source ~/.vim/bundle/pathogen/plugin/pathogen.vim
+let &rtp = pathogen#join(&rtp, pathogen#glob_directories('~/.vim/bundle/*'))
 
 source ~/.vim/vimrc_example.vim
 
@@ -128,10 +132,6 @@ source ~/.vim/vimrc_example.vim
       let i += 1
     endwhile
   endif
-
-"-----------------------------------------------------------------------------
-" shortcuts
-"-----------------------------------------------------------------------------
 
   "---------------------------------------------------------------------------
   " editor
