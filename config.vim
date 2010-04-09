@@ -57,6 +57,8 @@ source ~/.vim/vimrc_example.vim
   set ignorecase                 " make searching case insensitive
   set smartcase                  " ... unless the query has capital letters
 
+  set shell=/bin/sh              " use Bourne shell for command substitution
+
 "-----------------------------------------------------------------------------
 " formatting
 "-----------------------------------------------------------------------------
