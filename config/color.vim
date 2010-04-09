@@ -14,3 +14,9 @@ if &term =~ '256color'
   " See also http://snk.tuxfamily.org/log/vim-256color-bce.html
   set t_ut=
 endif
+
+if has('gui_running')
+  colorscheme base16-tomorrow
+else
+  colorscheme lucius
+endif
