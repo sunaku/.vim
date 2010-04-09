@@ -60,6 +60,8 @@ Dir['*.get'].each do |get_file|
   script_id = get_info['script_id'] or
   raise "#{get_file} must define the 'script_id' parameter"
 
+  get_dir = File.expand_path(get_file).sub(/\.get$/, '')
+
   # check for new version
   agent = Mechanize.new
   page = agent.get("http://www.vim.org/scripts/script.php?script_id=#{script_id}")
@@ -71,8 +73,8 @@ Dir['*.get'].each do |get_file|
   newest_src_id = newest_version_link.href[/\d+$/].to_i
   current_src_id = get_info['src_id'].to_i
 
-  if newest_src_id > current_src_id
-    puts "#{get_file} is out of date (current=#{current_src_id}, newest=#{newest_src_id})"
+  if newest_src_id > current_src_id or not File.exist? get_dir
+    puts "#{get_file} is out of date (newest=#{newest_src_id})"
 
     Dir.mktmpdir do |download_dir|
       # download new version
@@ -105,8 +107,6 @@ Dir['*.get'].each do |get_file|
       end
 
       # install new version
-      get_dir = File.expand_path(get_file).sub(/\.get$/, '')
-
       if File.exist? get_dir
         mv get_dir, [get_dir, current_src_id].join('@')
       end
