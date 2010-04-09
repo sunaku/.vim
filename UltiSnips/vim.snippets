@@ -1,0 +1,189 @@
+# My port of VimL snippets from Neosnippets repository (by Shougo Matsushita)
+# https://github.com/Shougo/neosnippet-snippets/blob/master/neosnippets/vim.snip
+
+snippet if "if endif"
+if ${1:condition}
+	$0
+endif
+endsnippet
+
+snippet elseif
+elseif ${1:condition}
+	$0
+endsnippet
+
+snippet ifelse "if else endif"
+if ${1:condition}
+	$2
+else
+	$0
+endif
+endsnippet
+
+snippet for "for in endfor"
+for ${1:var} in ${2:list}
+	$0
+endfor
+endsnippet
+
+snippet while "while endwhile"
+while ${1:condition}
+	$0
+endwhile
+endsnippet
+
+snippet function "func endfunc"
+function! ${1:func_name}($2) abort
+	$0
+endfunction
+endsnippet
+
+snippet try "try endtry"
+try
+	${1:condition}
+catch /${2:pattern}/
+	$0
+endtry
+endsnippet
+
+snippet tryfinally "try finally endtry"
+try
+	${1:condition}
+finally
+	$0
+endtry
+endsnippet
+
+snippet catch "catch /pattern/"
+catch ${1:/${2:pattern: empty, E484, Vim(cmdname):{errmsg}}/}
+endsnippet
+
+snippet echomsg "log"
+echomsg string(${1:expression})
+endsnippet
+
+snippet command "command call function"
+command! ${1:command_name} call ${2:func_name}
+endsnippet
+
+snippet customlist "customlist complete function"
+function! ${1:func_name}(arglead, cmdline, cursorpos) abort
+	return filter(${2:list}, 'stridx(v:val, a:arglead) == 0')
+endfunction
+endsnippet
+
+snippet augroup "augroup with autocmds"
+augroup ${1:augroup_name}
+	autocmd!
+	autocmd ${2:event}
+augroup END
+endsnippet
+
+snippet redir "redir => var"
+	redir => ${1:variable}
+		$0
+	redir END
+endsnippet
+
+snippet autoload "autoload func endfunc"
+function! `!v substitute(matchstr(expand('%:p:r'), '/autoload/\zs.*$'), '/', '#', 'g')`#${1:func_name}(${2:args}) abort
+	$0
+endfunction
+endsnippet
+
+snippet save_cpoptions "let s:save_cpo = &cpo | set cpo&vim"
+let s:save_cpo = &cpo
+set cpo&vim
+
+$0
+
+let &cpo = s:save_cpo
+unlet s:save_cpo
+endsnippet
+
+snippet loaded "if exists('g:loaded_{plugin-name}')" b
+if exists('g:loaded_$1')
+	finish
+endif
+
+$0
+
+let g:loaded_$1 = 1
+endsnippet
+
+snippet modeline "vim: {modeline}" b
+" vim: ${0:foldmethod=marker}
+endsnippet
+
+snippet undo_ftplugin "if !exists('b:undo_ftplugin')"
+if !exists('b:undo_ftplugin')
+	let b:undo_ftplugin = ''
+endif
+
+$0
+
+let b:undo_ftplugin .= '
+\ | setlocal ${2:option_name1< option_name2< ...}
+\'
+endsnippet
+
+snippet python "py << EOF"
+python << EOF
+$0
+EOF
+endsnippet
+
+snippet python3 "py3 << EOF"
+python3 << EOF
+$0
+EOF
+endsnippet
+
+snippet lua "lua << EOF"
+lua << EOF
+$0
+EOF
+endsnippet
+
+snippet save_pos "use pos save"
+let pos_save = getpos('.')
+try
+	$0
+finally
+	call setpos('.', pos_save)
+endtry
+endsnippet
+
+snippet save_register "use register save"
+let save_reg_$1 = getreg('$1')
+let save_regtype_$1 = getregtype('$1')
+try
+	$0
+finally
+	call setreg('$1', save_reg_$1, save_regtype_$1)
+endtry
+endsnippet
+
+snippet save_option "use option save"
+let $1_save = &$1
+let &$1 = $2
+try
+	$0
+finally
+	let &$1 = $1_save
+endtry
+endsnippet
+
+snippet p "debug-echomsg"
+echomsg string([${1:expression}])
+endsnippet
+
+snippet version "vim-version-check"
+v:version > ${1} || (v:version == $1 && has('patch${2}'))
+endsnippet
+
+snippet version_new "vim-version-check-new"
+has('patch-$1')
+endsnippet
+
+# vim: ft=snippets

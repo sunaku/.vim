@@ -4,6 +4,16 @@ set confirm       " ask user before aborting an action
 set wildmenu      " tab-completion menu for command mode
 if !has('nvim') | set wildmode=list:longest,full | endif
 
+" shiftless entrance into command mode for internal commands
+" noremap ; :
+" nnoremap <silent> ; :call feedkeys(':', 'nt')<CR>
+" vnoremap <silent> ; :<C-U>call feedkeys(":'<,'>", 'nt')<CR>
+" noremap <C-\>; ;
+" noremap @; @:
+" noremap @<C-\>; @;
+" noremap ! :!
+" noremap <C-\>! !
+
 " enable EMACS-style cursor movement inside command mode
 " https://statico.github.io/vim.html#rudimentary-essentials
 cnoremap <C-A> <Home>
