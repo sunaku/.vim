@@ -1,0 +1,18 @@
+call shortcut#map('<Space> d t', 'Tab -> Close', 'tabclose')
+call shortcut#map('<Space> D t', 'Tab -> Close -> Others', 'tabonly')
+call shortcut#map("<Space> ' t", 'Tab -> Jump to...', 'Unite -no-split tab')
+call shortcut#map('<Space> n t', 'Tab -> Focus -> Next', 'tabnext')
+call shortcut#map('<Space> N t', 'Tab -> Focus -> Previous', 'tabprevious')
+call shortcut#map('<Space> : t', 'Tab -> Each do...', 'call feedkeys(":tabdo ", "n")')
+call shortcut#map('<Space> ^ t', 'Tab -> Move -> First', 'tabmove 0')
+call shortcut#map('<Space> $ t', 'Tab -> Move -> Last', 'tabmove $')
+call shortcut#map('<Space> < t', 'Tab -> Move -> Left', 'tabmove -1')
+call shortcut#map('<Space> > t', 'Tab -> Move -> Right', 'tabmove +1')
+call shortcut#map('<Space> I t', 'Tab -> Open -> First', '0tabnew')
+call shortcut#map('<Space> A t', 'Tab -> Open -> Last', '$tabnew')
+call shortcut#map('<Space> i t', 'Tab -> Open -> Left', '-tabnew')
+call shortcut#map('<Space> a t', 'Tab -> Open -> Right', 'tabnew')
+
+for i in range(1,9)
+  call shortcut#map('<Space> ' . i . ' t', 'Tab -> Focus -> '. i, 'tabfirst', i .'tabnext')
+endfor

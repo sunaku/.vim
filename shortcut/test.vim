@@ -1,0 +1,5 @@
+call shortcut#map('<Space> ! n', 'Test -> Nearest', 'TestNearest')
+call shortcut#map('<Space> ! f', 'Test -> File', 'TestFile')
+call shortcut#map('<Space> ! F', 'Test -> Suite', 'TestSuite')
+call shortcut#map('<Space> ! !', 'Test -> Last', 'TestLast')
+call shortcut#map('<Space> ! v', 'Test -> Visit', 'TestVisit')

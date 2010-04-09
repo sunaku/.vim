@@ -6,10 +6,12 @@ set wildmode=list:longest,full
 
 " colonless entrance into command mode
 noremap ; :
+noremap \; ;
 noremap ! :!
 
 " colonless replaying of recent command
 noremap @; @:
+noremap @\; @;
 noremap @! :!<Up><Return>
 
 " enable EMACS-style cursor movement inside command mode

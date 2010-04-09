@@ -59,6 +59,8 @@ Don't forget to check out the handy [list of shortcuts](#shortcuts) below!
 
 * `ftplugin/{*,/*}.vim` configure your filetypes _when_ they are loaded.
 
+* `shortcut/**/*.vim` define your shortcuts _after_ bundles are loaded.
+
 * `recolor/*.vim` configure your colorschemes _after_ they are applied.
 
 * `after/plugin/**/*.vim` configure Vim _after_ it finishes starting up.
@@ -351,138 +353,439 @@ Formats usage information from all scripts for injection into README.
 
 ## Shortcuts
 
-This branch of the Vim configuration defines the following shortcuts.
+This listing is _also_ available in Vim: just press the **space bar** twice!
 
-Tips:
-* `<C-c>` is like `<Esc>` but it doesn't break macros containing the Alt key.
-* Run `stty -ixon` before launching Vim to use `<C-s>` and `<C-q>` shortcuts.
+Note: Run `stty -ixon` before launching Vim to use `<C-s>` and `<C-q>`.
+
+Note: These shortcuts assume that you type in the [Dvorak keyboard layout](
+http://www.dvzine.org/zine/01-toc.html ).  If this assumption does not apply
+to you, simply change the following setting inside `plugin/2-keyboard.vim`:
+
+    let g:sunaku_dvorak_keyboard = 0 " turns off Dvorak keyboard shortcuts
+
+Shortcut | Action
+---------|-------
+<kbd>&lt;Space&gt;</kbd> | Shortcut -&gt; Discover
+<kbd>&lt;Space&gt;</kbd> <kbd>&lt;Space&gt;</kbd> | Shortcut -&gt; Discover
+<kbd>&lt;Space&gt;</kbd> <kbd>.</kbd> | Shortcut -&gt; Repeat
+<kbd>&lt;Space&gt;</kbd> <kbd>`</kbd> <kbd>b</kbd> | Buffer -&gt; Outline
+<kbd>&lt;Space&gt;</kbd> <kbd>&apos;</kbd> <kbd>b</kbd> | Buffer -&gt; Jump to...
+<kbd>&lt;Space&gt;</kbd> <kbd>:</kbd> <kbd>b</kbd> | Buffer -&gt; Each do...
+<kbd>&lt;Space&gt;</kbd> <kbd>n</kbd> <kbd>b</kbd> | Buffer -&gt; Focus -&gt; Next
+<kbd>&lt;Space&gt;</kbd> <kbd>N</kbd> <kbd>b</kbd> | Buffer -&gt; Focus -&gt; Previous
+<kbd>&lt;Space&gt;</kbd> <kbd>O</kbd> <kbd>b</kbd> | Buffer -&gt; Open -&gt; Above
+<kbd>&lt;Space&gt;</kbd> <kbd>o</kbd> <kbd>b</kbd> | Buffer -&gt; Open -&gt; Below
+<kbd>&lt;Space&gt;</kbd> <kbd>i</kbd> <kbd>b</kbd> | Buffer -&gt; Open -&gt; Left
+<kbd>&lt;Space&gt;</kbd> <kbd>a</kbd> <kbd>b</kbd> | Buffer -&gt; Open -&gt; Right
+<kbd>&lt;Space&gt;</kbd> <kbd>r</kbd> <kbd>b</kbd> | Buffer -&gt; Reload
+<kbd>&lt;Space&gt;</kbd> <kbd>R</kbd> <kbd>b</kbd> | Buffer -&gt; Reload (force)
+<kbd>&lt;Space&gt;</kbd> <kbd>w</kbd> <kbd>b</kbd> | Buffer -&gt; Save
+<kbd>&lt;Space&gt;</kbd> <kbd>W</kbd> <kbd>b</kbd> | Buffer -&gt; Save (strip)
+<kbd>&lt;Space&gt;</kbd> <kbd>y</kbd> <kbd>b</kbd> | Yank -&gt; Buffer
+<kbd>&lt;Space&gt;</kbd> <kbd>D</kbd> <kbd>b</kbd> | Buffer -&gt; Close -&gt; All
+<kbd>&lt;Space&gt;</kbd> <kbd>d</kbd> <kbd>b</kbd> | Buffer -&gt; Close
+<kbd>&lt;Space&gt;</kbd> <kbd>d</kbd> <kbd>$</kbd> | Buffer -&gt; Strip trailing whitespace
+<kbd>&lt;C-s&gt;</kbd> | Buffer -&gt; Save (strip)
+<kbd>&lt;Space&gt;</kbd> <kbd>c</kbd> <kbd>a</kbd> | Comment -&gt; Alternate
+<kbd>&lt;Space&gt;</kbd> <kbd>c</kbd> <kbd>u</kbd> | Comment -&gt; Uncomment
+<kbd>&lt;Space&gt;</kbd> <kbd>c</kbd> <kbd>b</kbd> | Comment -&gt; Align -&gt; Both
+<kbd>&lt;Space&gt;</kbd> <kbd>c</kbd> <kbd>l</kbd> | Comment -&gt; Align -&gt; Left
+<kbd>&lt;Space&gt;</kbd> <kbd>c</kbd> <kbd>A</kbd> | Comment -&gt; Append
+<kbd>&lt;Space&gt;</kbd> <kbd>c</kbd> <kbd>y</kbd> | Comment -&gt; Yank
+<kbd>&lt;Space&gt;</kbd> <kbd>c</kbd> <kbd>s</kbd> | Comment -&gt; Sexy
+<kbd>&lt;Space&gt;</kbd> <kbd>c</kbd> <kbd>i</kbd> | Comment -&gt; Invert
+<kbd>&lt;Space&gt;</kbd> <kbd>c</kbd> <kbd>$</kbd> | Comment -&gt; To EOL
+<kbd>&lt;Space&gt;</kbd> <kbd>c</kbd> <kbd>n</kbd> | Comment -&gt; Nested
+<kbd>&lt;Space&gt;</kbd> <kbd>c</kbd> <kbd>m</kbd> | Comment -&gt; Minimal
+<kbd>&lt;Space&gt;</kbd> <kbd>t</kbd> <kbd>c</kbd> | Comment -&gt; Toggle
+<kbd>&lt;Space&gt;</kbd> <kbd>c</kbd> <kbd>c</kbd> | Comment -&gt; Comment
+<kbd>&lt;Space&gt;</kbd> <kbd>c</kbd> <kbd>P</kbd> | Comment -&gt; Yank -&gt; Paste above
+<kbd>&lt;Space&gt;</kbd> <kbd>c</kbd> <kbd>p</kbd> | Comment -&gt; Yank -&gt; Paste below
+<kbd>&lt;Space&gt;</kbd> <kbd>c</kbd> <kbd>@</kbd> | Comment -&gt; ASCII art (figlet)
+<kbd>&lt;Space&gt;</kbd> <kbd>C</kbd> <kbd>t</kbd> | Merge conflict -&gt; Keep their version
+<kbd>&lt;Space&gt;</kbd> <kbd>C</kbd> <kbd>o</kbd> | Merge conflict -&gt; Keep our version
+<kbd>&lt;Space&gt;</kbd> <kbd>C</kbd> <kbd>b</kbd> | Merge conflict -&gt; Keep both versions
+<kbd>&lt;Space&gt;</kbd> <kbd>C</kbd> <kbd>n</kbd> | Merge conflict -&gt; Drop all versions
+<kbd>&lt;Space&gt;</kbd> <kbd>/</kbd> <kbd>C</kbd> | Search -&gt; Merge conflicts
+<kbd>&lt;Space&gt;</kbd> <kbd>K</kbd> | Search -&gt; API docs (with dasht)
+<kbd>&lt;Space&gt;</kbd> <kbd>%</kbd> <kbd>b</kbd> | Diff -&gt; Buffer
+<kbd>&lt;Space&gt;</kbd> <kbd>i</kbd> <kbd>%</kbd> | Diff -&gt; Get -&gt; Left
+<kbd>&lt;Space&gt;</kbd> <kbd>a</kbd> <kbd>%</kbd> | Diff -&gt; Get -&gt; Right
+<kbd>&lt;Space&gt;</kbd> <kbd>e</kbd> <kbd>%</kbd> | Diff -&gt; Original
+<kbd>&lt;Space&gt;</kbd> <kbd>&lt;</kbd> <kbd>%</kbd> | Diff -&gt; Put -&gt; Left
+<kbd>&lt;Space&gt;</kbd> <kbd>&gt;</kbd> <kbd>%</kbd> | Diff -&gt; Put -&gt; Right
+<kbd>&lt;Space&gt;</kbd> <kbd>q</kbd> <kbd>%</kbd> | Diff -&gt; Quit
+<kbd>&lt;Space&gt;</kbd> <kbd>r</kbd> <kbd>%</kbd> | Diff -&gt; Redraw
+<kbd>&lt;Space&gt;</kbd> <kbd>s</kbd> <kbd>f</kbd> | File -&gt; Rename
+<kbd>&lt;Space&gt;</kbd> <kbd>d</kbd> <kbd>f</kbd> | File -&gt; Delete
+<kbd>&lt;Space&gt;</kbd> <kbd>O</kbd> <kbd>f</kbd> | File -&gt; Open
+<kbd>&lt;Space&gt;</kbd> <kbd>o</kbd> <kbd>f</kbd> | File -&gt; Open (relative)
+<kbd>&lt;Space&gt;</kbd> <kbd>O</kbd> <kbd>d</kbd> | File -&gt; Browse
+<kbd>&lt;Space&gt;</kbd> <kbd>o</kbd> <kbd>d</kbd> | File -&gt; Browse (relative)
+<kbd>&lt;Space&gt;</kbd> <kbd>&apos;</kbd> <kbd>f</kbd> | File -&gt; Jump to...
+<kbd>&lt;Space&gt;</kbd> <kbd>`</kbd> <kbd>f</kbd> | File -&gt; Jump to... (relative)
+<kbd>&lt;Space&gt;</kbd> <kbd>y</kbd> <kbd>f</kbd> | File -&gt; Save as...
+<kbd>&lt;Space&gt;</kbd> <kbd>Y</kbd> <kbd>f</kbd> | File -&gt; Save as copy
+<kbd>&lt;Space&gt;</kbd> <kbd>D</kbd> <kbd>z</kbd> | Fold -&gt; Close -&gt; Others
+<kbd>&lt;Space&gt;</kbd> <kbd>z</kbd> <kbd>v</kbd> | Narrow -&gt; Selection
+<kbd>&lt;Space&gt;</kbd> <kbd>z</kbd> <kbd>R</kbd> | Narrow -&gt; Off
+<kbd>&lt;Space&gt;</kbd> <kbd>h</kbd> <kbd>&lt;Tab&gt;</kbd> | Format -&gt; Indent -&gt; Tabs
+<kbd>&lt;Space&gt;</kbd> <kbd>h</kbd> <kbd>&lt;Space&gt;</kbd> | Format -&gt; Indent -&gt; Spaces
+<kbd>&lt;Space&gt;</kbd> <kbd>h</kbd> <kbd>1</kbd> | Format -&gt; Markdown -&gt; Title
+<kbd>&lt;Space&gt;</kbd> <kbd>h</kbd> <kbd>2</kbd> | Format -&gt; Markdown -&gt; Section
+<kbd>&lt;Space&gt;</kbd> <kbd>h</kbd> <kbd>t</kbd> | Format -&gt; Markdown -&gt; Table header
+<kbd>&lt;Space&gt;</kbd> <kbd>h</kbd> <kbd>c</kbd> | Format -&gt; Markdown -&gt; Fenced code block
+<kbd>&lt;Space&gt;</kbd> <kbd>h</kbd> <kbd>=</kbd> | Format -&gt; Separator -&gt; Using equal sign
+<kbd>&lt;Space&gt;</kbd> <kbd>h</kbd> <kbd>-</kbd> | Format -&gt; Separator -&gt; Using minus sign
+<kbd>&lt;Space&gt;</kbd> <kbd>h</kbd> <kbd>.</kbd> | Format -&gt; Separator -&gt; Repeat .$ to EOL
+<kbd>&lt;Space&gt;</kbd> <kbd>h</kbd> <kbd>a</kbd> | Format -&gt; Arguments
+<kbd>&lt;Space&gt;</kbd> <kbd>h</kbd> <kbd>s</kbd> | Format -&gt; Delimiters
+<kbd>&lt;Space&gt;</kbd> <kbd>h</kbd> <kbd>)</kbd> | Format -&gt; Delimiters -&gt; Add funcall parens
+<kbd>&lt;Space&gt;</kbd> <kbd>h</kbd> <kbd>(</kbd> | Format -&gt; Delimiters -&gt; Drop funcall parens
+<kbd>&lt;Space&gt;</kbd> <kbd>h</kbd> <kbd>&apos;</kbd> | Format -&gt; Quotes -&gt; Double to single
+<kbd>&lt;Space&gt;</kbd> <kbd>h</kbd> <kbd>&quot;</kbd> | Format -&gt; Quotes -&gt; Single to double
+<kbd>&lt;Space&gt;</kbd> <kbd>h</kbd> <kbd>:</kbd> | Format -&gt; Ruby -&gt; Quotes to symbol
+<kbd>&lt;Space&gt;</kbd> <kbd>h</kbd> <kbd>;</kbd> | Format -&gt; Ruby -&gt; Symbol to quotes
+<kbd>&lt;Space&gt;</kbd> <kbd>h</kbd> <kbd>P</kbd> | Format -&gt; Elixir -&gt; Funcall to pipeline
+<kbd>&lt;Space&gt;</kbd> <kbd>h</kbd> <kbd>p</kbd> | Format -&gt; Elixir -&gt; Pipeline to funcall
+<kbd>&lt;Space&gt;</kbd> <kbd>h</kbd> <kbd>J</kbd> | Format -&gt; Elixir -&gt; Join pipeline
+<kbd>&lt;Space&gt;</kbd> <kbd>h</kbd> <kbd>j</kbd> | Format -&gt; Elixir -&gt; Split pipeline
+<kbd>&lt;Space&gt;</kbd> <kbd>e</kbd> <kbd>/</kbd> | Edit -&gt; Search (history)
+<kbd>&lt;Space&gt;</kbd> <kbd>e</kbd> <kbd>?</kbd> | Edit -&gt; File (search)
+<kbd>&lt;Space&gt;</kbd> <kbd>e</kbd> <kbd>:</kbd> | Edit -&gt; Command
+<kbd>&lt;Space&gt;</kbd> <kbd>e</kbd> <kbd>;</kbd> | Edit -&gt; Command (history)
+<kbd>&lt;Space&gt;</kbd> <kbd>e</kbd> <kbd>B</kbd> | Edit -&gt; Buffer -&gt; Filetype
+<kbd>&lt;Space&gt;</kbd> <kbd>e</kbd> <kbd>b</kbd> | Edit -&gt; Buffer
+<kbd>&lt;Space&gt;</kbd> <kbd>e</kbd> <kbd>F</kbd> | Edit -&gt; File (history)
+<kbd>&lt;Space&gt;</kbd> <kbd>e</kbd> <kbd>f</kbd> | Edit -&gt; File
+<kbd>&lt;Space&gt;</kbd> <kbd>e</kbd> <kbd>g</kbd> | Edit -&gt; Git (status)
+<kbd>&lt;Space&gt;</kbd> <kbd>e</kbd> <kbd>g</kbd> | Edit -&gt; Git
+<kbd>&lt;Space&gt;</kbd> <kbd>e</kbd> <kbd>h</kbd> | Edit -&gt; Tag (help)
+<kbd>&lt;Space&gt;</kbd> <kbd>e</kbd> <kbd>l</kbd> | Edit -&gt; Lines (buffer)
+<kbd>&lt;Space&gt;</kbd> <kbd>e</kbd> <kbd>L</kbd> | Edit -&gt; Lines (global)
+<kbd>&lt;Space&gt;</kbd> <kbd>e</kbd> <kbd>m</kbd> | Edit -&gt; Mark
+<kbd>&lt;Space&gt;</kbd> <kbd>e</kbd> <kbd>]</kbd> | Edit -&gt; Tag
+<kbd>&lt;Space&gt;</kbd> <kbd>e</kbd> <kbd>w</kbd> | Edit -&gt; Window
+<kbd>&lt;Space&gt;</kbd> <kbd>&apos;</kbd> <kbd>g</kbd> | Git -&gt; Jump to...
+<kbd>&lt;Space&gt;</kbd> <kbd>/</kbd> <kbd>g</kbd> | Git -&gt; Grep
+<kbd>&lt;Space&gt;</kbd> <kbd>s</kbd> <kbd>g</kbd> | Git -&gt; Move file
+<kbd>&lt;Space&gt;</kbd> <kbd>S</kbd> <kbd>g</kbd> | Git -&gt; Move file (force)
+<kbd>&lt;Space&gt;</kbd> <kbd>L</kbd> <kbd>g</kbd> | Git -&gt; Blame
+<kbd>&lt;Space&gt;</kbd> <kbd>a</kbd> <kbd>g</kbd> | Git -&gt; Commit
+<kbd>&lt;Space&gt;</kbd> <kbd>A</kbd> <kbd>g</kbd> | Git -&gt; Commit (amend)
+<kbd>&lt;Space&gt;</kbd> <kbd>%</kbd> <kbd>g</kbd> | Git -&gt; Diff
+<kbd>&lt;Space&gt;</kbd> <kbd>i</kbd> <kbd>g</kbd> | Git -&gt; Edit
+<kbd>&lt;Space&gt;</kbd> <kbd>l</kbd> <kbd>g</kbd> | Git -&gt; Log
+<kbd>&lt;Space&gt;</kbd> <kbd>r</kbd> <kbd>g</kbd> | Git -&gt; Revert file
+<kbd>&lt;Space&gt;</kbd> <kbd>R</kbd> <kbd>g</kbd> | Git -&gt; Revert file (force)
+<kbd>&lt;Space&gt;</kbd> <kbd>`</kbd> <kbd>g</kbd> | Git -&gt; Status
+<kbd>&lt;Space&gt;</kbd> <kbd>w</kbd> <kbd>g</kbd> | Git -&gt; Stage hunk
+<kbd>&lt;Space&gt;</kbd> <kbd>u</kbd> <kbd>g</kbd> | Git -&gt; Revert hunk
+<kbd>&lt;Space&gt;</kbd> <kbd>%</kbd> <kbd>g</kbd> | Git -&gt; Preview hunk
+<kbd>&lt;Space&gt;</kbd> <kbd>W</kbd> <kbd>g</kbd> | Git -&gt; Stage file
+<kbd>&lt;Space&gt;</kbd> <kbd>d</kbd> <kbd>g</kbd> | Git -&gt; Delete file
+<kbd>&lt;Space&gt;</kbd> <kbd>D</kbd> <kbd>g</kbd> | Git -&gt; Delete file (force)
+<kbd>&lt;Space&gt;</kbd> <kbd>g</kbd> <kbd>h</kbd> | Git -&gt; Hunk -&gt; Signs
+<kbd>&lt;Space&gt;</kbd> <kbd>g</kbd> <kbd>H</kbd> | Git -&gt; Hunk -&gt; Highlights
+<kbd>&lt;Space&gt;</kbd> <kbd>g</kbd> <kbd>g</kbd> | Git -&gt; Magit workflow
+<kbd>&lt;C-q&gt;</kbd> | Vim -&gt; Quit
+<kbd>&lt;Space&gt;</kbd> <kbd>q</kbd> <kbd>v</kbd> | Vim -&gt; Quit
+<kbd>&lt;Space&gt;</kbd> <kbd>Q</kbd> <kbd>v</kbd> | Vim -&gt; Quit (Force)
+<kbd>&lt;Space&gt;</kbd> <kbd>/</kbd> | Search -&gt; Fuzzy
+<kbd>&lt;Space&gt;</kbd> <kbd>?</kbd> | Search -&gt; Codebase
+<kbd>&lt;Space&gt;</kbd> <kbd>&amp;</kbd> | Search -&gt; Replace (interactive)
+<kbd>&lt;Space&gt;</kbd> <kbd>*</kbd> | Search -&gt; Replace (interactive) -&gt; Word under cursor
+<kbd>&lt;Space&gt;</kbd> <kbd>&lt;C-A&gt;</kbd> | Number -&gt; Sequence -&gt; Increment
+<kbd>&lt;Space&gt;</kbd> <kbd>&lt;C-X&gt;</kbd> | Number -&gt; Sequence -&gt; Decrement
+<kbd>&lt;Space&gt;</kbd> <kbd>d</kbd> <kbd>t</kbd> | Tab -&gt; Close
+<kbd>&lt;Space&gt;</kbd> <kbd>D</kbd> <kbd>t</kbd> | Tab -&gt; Close -&gt; Others
+<kbd>&lt;Space&gt;</kbd> <kbd>&apos;</kbd> <kbd>t</kbd> | Tab -&gt; Jump to...
+<kbd>&lt;Space&gt;</kbd> <kbd>n</kbd> <kbd>t</kbd> | Tab -&gt; Focus -&gt; Next
+<kbd>&lt;Space&gt;</kbd> <kbd>N</kbd> <kbd>t</kbd> | Tab -&gt; Focus -&gt; Previous
+<kbd>&lt;Space&gt;</kbd> <kbd>1</kbd> <kbd>t</kbd> | Tab -&gt; Focus -&gt; 1
+<kbd>&lt;Space&gt;</kbd> <kbd>2</kbd> <kbd>t</kbd> | Tab -&gt; Focus -&gt; 2
+<kbd>&lt;Space&gt;</kbd> <kbd>3</kbd> <kbd>t</kbd> | Tab -&gt; Focus -&gt; 3
+<kbd>&lt;Space&gt;</kbd> <kbd>4</kbd> <kbd>t</kbd> | Tab -&gt; Focus -&gt; 4
+<kbd>&lt;Space&gt;</kbd> <kbd>5</kbd> <kbd>t</kbd> | Tab -&gt; Focus -&gt; 5
+<kbd>&lt;Space&gt;</kbd> <kbd>6</kbd> <kbd>t</kbd> | Tab -&gt; Focus -&gt; 6
+<kbd>&lt;Space&gt;</kbd> <kbd>7</kbd> <kbd>t</kbd> | Tab -&gt; Focus -&gt; 7
+<kbd>&lt;Space&gt;</kbd> <kbd>8</kbd> <kbd>t</kbd> | Tab -&gt; Focus -&gt; 8
+<kbd>&lt;Space&gt;</kbd> <kbd>9</kbd> <kbd>t</kbd> | Tab -&gt; Focus -&gt; 9
+<kbd>&lt;Space&gt;</kbd> <kbd>:</kbd> <kbd>t</kbd> | Tab -&gt; Each do...
+<kbd>&lt;Space&gt;</kbd> <kbd>^</kbd> <kbd>t</kbd> | Tab -&gt; Move -&gt; First
+<kbd>&lt;Space&gt;</kbd> <kbd>$</kbd> <kbd>t</kbd> | Tab -&gt; Move -&gt; Last
+<kbd>&lt;Space&gt;</kbd> <kbd>&lt;</kbd> <kbd>t</kbd> | Tab -&gt; Move -&gt; Left
+<kbd>&lt;Space&gt;</kbd> <kbd>&gt;</kbd> <kbd>t</kbd> | Tab -&gt; Move -&gt; Right
+<kbd>&lt;Space&gt;</kbd> <kbd>I</kbd> <kbd>t</kbd> | Tab -&gt; Open -&gt; First
+<kbd>&lt;Space&gt;</kbd> <kbd>A</kbd> <kbd>t</kbd> | Tab -&gt; Open -&gt; Last
+<kbd>&lt;Space&gt;</kbd> <kbd>i</kbd> <kbd>t</kbd> | Tab -&gt; Open -&gt; Left
+<kbd>&lt;Space&gt;</kbd> <kbd>a</kbd> <kbd>t</kbd> | Tab -&gt; Open -&gt; Right
+<kbd>&lt;Space&gt;</kbd> <kbd>&apos;</kbd> <kbd>.</kbd> <kbd>i</kbd> <kbd>.</kbd> <kbd>&apos;</kbd> <kbd>t</kbd> | Tab -&gt; Focus -&gt; &apos;. i, &apos;tabfirst&apos;, i .&apos;tabnext
+<kbd>&lt;Space&gt;</kbd> <kbd>!</kbd> <kbd>n</kbd> | Test -&gt; Nearest
+<kbd>&lt;Space&gt;</kbd> <kbd>!</kbd> <kbd>f</kbd> | Test -&gt; File
+<kbd>&lt;Space&gt;</kbd> <kbd>!</kbd> <kbd>F</kbd> | Test -&gt; Suite
+<kbd>&lt;Space&gt;</kbd> <kbd>!</kbd> <kbd>!</kbd> | Test -&gt; Last
+<kbd>&lt;Space&gt;</kbd> <kbd>!</kbd> <kbd>v</kbd> | Test -&gt; Visit
+<kbd>&lt;Space&gt;</kbd> <kbd>o</kbd> <kbd>x</kbd> | Tmux -&gt; Set target pane
+<kbd>&lt;Space&gt;</kbd> <kbd>W</kbd> <kbd>x</kbd> | Tmux -&gt; Send buffer
+<kbd>&lt;Space&gt;</kbd> <kbd>w</kbd> <kbd>x</kbd> | Tmux -&gt; Send line or selection
+<kbd>&lt;Space&gt;</kbd> <kbd>t</kbd> <kbd>#</kbd> | Toggle -&gt; Highlight -&gt; Hex colors
+<kbd>&lt;Space&gt;</kbd> <kbd>t</kbd> <kbd>@</kbd> | Toggle -&gt; Highlight -&gt; ANSI escapes
+<kbd>&lt;Space&gt;</kbd> <kbd>t</kbd> <kbd>&lt;Bar&gt;</kbd> | Toggle -&gt; Table editing mode
+<kbd>&lt;Space&gt;</kbd> <kbd>t</kbd> <kbd>*</kbd> | Toggle -&gt; Highlight -&gt; Cursor word
+<kbd>&lt;Space&gt;</kbd> <kbd>t</kbd> <kbd>S</kbd> | Toggle -&gt; Highlight -&gt; Semantic words
+<kbd>&lt;Space&gt;</kbd> <kbd>t</kbd> <kbd>v</kbd> | Toggle -&gt; Distractions-free writing
+<kbd>&lt;Space&gt;</kbd> <kbd>t</kbd> <kbd>V</kbd> | Toggle -&gt; Highlight -&gt; Limelight
+<kbd>&lt;Space&gt;</kbd> <kbd>t</kbd> <kbd>&lt;Tab&gt;</kbd> | Toggle -&gt; Automatic completion
+<kbd>&lt;Space&gt;</kbd> <kbd>t</kbd> <kbd>]</kbd> | Toggle -&gt; Tag list
+<kbd>&lt;Space&gt;</kbd> <kbd>t</kbd> <kbd>^</kbd> | Toggle -&gt; Highlight -&gt; Indentation
+<kbd>&lt;Space&gt;</kbd> <kbd>t</kbd> <kbd>N</kbd> | Toggle -&gt; Line numbering (relative)
+<kbd>&lt;Space&gt;</kbd> <kbd>t</kbd> <kbd>n</kbd> | Toggle -&gt; Line numbering
+<kbd>&lt;Space&gt;</kbd> <kbd>t</kbd> <kbd>p</kbd> | Toggle -&gt; Paste verbatim
+<kbd>&lt;Space&gt;</kbd> <kbd>t</kbd> <kbd>Q</kbd> | Toggle -&gt; Automatic formatting
+<kbd>&lt;Space&gt;</kbd> <kbd>t</kbd> <kbd>q</kbd> | Toggle -&gt; Quickfix list
+<kbd>&lt;Space&gt;</kbd> <kbd>t</kbd> <kbd>l</kbd> | Toggle -&gt; Location list
+<kbd>&lt;Space&gt;</kbd> <kbd>t</kbd> <kbd>s</kbd> | Toggle -&gt; Spelling check
+<kbd>&lt;Space&gt;</kbd> <kbd>t</kbd> <kbd>w</kbd> | Format -&gt; Pencil -&gt; Toggle
+<kbd>&lt;Space&gt;</kbd> <kbd>t</kbd> <kbd>z</kbd> | Toggle -&gt; Code folding
+<kbd>&lt;Space&gt;</kbd> <kbd>t</kbd> <kbd>d</kbd> | Toggle -&gt; Todo list
+<kbd>&lt;Space&gt;</kbd> <kbd>t</kbd> <kbd>D</kbd> | Toggle -&gt; Todo list archive
+<kbd>&lt;Space&gt;</kbd> <kbd>t</kbd> <kbd>r</kbd> | Toggle -&gt; Register list
+<kbd>&lt;Space&gt;</kbd> <kbd>t</kbd> <kbd>t</kbd> | Toggle -&gt; Highlight -&gt; f/F/t/T targets
+<kbd>&lt;Space&gt;</kbd> <kbd>uu</kbd> | Undo -&gt; Tree
+<kbd>&lt;Space&gt;</kbd> <kbd>u.</kbd> | Undo -&gt; Replay
+<kbd>&lt;Space&gt;</kbd> <kbd>:</kbd> <kbd>u</kbd> | Unite command line
+<kbd>&lt;Space&gt;</kbd> <kbd>&apos;</kbd> <kbd>m</kbd> | Mark -&gt; Jump to...
+<kbd>&lt;Space&gt;</kbd> <kbd>&apos;</kbd> <kbd>:</kbd> | Command -&gt; Find and run
+<kbd>&lt;Space&gt;</kbd> <kbd>&apos;</kbd> <kbd>!</kbd> | Program -&gt; Find and run
+<kbd>&lt;Space&gt;</kbd> <kbd>&apos;</kbd> <kbd>s</kbd> | Spelling -&gt; Find correction
+<kbd>&lt;Space&gt;</kbd> <kbd>&apos;</kbd> <kbd>r</kbd> | Register -&gt; Find and paste
+<kbd>&lt;Space&gt;</kbd> <kbd>&apos;</kbd> <kbd>]</kbd> | Tag -&gt; Jump to...
+<kbd>&lt;Space&gt;</kbd> <kbd>&apos;</kbd> <kbd>*</kbd> | Line -&gt; Jump to word under cursor...
+<kbd>&lt;Space&gt;</kbd> <kbd>&apos;</kbd> <kbd>l</kbd> | Line -&gt; Jump to...
+<kbd>&lt;Space&gt;</kbd> <kbd>p</kbd> | Paste -&gt; Append from history...
+<kbd>&lt;Space&gt;</kbd> <kbd>P</kbd> | Paste -&gt; Insert from history...
+<kbd>&lt;Space&gt;</kbd> <kbd>v</kbd> <kbd>b</kbd> | Visual -&gt; Buffer
+<kbd>&lt;Space&gt;</kbd> <kbd>&apos;</kbd> <kbd>w</kbd> | Window -&gt; Jump to...
+<kbd>&lt;Space&gt;</kbd> <kbd>:</kbd> <kbd>w</kbd> | Window -&gt; Each do...
+<kbd>&lt;Space&gt;</kbd> <kbd>y</kbd> <kbd>w</kbd> | Window -&gt; Yank
+<kbd>&lt;Space&gt;</kbd> <kbd>p</kbd> <kbd>w</kbd> | Window -&gt; Paste
+<kbd>&lt;Space&gt;</kbd> <kbd>n</kbd> <kbd>w</kbd> | Window -&gt; Focus -&gt; Next
+<kbd>&lt;Space&gt;</kbd> <kbd>N</kbd> <kbd>w</kbd> | Window -&gt; Focus -&gt; Previous
+<kbd>&lt;Space&gt;</kbd> <kbd>O</kbd> <kbd>w</kbd> | Window -&gt; Split -&gt; Above
+<kbd>&lt;Space&gt;</kbd> <kbd>o</kbd> <kbd>w</kbd> | Window -&gt; Split -&gt; Below
+<kbd>&lt;Space&gt;</kbd> <kbd>i</kbd> <kbd>w</kbd> | Window -&gt; Split -&gt; Left
+<kbd>&lt;Space&gt;</kbd> <kbd>a</kbd> <kbd>w</kbd> | Window -&gt; Split -&gt; Right
+<kbd>&lt;Space&gt;</kbd> <kbd>d</kbd> <kbd>w</kbd> | Window -&gt; Close
+<kbd>&lt;Space&gt;</kbd> <kbd>D</kbd> <kbd>w</kbd> | Window -&gt; Close -&gt; Others
+<kbd>&lt;Space&gt;</kbd> <kbd>=</kbd> <kbd>w</kbd> | Window -&gt; Size -&gt; Equal
+<kbd>&lt;Space&gt;</kbd> <kbd>&lt;</kbd> <kbd>S</kbd> | Window -&gt; Size -&gt; Minimum
+<kbd>&lt;Space&gt;</kbd> <kbd>&lt;</kbd> <kbd>H</kbd> | Window -&gt; Size -&gt; Minimum -&gt; Height
+<kbd>&lt;Space&gt;</kbd> <kbd>&lt;</kbd> <kbd>W</kbd> | Window -&gt; Size -&gt; Minimum -&gt; Width
+<kbd>&lt;Space&gt;</kbd> <kbd>&lt;</kbd> <kbd>s</kbd> | Window -&gt; Size -&gt; Less
+<kbd>&lt;Space&gt;</kbd> <kbd>&lt;</kbd> <kbd>h</kbd> | Window -&gt; Size -&gt; Less -&gt; Height
+<kbd>&lt;Space&gt;</kbd> <kbd>&lt;</kbd> <kbd>w</kbd> | Window -&gt; Size -&gt; Less -&gt; Width
+<kbd>&lt;Space&gt;</kbd> <kbd>&gt;</kbd> <kbd>s</kbd> | Window -&gt; Size -&gt; More
+<kbd>&lt;Space&gt;</kbd> <kbd>&gt;</kbd> <kbd>h</kbd> | Window -&gt; Size -&gt; More -&gt; Height
+<kbd>&lt;Space&gt;</kbd> <kbd>&gt;</kbd> <kbd>w</kbd> | Window -&gt; Size -&gt; More -&gt; Width
+<kbd>&lt;Space&gt;</kbd> <kbd>&gt;</kbd> <kbd>S</kbd> | Window -&gt; Size -&gt; Maximum
+<kbd>&lt;Space&gt;</kbd> <kbd>&gt;</kbd> <kbd>H</kbd> | Window -&gt; Size -&gt; Maximum -&gt; Height
+<kbd>&lt;Space&gt;</kbd> <kbd>&gt;</kbd> <kbd>W</kbd> | Window -&gt; Size -&gt; Maximum -&gt; Width
+<kbd>&lt;Leader&gt;</kbd> <kbd>0</kbd> | Window -&gt; Size -&gt; Equal
+<kbd>&lt;Leader&gt;</kbd> <kbd>1</kbd> | Window -&gt; Size -&gt; Maximum
 
 ### Leader
 
-* `,` is the `<Leader>`: a prefix for shortcuts in this configuration.
-* Press it and wait for 2 seconds for listing of all leader shortcuts.
+* `,` is the `<Leader>` prefix for _some_ shortcuts in this configuration.
+
+### Space
+
+* `<Space>` (space bar) precedes _most_ shortcuts in this configuration.
+  Press it and wait for 2 seconds for searchable menu of all shortcuts.
+* `<Space><Space>` immediately opens a searchable menu of all shortcuts.
+* `<Space>.` repeats the most recent `<Space>` shortcut you have issued.
 
 ### Command
 
 * `;` puts Vim into command mode. It is a shift-less alternative to `:`.
 * `!` puts Vim into command mode, ready to run an external shell command.
 
-### Undo
+### Buffer
 
-* `U` re-does the last undone change.  It is the same as `<C-r>` in Vim.
+* `<C-s>` saves the current buffer after stripping trailing whitespace.
 
 ### Quit
 
-* `<C-q>` quits Vim.
-* `<Leader><C-q>` closes all buffers and all windows _without_ quitting Vim.
+* `<C-q>` quits Vim (after confirmation if you have any unsaved buffers).
 
 ### Window
 
-* `<Leader>1` maximizes current window by collapsing others.
-* `<Leader>!` closes all windows except current window.
-* `<Leader>2` creates new window below current window.
-* `<Leader>3` creates new window to the right of current window.
-* `<Leader>4` closes current window.
-* `<Leader>0` divides screen equally amongst all windows.
-
 Focus:
-* `<A-PageUp>` focuses next window.
-* `<A-PageDown>` focuses previous window.
+
+* (Dvorak) `<A-d>` focuses previously focused tmux pane.
+* (Dvorak) `<A-h>` focuses window at left.
+* (Dvorak) `<A-t>` focuses window above.
+* (Dvorak) `<A-n>` focuses window below.
+* (Dvorak) `<A-s>` focuses window at right.
+
+* (QWERTY) `<A-h>` focuses window at left.
+* (QWERTY) `<A-j>` focuses window above.
+* (QWERTY) `<A-k>` focuses window below.
+* (QWERTY) `<A-l>` focuses window at right.
+* (QWERTY) `<A-;>` focuses previously focused tmux pane.
 
 Scroll:
+
 * `<C-Left>` scrolls window left.
 * `<C-Right>` scrolls window right.
 * `<C-S-Left>` scrolls window all the way left.
 * `<C-S-Right>` scrolls window all the way right.
 
-### Tab
-
-* `<Leader><PageUp>` selects previous tab.
-* `<Leader><PageDown>` selects next tab.
-
-### Buffer
-
-* `<C-s>` strips trailing whitespace from current buffer and writes to disk.
-* `<Leader><C-s>` strips trailing whitespace from current buffer.
-* `<Leader>$` closes current buffer while retaining current window.
-* `<Leader>7` discards unsaved changes and reloads current buffer from disk.
-* `<C-PageUp>` displays previous buffer in current window.
-* `<C-PageDown>` displays next buffer in current window.
-
 ### Fold
 
 Jump:
+
 * `<C-Up>` jumps to nearest fold above current line.
 * `<C-Down>` jumps to nearest fold below current line.
 * `<C-S-Up>` jumps to nearest section above current line.
 * `<C-S-Down>` jumps to nearest section below current line.
 
 Fold:
+
 * `<A-Down>` opens current fold.
 * `<A-S-Down>` opens current fold and any folds contained therein.
 * `<A-Up>` closes current fold.
 * `<A-S-Up>` closes current fold and any folds contained therein.
 
 Level:
+
 * `<A-Left>` closes folds at current level.
 * `<A-S-Left>` closes all folds.
 * `<A-Right>` opens folds at next level.
 * `<A-S-Right>` opens all folds.
-* `<Leader>z` closes all folds except those containing cursor.
+
+From [origami](https://github.com/kshenoy/vim-origami#readme):
+
+* `<count>Za`  Align all folds of level 'count'
+*        `ZA`  Align all folds
+* `<count>ZF`  Insert a start foldmarker of level 'count' at the end of line and comment it
+* `<count>Zf`  Insert a start foldmarker of level 'count' at the end of line but don't comment it
+* `<count>ZC`  Insert an end  foldmarker of level 'count' at the end of line and comment it
+* `<count>Zc`  Insert an end  foldmarker of level 'count' at the end of line but don't comment it
+*        `ZD`  Delete the foldmarker from the line
+
+### Text object
+
+* `<Space>` is for [whitespace](https://github.com/vim-utils/vim-space).
+* `=` is for [merge conflict](https://github.com/rhysd/vim-textobj-conflict).
+* `c` and `C` are for [vertical columns](https://github.com/coderifous/textobj-word-column.vim).
+* `h` is for [Git hunks](https://github.com/airblade/vim-gitgutter#readme).
+* `i` is for [indentation](https://github.com/thinca/vim-textobj-between).
+* `l` is for [the current line](https://github.com/kana/vim-textobj-line).
+* `o` and `O` are for [code comments](https://github.com/glts/vim-textobj-comment).
+* `q` is for [quoted text](https://github.com/beloglazov/vim-textobj-quotes).
+* `r` is for block structures in VimL and Ruby.
+* `u` is for [URLs](https://github.com/mattn/vim-textobj-url).
+* `v` is for [variable names](https://github.com/robmiller/vim-movar).
+* `y` is for [syntax elements](https://github.com/kana/vim-textobj-syntax).
+
+### Operator
+
+* `Q` formats the current paragraph or text selection using `gq`.
+* `R` is for [replace](https://github.com/romgrk/replace.vim#readme).
+* `s` is for [sandwich](https://github.com/machakann/vim-sandwich#readme).
+* `g@` decorates motion or visual selection using [FIGlet](http://www.figlet.org).
+* `g<`, `g>`, and `gs` are for [swap](https://github.com/machakann/vim-swap#how-to-use).
+
+### Insert
+
+From [blockinsert](https://github.com/kurkale6ka/vim-blockinsert#readme):
+
+* `<Leader>i` inserts at *soft* beginning of line in paragraph or visual selection.
+* `<Leader>a` inserts at *soft* end of line in current paragraph or visual selection.
 
 ### Search
 
-* `<C-l>` clears search result highlighting.
-* `<Leader>c/` finds merge conflict markers.
+* `<C-L>` clears search result highlighting.
 * `-` repeats the current `f`,`F`,`t`,`T` forward like the original `;` does.
 * `_` repeats the current `f`,`F`,`t`,`T` backward like the original `,` does.
+
+### Inspect
+
+From [gazetteer](https://github.com/jeetsukumaran/vim-gazetteer#readme):
+
+* `gG` shows function, method, class of the current cursor position.
+
+From [SyntaxAttr](https://github.com/vim-scripts/SyntaxAttr.vim#readme):
+
+* `gA` shows syntax highlighting group of the current cursor position.
+
+From [characterize](https://github.com/tpope/vim-characterize#readme):
+
+* `ga` shows ASCII and Unicode information for character under cursor.
+
+### Motion
+
+From [CamelCaseMotion](https://github.com/bkad/CamelCaseMotion#readme):
+
+* `,w` is like `w` but aware of camel and snake case; it's also a text object.
+* `,b` is like `b` but aware of camel and snake case; it's also a text object.
+* `,e` is like `e` but aware of camel and snake case; it's also a text object.
+
+From [indentwise](https://github.com/jeetsukumaran/vim-indentwise#readme):
+
+* `[-` moves to *previous* line of *lesser* indent than the current line.
+* `[+` moves to *previous* line of *greater* indent than the current line.
+* `[=` moves to *previous* line of *same* indent as the current line that is separated from the current line by lines of different indents.
+* `]-` moves to *next* line of *lesser* indent than the current line.
+* `]+` moves to *next* line of *greater* indent than the current line.
+* `]=` moves to *next* line of *same* indent as the current line that is separated from the current line by lines of different indents.
+* `{count}[_` moves to *previous* line with indent-level of `{count}`.
+* `{count}]_` moves to *next* line with indent-level of `{count}`.
+* `[%` moves to beginning of indent-block scope (i.e., move to the line just after the previous line of lesser indent); repeat for `{count}` outer scopes.
+* `]%` moves to end of indent-block scope (i.e., move to the line just before the next line of lesser indent); repeat for `{count}` outer scopes.
 
 ### Select
 
 * `gV` selects last edited or pasted region.
-* `g/` selects next nearest search result.
-* `g?` selects previous nearest search result.
 
 ### Yank
 
 * `Y` yanks from cursor to end of line, like Vim's `C` and `D` shortcuts.
 * `<Leader>y` copies the current visual selection to the system clipboard.
 
-### Format
-
-Indent:
-* `<Leader>=<Tab>` disables "2 spaces equals 1 tab" indentation style.
-* `<Leader>=<Space>` enables "2 spaces equals 1 tab" indentation style.
-
-Decorate:
-* `<Leader>=-` inserts or updates section separator at end of current line.
-* `<Leader>=_` repeats last character to the maximum width of current line.
-
-Markdown:
-* `<Leader>=1` formats current line as a top-level heading in Markdown.
-* `<Leader>=2` formats current line as a second-level heading in Markdown.
-* `<Leader>=`\` converts Markdown indented code block into fenced code block.
-* `<Leader>=|` converts Markdown table heading into a heading/body separator.
-
 ### Toggle
 
-Options:
-* `coN` toggles relative line numbering.
-* `cof` toggles automatic formatting.
-* `cop` toggles paste mode.
+[Unimpaired.vim](https://github.com/tpope/vim-unimpaired#readme):
+
+* `coc` toggles highlighting the current line.
+* `coh` toggles highlighting search results.
+* `col` toggles displaying non-printable characters.
+* `con` toggles line numbering.
+* `cor` toggles relative line numbering.
 * `cos` toggles spell check.
-* `coz` toggles code folding.
+* `cou` toggles highlighting the current column.
 
-### Diff
+### Auto-completion
 
-* `<Leader>db` diffs current buffer.
-* `<Leader>df` diffs current buffer against original file.
-* `<Leader>dl` puts change into left-hand buffer in 3-way diff.
-* `<Leader>dr` puts change into right-hand buffer in 3-way diff.
-* `<Leader>dL` obtains change from left-hand buffer in 3-way diff.
-* `<Leader>dR` obtains change from right-hand buffer in 3-way diff.
-* `<Leader>du` updates differences; run this after you make changes.
-* `<Leader>dq` quits diff mode.
+See [NeoComplete.vim](https://github.com/Shougo/neocomplete.vim#readme)
+and [NeoSnippet.vim](https://github.com/Shougo/neosnippet.vim#readme).
+
+In insert mode, when the auto-completion pop-up menu appears:
+
+* `<Return>` accepts chosen completion and starts new line.
+* `<Tab>` cycles through completion menu or snippet anchors.
+* `<C-j>` expands snippet for chosen completion.
+* `<C-e>` accepts common prefix of completion choices.
+* `<C-u>` forgets chosen completion so you can choose again.
+* `<C-g>` cancels completion.
+
+### Git integration
+
+See [Magit](https://github.com/jreybert/vimagit#readme)
+and [Fugitive.vim](https://github.com/tpope/fugitive#readme)
+and [Extradite.vim](https://github.com/int3/vim-extradite#readme)
+and [GitGutter.vim](https://github.com/airblade/vim-gitgutter#readme).
 
 ## URxvt integration
 
@@ -501,5 +804,7 @@ Vim configuration:
 * http://tammersaleh.com/posts/the-modern-vim-config-with-pathogen
 * http://vim.wikia.com/wiki/Single_tags_file_for_a_source_tree
 * http://vimcasts.org/episodes/bubbling-text/
+* http://www.codeography.com/2013/06/17/replacing-all-the-things-with-unite-vim.html
+* http://www.reddit.com/r/vim/comments/1giij9/list_you_favorite_plugins/calvpr9
 * https://sunaku.github.io/switching-from-jedit-to-vim.html
 * https://sunaku.github.io/vim-script-management-system.html

@@ -1,0 +1,5 @@
+call shortcut#map('<Space> C t', 'Merge conflict -> Keep their version', 'ConflictMarkerThemselves')
+call shortcut#map('<Space> C o', 'Merge conflict -> Keep our version', 'ConflictMarkerOurselves')
+call shortcut#map('<Space> C b', 'Merge conflict -> Keep both versions', 'ConflictMarkerBoth')
+call shortcut#map('<Space> C n', 'Merge conflict -> Drop all versions', 'ConflictMarkerNone')
+call shortcut#map('<Space> / C', 'Search -> Merge conflicts', 'call feedkeys("/^[<=>]\\{7\\}\\(\\s.*\\|$\\)/\<CR>", "n")')
