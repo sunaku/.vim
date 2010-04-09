@@ -1,4 +1,4 @@
-# sunaku.vim configuration (config branch)
+# sunaku.vim distribution (bundle branch)
 
 Unlike most Vim configurations you find on the Internet, this one is modular:
 *not* a single giant `vimrc` file!  May it help you journey the lands of Vim.
