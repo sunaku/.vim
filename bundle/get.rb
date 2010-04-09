@@ -83,7 +83,7 @@ Dir['*.get'].each do |get_file|
       File.open(download_file, 'wb') {|f| f << download.body }
 
       # extract new version
-      mkdir extract_dir = File.join(download_dir, '__extract__')
+      mkdir extract_dir = download_file + '.extract'
 
       case download_type = File.extname(download_file)
       when '.vim'
