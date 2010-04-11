@@ -6,8 +6,8 @@
 " http://push.cx/2008/256-color-xterms-in-ubuntu
 " http://tammersaleh.com/posts/the-modern-vim-config-with-pathogen
 
-" append bundle/* subdirectories in the runtimepath to the runtimepath
-let &rtp = join([&rtp] + split(globpath(&rtp, 'bundle/*/'), "\n"), ',')
+" append all bundle/*/{,after/} subdirs in the runtimepath to the runtimepath
+let &rtp = tr(join([&rtp, globpath(&rtp, 'bundle/*/'), globpath(&rtp, 'bundle/*/after/')], ','), "\n", ',')
 
 source ~/.vim/vimrc_example.vim
 
