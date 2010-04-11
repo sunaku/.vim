@@ -6,8 +6,8 @@
 " http://push.cx/2008/256-color-xterms-in-ubuntu
 " http://tammersaleh.com/posts/the-modern-vim-config-with-pathogen
 
-source ~/.vim/bundle/pathogen/plugin/pathogen.vim
-let &rtp = pathogen#join(&rtp, pathogen#glob_directories('~/.vim/bundle/*'))
+" append bundle/* subdirectories in the runtimepath to the runtimepath
+let &rtp = join([&rtp] + split(globpath(&rtp, 'bundle/*/'), "\n"), ',')
 
 source ~/.vim/vimrc_example.vim
 
