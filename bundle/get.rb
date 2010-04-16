@@ -85,25 +85,25 @@ Dir['*.get'].each do |get_file|
       # extract new version
       mkdir extract_dir = download_file + '.extract'
 
-      case download_type = File.extname(download_file)
-      when '.vim'
+      case download_file
+      when /\.vim$/
         mkdir plugin_dir = File.join(extract_dir, 'plugin')
         mv download_file, plugin_dir
 
-      when '.zip'
+      when /\.zip$/
         sh 'unzip', '-d', extract_dir, download_file
 
-      when '.tar'
+      when /\.tar$/
         sh 'tar', '-x', '-C', extract_dir, '-f', download_file
 
-      when '.tar.gz', '.tgz'
+      when /\.tar\.gz$/, /\.tgz$/
         sh 'tar', '-x', '-C', extract_dir, '-f', download_file, '--gzip'
 
-      when '.tar.bz2', '.tbz'
+      when /\.tar\.bz2?$/, /\.tbz$/
         sh 'tar', '-x', '-C', extract_dir, '-f', download_file, '--bzip2'
 
       else
-        raise "don't know how to extract #{download_type} files"
+        raise "don't know how to extract #{download.filename}"
       end
 
       # install new version
