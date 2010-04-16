@@ -112,13 +112,6 @@ Dir['*.get'].each do |get_file|
       end
 
       mv extract_dir, get_dir
-
-      # index help topics
-      doc_dir = File.join(get_dir, 'doc')
-
-      if File.directory? doc_dir
-        sh "vim -u NONE -c 'helptags #{doc_dir.inspect}' -c quit"
-      end
     end
 
     # update the get file to reflect the newly installed version
