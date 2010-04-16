@@ -172,22 +172,46 @@ source ~/.vim/vimrc_example.vim
 
     " highlight text that exceeds the textwidth limit
     " http://vim.wikia.com/wiki/Highlight_long_lines
-    autocmd BufWinEnter * :call ApplyTextWidthOverflowHighlighting()
-    function! ApplyTextWidthOverflowHighlighting()
-      if &textwidth > 0 && !exists('w:text_width_overflow_highlighting')
-        let w:text_width_overflow_highlighting =
+    autocmd BufWinEnter * :call ApplyTextwidthOverflowHighlighting()
+    function! ApplyTextwidthOverflowHighlighting()
+      " remove the previous application in this window
+      if exists('w:textwidth_overflow_highlighting_match') &&
+            \ exists('w:textwidth_overflow_highlighting_width') &&
+            \ (
+            \   exists('b:textwidth_overflow_highlighting_disabled') ||
+            \   w:textwidth_overflow_highlighting_width != &textwidth
+            \ )
+
+        call matchdelete(w:textwidth_overflow_highlighting_match)
+        unlet w:textwidth_overflow_highlighting_match
+        unlet w:textwidth_overflow_highlighting_width
+      endif
+
+      " perform new application in this window
+      if exists('b:textwidth_overflow_highlighting_disabled') ||
+            \ (
+            \   exists('w:textwidth_overflow_highlighting_width') &&
+            \   w:textwidth_overflow_highlighting_width == &textwidth
+            \ )
+
+        " nothing to do
+        return
+
+      elseif &textwidth > 0
+        let w:textwidth_overflow_highlighting_match =
               \ matchadd('WarningMsg', '\%>'. &textwidth .'v.\+', -1)
+        let w:textwidth_overflow_highlighting_width = &textwidth
       endif
     endfunction
 
-    nnoremap <Leader>tw :call ToggleTextWidthOverflowHighlighting()<Enter>
-    function! ToggleTextWidthOverflowHighlighting()
-      if exists('w:text_width_overflow_highlighting')
-        call matchdelete(w:text_width_overflow_highlighting)
-        unlet w:text_width_overflow_highlighting
+    nnoremap <Leader>tw :call ToggleTextwidthOverflowHighlighting()<Enter>
+    function! ToggleTextwidthOverflowHighlighting()
+      if exists('b:textwidth_overflow_highlighting_disabled')
+        unlet b:textwidth_overflow_highlighting_disabled
       else
-        call ApplyTextWidthOverflowHighlighting()
+        let b:textwidth_overflow_highlighting_disabled = 1
       endif
+      call ApplyTextwidthOverflowHighlighting()
     endfunction
 
   "---------------------------------------------------------------------------
