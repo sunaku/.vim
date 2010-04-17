@@ -85,9 +85,9 @@ source ~/.vim/vimrc_example.vim
   autocmd FileType gitcommit setlocal textwidth=72 nofoldenable
   autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
   autocmd FileType text,yaml,eruby,haml,sass setlocal foldmethod=indent
-  autocmd FileType haml setlocal textwidth=0
+  autocmd FileType qf,html,haml setlocal textwidth=0
   autocmd FileType mail setlocal textwidth=68
-  autocmd FileType diff setlocal textwidth+=1 " extra char for +/-/ indicators
+  autocmd FileType diff setlocal textwidth+=1 " extra char for +/- indicators
 
   " allow leading space before the initial "%" in shorthand eRuby directives
   " this snippet is originally from /usr/share/vim/vim72/syntax/eruby.vim:58
