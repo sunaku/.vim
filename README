@@ -18,35 +18,35 @@ Installation:
   git clone git://github.com/sunaku/.vim.git ~/.vim
   ln -s ~/.vim/config.vim ~/.vimrc
 
-Plugin management:
+Bundle management:
 
-  Plugins (also known as "Vim scripts") are installed
+  Bundles (also known as "Vim scripts") are installed
   into their own, self-contained subdirectories inside
   the bundle/ directory.  They are dynamically added
   to Vim's runtimepath (at the top of config.vim) so
   that Vim knows about them and loads them normally.
 
-  Installing or upgrading plugins:
+  Installing or upgrading bundles:
 
     cd ~/.vim/bundle/
     ruby get.rb         # install/upgrade
     sh doc.sh           # index helptags
 
-  Adding plugins:
+  Adding bundles:
 
     cd ~/.vim/bundle/
     #
     # XXX is the ID number from URLs such as:
     # http://vim.org/scripts/script.php?script_id=XXX
     #
-    # YYY is the name (your choice) of the plugin
+    # YYY is the name (your choice) of the bundle
     #
     echo 'script_id: XXX' > YYY.get
 
-  Removing plugins:
+  Removing bundles:
 
     cd ~/.vim/bundle/
     #
-    # YYY is the name (your choice) of the plugin
+    # YYY is the name (your choice) of the bundle
     #
     rm -rf YYY.get YYY/
