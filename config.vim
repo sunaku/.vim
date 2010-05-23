@@ -139,6 +139,10 @@ source ~/.vim/vimrc_example.vim
   " editor
   "---------------------------------------------------------------------------
 
+    " treat wrapped lines like real lines
+    nnoremap <Up> gk
+    nnoremap <Down> gj
+
     nnoremap <Leader>q :q<Enter>
     nnoremap <Leader>Q :qa<Enter>
 
