@@ -70,11 +70,11 @@ Dir['*.get'].each do |get_file|
     link.href.start_with? 'download_script.php?src_id='
   end or raise "no versions found for script_id=#{script_id}"
 
-  newest_src_id = newest_version_link.href[/\d+$/].to_i
-  current_src_id = get_info['src_id'].to_i
+  newest_version = newest_version_link.href[/\d+$/].to_i
+  current_version = get_info['src_id'].to_i
 
-  if newest_src_id > current_src_id or not File.exist? get_dir
-    puts "#{get_file} is out of date (newest=#{newest_src_id})"
+  if newest_version > current_version or not File.exist? get_dir
+    puts "#{get_file} is out of date (newest=#{newest_version})"
 
     Dir.mktmpdir do |download_dir|
       # download new version
@@ -108,14 +108,14 @@ Dir['*.get'].each do |get_file|
 
       # install new version
       if File.exist? get_dir
-        mv get_dir, [get_dir, current_src_id].join('@')
+        mv get_dir, [get_dir, current_version].join('@')
       end
 
       mv extract_dir, get_dir
     end
 
     # update the get file to reflect the newly installed version
-    get_info['src_id'] = newest_src_id
+    get_info['src_id'] = newest_version
     File.open(get_file, 'w') {|f| f << get_info.to_yaml }
   end
 
