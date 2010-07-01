@@ -283,8 +283,8 @@ source ~/.vim/vimrc_example.vim
     execute "nnoremap \e\e[6~ <C-W>w"
 
     nnoremap <A-1> <C-W>o
-    nnoremap <A-2> <C-W>s <C-W><Down>
-    nnoremap <A-3> <C-W>v <C-W><Right>
+    nnoremap <A-2> :rightbelow split<Enter>
+    nnoremap <A-3> :rightbelow vsplit<Enter>
     nnoremap <A-4> <C-W>c
     nnoremap <A-5> <C-W>=
     nnoremap <A-7> <C-W>_
