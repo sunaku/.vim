@@ -17,14 +17,16 @@ source ~/.vim/vimrc_example.vim
 " appearance
 "-----------------------------------------------------------------------------
 
-  if &t_Co == 256 || has('gui_running')
+  if has('gui_running')
+    colorscheme wombat
+    " remove italic styling
+    highlight String gui=none
+    highlight Comment gui=none
+
+  elseif &t_Co == 256
     colorscheme lucius
-
     " make comments brighter
-    highlight Comment ctermfg=244 guifg=#808080
-
-  elseif &t_Co == 88
-    colorscheme wombat256
+    highlight Comment ctermfg=244
 
   elseif &t_Co > 2
     set background=dark          " optimize colors for dark terminals
