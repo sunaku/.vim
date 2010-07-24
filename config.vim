@@ -26,7 +26,6 @@ if has('gui_running')
   colorscheme wombat
   " remove italic styling
   highlight String gui=none
-  highlight Comment gui=none
 
   set guifont=Monospace\ 11
   set guicursor+=a:blinkwait0   " prevent the cursor from blinking
