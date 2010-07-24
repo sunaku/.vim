@@ -5,6 +5,7 @@
 " http://items.sjbach.com/319/configuring-vim-right
 " http://push.cx/2008/256-color-xterms-in-ubuntu
 " http://tammersaleh.com/posts/the-modern-vim-config-with-pathogen
+" http://vim.wikia.com/wiki/Single_tags_file_for_a_source_tree
 
 " append all bundles in the runtimepath to the runtimepath
 let s:bundles = tr(globpath(&rtp, 'bundle/*/'), "\n", ',')
@@ -57,6 +58,7 @@ source ~/.vim/vimrc_example.vim
   set history=1000               " remember this many commands & searches
   set confirm                    " ask user before aborting an action
   set autochdir                  " switch to current file's parent directory
+  set tags=tags;                 " ... and search ancestors for ctags files
   set hidden                     " you can change buffers without saving
 
   set wildmenu                   " turn on command line completion wild style
