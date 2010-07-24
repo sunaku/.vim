@@ -31,3 +31,6 @@
 [submodule "bundle/abolish"]
 	path = bundle/abolish
 	url = git://github.com/tpope/vim-abolish.git
+[submodule "bundle/NERDTree"]
+	path = bundle/NERDTree
+	url = git://github.com/scrooloose/nerdtree.git
