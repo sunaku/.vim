@@ -18,6 +18,15 @@ Installation:
   git clone git://github.com/sunaku/.vim.git ~/.vim
   ln -s ~/.vim/config.vim ~/.vimrc
 
+  # install bundles
+  cd ~/.vim
+  git submodule init
+  git submodule update
+
+  # index bundle docs
+  cd ~/.vim/bundle
+  sh doc.sh
+
 Bundle management:
 
   Bundles (also known as "Vim scripts") are installed
