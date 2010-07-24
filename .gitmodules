@@ -34,3 +34,6 @@
 [submodule "bundle/NERDTree"]
 	path = bundle/NERDTree
 	url = git://github.com/scrooloose/nerdtree.git
+[submodule "bundle/NERDCommenter"]
+	path = bundle/NERDCommenter
+	url = git://github.com/scrooloose/nerdcommenter
