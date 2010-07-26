@@ -47,7 +47,7 @@ set novisualbell                " don't flash the screen
 set laststatus=2                " always show status line
 
 set foldenable
-set foldmethod=syntax           " syntax highlighting rules define folds
+set foldmethod=indent           " indentation defines folds
 set foldlevelstart=10           " close folds below this depth, initially
 
 "-----------------------------------------------------------------------------
