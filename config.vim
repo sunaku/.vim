@@ -327,18 +327,6 @@ nnoremap z<Up> zk
 nnoremap z<Down> zj
 nnoremap zp zk
 nnoremap zn zj
-nnoremap <A-Up> zk
-nnoremap <A-Down> zj
-
-nnoremap <Space> zo
-nnoremap <S-Space> zO
-nnoremap <Backspace> zc
-nnoremap <S-Backspace> zM zv zc
-
-nnoremap <A-Left> zm
-nnoremap <AS-Left> zM
-nnoremap <A-Right> zr
-nnoremap <AS-Right> zR
 
 "---------------------------------------------------------------------------
 " rails
