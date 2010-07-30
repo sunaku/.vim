@@ -170,8 +170,11 @@ nnoremap <C-L> :nohlsearch<Enter><C-L>
 nmap <Leader>' mzcs"'`z
 nmap <Leader>" mzcs'"`z
 
+" repeat last character to the maximum width of current line
+nnoremap <Leader>_ $y$80p<Esc>:execute 's/\%>'. &textwidth .'v.//g'<Enter>
+
 " insert or update section separator at end of current line
-nnoremap <Leader>- 80A-<Esc>:execute 's/\%>'. &textwidth .'v.//g'<Enter>
+nmap <Leader>- A-<Esc><Leader>_
 
 "---------------------------------------------------------------------------
 " toggles
