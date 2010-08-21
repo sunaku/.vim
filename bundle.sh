@@ -3,8 +3,8 @@
 
 git submodule init
 git submodule | awk '/^-/ { print $2 }' | xargs -r git submodule update
+git submodule foreach git pull origin master
 
 cd bundle/
 ruby get.rb
-sh git.sh
 sh doc.sh
