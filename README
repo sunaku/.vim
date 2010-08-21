@@ -38,8 +38,9 @@ Bundle management:
   Installing or upgrading bundles:
 
     cd ~/.vim/bundle/
-    ruby get.rb         # install/upgrade
-    sh doc.sh           # index helptags
+    ruby get.rb         # install or upgrade Vim scripts
+    sh git.sh           # upgrade existing Git submodules
+    sh doc.sh           # index Vim helptags in bundles
 
   Adding bundles:
 

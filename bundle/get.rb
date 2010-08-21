@@ -54,7 +54,7 @@ require 'tmpdir'
 require 'yaml'
 
 Dir['*.get'].each do |get_file|
-  puts '', get_file
+  puts get_file
   get_info = YAML.load_file(get_file)
 
   script_id = get_info['script_id'] or
@@ -119,5 +119,5 @@ Dir['*.get'].each do |get_file|
     File.open(get_file, 'w') {|f| f << get_info.to_yaml }
   end
 
-  puts "#{get_file} is up to date"
+  puts "#{get_file} is up to date", nil
 end
