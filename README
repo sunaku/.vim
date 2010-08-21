@@ -1,8 +1,11 @@
 sunaku's Vim configuration
 ==========================
 
-At long last, I have completely switched from jEdit to Vim,
-and this is the Vim configuration that made it all possible.
+At long last, I have completely switched from jEdit to Vim [1],
+and this [2] is the Vim configuration that made it all possible.
+
+[1] http://snk.tuxfamily.org/log/switching-from-jedit-to-vim.html
+[2] http://snk.tuxfamily.org/log/vim-script-management-system.html
 
 Dependencies:
 
@@ -37,7 +40,7 @@ Bundle management:
 
   Adding bundles:
 
-    cd ~/.vim/bundle/
+    cd ~/.vim/bundle
     #
     # XXX is the ID number from URLs such as:
     # http://vim.org/scripts/script.php?script_id=XXX
@@ -48,7 +51,7 @@ Bundle management:
 
   Removing bundles:
 
-    cd ~/.vim/bundle/
+    cd ~/.vim/bundle
     #
     # YYY is the name (your choice) of the bundle
     #
