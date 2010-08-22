@@ -7,7 +7,7 @@ and this [2] is the Vim configuration that made it all possible.
 [1] http://snk.tuxfamily.org/log/switching-from-jedit-to-vim.html
 [2] http://snk.tuxfamily.org/log/vim-script-management-system.html
 
-Dependencies:
+Prerequisites:
 
   Vim 7.2 or newer
 
@@ -38,21 +38,39 @@ Bundle management:
     cd ~/.vim
     sh bundle.sh
 
-  Adding bundles:
+  Adding bundles from vim.org:
 
-    cd ~/.vim/bundle
     #
     # XXX is the ID number from URLs such as:
     # http://vim.org/scripts/script.php?script_id=XXX
     #
     # YYY is the name (your choice) of the bundle
     #
+    cd ~/.vim/bundle
     echo 'script_id: XXX' > YYY.get
 
-  Removing bundles:
+  Removing bundles from vim.org:
 
-    cd ~/.vim/bundle
     #
     # YYY is the name (your choice) of the bundle
     #
+    cd ~/.vim/bundle
     rm -rf YYY.get YYY/
+
+  Adding bundles from Git repositories:
+
+    #
+    # XXX is the URL of the bundle Git repository
+    #
+    # YYY is the name (your choice) of the bundle
+    #
+    git submodule add XXX bundle/YYY
+    git commit bundle/YYY -m "added bundle YYY"
+
+  Removing bundles from Git repositories:
+
+    #
+    # YYY is the name (your choice) of the bundle
+    #
+    git rm --cached bundle/YYY
+    git commit bundle/YYY -m "removed bundle YYY"
