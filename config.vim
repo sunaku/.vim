@@ -15,10 +15,10 @@
 " maintained by Vim's creator: the great Bram Moolenaar himself!
 execute 'source '. globpath(&runtimepath, 'vimrc_example.vim')
 
-" append all bundles in the runtimepath to the runtimepath
+" register bundles found in the runtimepath
 let s:bundles = tr(globpath(&runtimepath, 'bundle/*/'), "\n", ',')
 let s:afters = tr(globpath(s:bundles, 'after/'), "\n", ',')
-let &runtimepath = join([&runtimepath, s:bundles, s:afters], ',')
+let &runtimepath = join([s:bundles, &runtimepath, s:afters], ',')
 
 "-----------------------------------------------------------------------------
 " appearance
