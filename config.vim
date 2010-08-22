@@ -11,12 +11,14 @@
 " bootstrap
 "-----------------------------------------------------------------------------
 
+" base this configuration on the official example vimrc, which is
+" maintained by Vim's creator: the great Bram Moolenaar himself!
+execute 'source '. globpath(&runtimepath, 'vimrc_example.vim')
+
 " append all bundles in the runtimepath to the runtimepath
-let s:bundles = tr(globpath(&rtp, 'bundle/*/'), "\n", ',')
+let s:bundles = tr(globpath(&runtimepath, 'bundle/*/'), "\n", ',')
 let s:afters = tr(globpath(s:bundles, 'after/'), "\n", ',')
 let &runtimepath = join([&runtimepath, s:bundles, s:afters], ',')
-
-source ~/.vim/vimrc_example.vim
 
 "-----------------------------------------------------------------------------
 " appearance
