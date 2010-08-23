@@ -11,9 +11,12 @@
 " bootstrap
 "-----------------------------------------------------------------------------
 
-" base this configuration on the official example vimrc, which is
-" maintained by Vim's creator: the great Bram Moolenaar himself!
-execute 'source '. globpath(&runtimepath, 'vimrc_example.vim')
+" base this configuration on the official example vimrc,
+" which is maintained by the great Bram Moolenaar himself!
+let s:example = globpath(&runtimepath, 'vimrc_example.vim')
+if !empty(s:example)
+  execute 'source '. s:example
+endif
 
 " register bundles found in the runtimepath
 let s:bundles = tr(globpath(&runtimepath, 'bundle/*/'), "\n", ',')
@@ -134,7 +137,7 @@ endfunction
 
 " make the non-graphical Vim recognize <Alt><Number> key combinations
 " http://vim.wikia.com/wiki/Fix_meta-keys_that_break_out_of_Insert_mode
-if ! has('gui_running')
+if !has('gui_running')
   let i = 0
   while i < 10
     exec "set <A-". i .">=\e". i
