@@ -27,29 +27,17 @@ let &runtimepath = join([s:bundles, &runtimepath, s:afters], ',')
 " appearance
 "-----------------------------------------------------------------------------
 
-if has('gui_running')
-  colorscheme wombat
-  " remove italic styling
-  highlight String gui=none
-
-  set guifont=Monospace\ 11
-  set guicursor+=a:blinkwait0   " prevent the cursor from blinking
-
-elseif &t_Co == 256
-  colorscheme lucius
-  " make comments brighter
-  highlight Comment ctermfg=244
-
-elseif &t_Co > 2
-  set background=dark           " optimize colors for dark terminals
-endif
-
-highlight link MyTagListFileName Pmenu
+if has('gui_running') || &t_Co > 8
+  colorscheme bclear
+else
+  set background=dark
+end
 
 set number                      " show line numbers
 set scrolloff=3                 " context lines around cursor
 set novisualbell                " don't flash the screen
 set laststatus=2                " always show status line
+set guicursor+=a:blinkwait0     " disable cursor blink in gvim
 
 set foldenable
 set foldmethod=indent           " indentation defines folds
