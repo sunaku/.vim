@@ -43,3 +43,6 @@
 [submodule "bundle/supertab"]
 	path = bundle/supertab
 	url = git://github.com/ervandew/supertab.git
+[submodule "bundle/0-snipMate/snippets"]
+	path = bundle/0-snipMate/snippets
+	url = git://github.com/scrooloose/snipmate-snippets.git
