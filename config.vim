@@ -29,8 +29,10 @@ let &runtimepath = join([s:bundles, &runtimepath, s:afters], ',')
 
 if has('gui_running') || &t_Co > 8
   colorscheme bclear
-else
+elseif &term == 'linux'
   set background=dark
+else
+  set background=light
 end
 
 set number                      " show line numbers
