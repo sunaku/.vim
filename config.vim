@@ -29,6 +29,11 @@ let &runtimepath = join([s:bundles, &runtimepath, s:afters], ',')
 
 if has('gui_running') || &t_Co > 8
   colorscheme bclear
+  " prevent cursor disappearance when matching parenthesis on white background
+  " https://bbs.archlinux.org/viewtopic.php?pid=832906#p832906
+  if !has('gui_running')
+    hi MatchParen   guifg=#323232   guibg=#f00078
+  end
 elseif &term == 'linux'
   set background=dark
 else
