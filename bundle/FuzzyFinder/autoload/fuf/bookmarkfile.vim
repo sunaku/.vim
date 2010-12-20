@@ -1,42 +1,46 @@
 "=============================================================================
-" Copyright (c) 2007-2009 Takeshi NISHIDA
+" Copyright (c) 2010 Takeshi NISHIDA
 "
 "=============================================================================
 " LOAD GUARD {{{1
 
-if exists('g:loaded_autoload_fuf_bookmark') || v:version < 702
+if !l9#guardScriptLoading(expand('<sfile>:p'), 0, 0, [])
   finish
 endif
-let g:loaded_autoload_fuf_bookmark = 1
 
 " }}}1
 "=============================================================================
 " GLOBAL FUNCTIONS {{{1
 
 "
-function fuf#bookmark#createHandler(base)
+function fuf#bookmarkfile#createHandler(base)
   return a:base.concretize(copy(s:handler))
 endfunction
 
 "
-function fuf#bookmark#getSwitchOrder()
-  return g:fuf_bookmark_switchOrder
+function fuf#bookmarkfile#getSwitchOrder()
+  return g:fuf_bookmarkfile_switchOrder
 endfunction
 
 "
-function fuf#bookmark#renewCache()
+function fuf#bookmarkfile#getEditableDataNames()
+  return ['items']
 endfunction
 
 "
-function fuf#bookmark#requiresOnCommandPre()
+function fuf#bookmarkfile#renewCache()
+endfunction
+
+"
+function fuf#bookmarkfile#requiresOnCommandPre()
   return 0
 endfunction
 
 "
-function fuf#bookmark#onInit()
-  call fuf#defineLaunchCommand('FufBookmark', s:MODE_NAME, '""')
-  command! -bang -narg=?        FufAddBookmark               call s:bookmarkHere(<q-args>)
-  command! -bang -narg=0 -range FufAddBookmarkAsSelectedText call s:bookmarkHere(s:getSelectedText())
+function fuf#bookmarkfile#onInit()
+  call fuf#defineLaunchCommand('FufBookmarkFile', s:MODE_NAME, '""', [])
+  command! -bang -narg=?        FufBookmarkFileAdd               call s:bookmarkHere(<q-args>)
+  command! -bang -narg=0 -range FufBookmarkFileAddAsSelectedText call s:bookmarkHere(l9#getSelectedText())
 endfunction
 
 " }}}1
@@ -45,23 +49,6 @@ endfunction
 
 let s:MODE_NAME = expand('<sfile>:t:r')
 let s:OPEN_TYPE_DELETE = -1
-
-"
-function s:getSelectedText()
-  let reg_ = [@", getregtype('"')]
-  let regA = [@a, getregtype('a')]
-  if mode() =~# "[vV\<C-v>]"
-    silent normal! "aygv
-  else
-    let pos = getpos('.')
-    silent normal! gv"ay
-    call setpos('.', pos)
-  endif
-  let text = @a
-  call setreg('"', reg_[0], reg_[1])
-  call setreg('a', regA[0], regA[1])
-  return text
-endfunction
 
 " opens a:path and jumps to the line matching to a:pattern from a:lnum within
 " a:range. if not found, jumps to a:lnum.
@@ -74,7 +61,7 @@ endfunction
 "
 function s:getMatchingLineNumber(lines, pattern, lnumBegin)
   let l = min([a:lnumBegin, len(a:lines)])
-  for [l0, l1] in map(range(0, g:fuf_bookmark_searchRange),
+  for [l0, l1] in map(range(0, g:fuf_bookmarkfile_searchRange),
         \             '[l + v:val, l - v:val]')
     if l0 <= len(a:lines) && a:lines[l0 - 1] =~# a:pattern
       return l0
@@ -93,7 +80,7 @@ endfunction
 "
 function s:bookmarkHere(word)
   if !empty(&buftype) || expand('%') !~ '\S'
-    call fuf#echoWithHl('Can''t bookmark this buffer.', 'WarningMsg')
+    call fuf#echoWarning('Can''t bookmark this buffer.')
     return
   endif
   let item = {
@@ -104,14 +91,14 @@ function s:bookmarkHere(word)
         \   'pattern' : s:getLinePattern(line('.')),
         \   'time' : localtime(),
         \ }
-  let item.word = fuf#inputHl('Bookmark as:', item.word, 'Question')
+  let item.word = l9#inputHl('Question', '[fuf] Bookmark as:', item.word)
   if item.word !~ '\S'
-    call fuf#echoWithHl('Canceled', 'WarningMsg')
+    call fuf#echoWarning('Canceled')
     return
   endif
-  let info = fuf#loadInfoFile(s:MODE_NAME)
-  call insert(info.data, item)
-  call fuf#saveInfoFile(s:MODE_NAME, info)
+  let items = fuf#loadDataFile(s:MODE_NAME, 'items')
+  call insert(items, item)
+  call fuf#saveDataFile(s:MODE_NAME, 'items', items)
 endfunction
 
 "
@@ -137,7 +124,7 @@ endfunction
 
 "
 function s:handler.getPrompt()
-  return fuf#formatPrompt(g:fuf_bookmark_prompt, self.partialMatching)
+  return fuf#formatPrompt(g:fuf_bookmarkfile_prompt, self.partialMatching, '')
 endfunction
 
 "
@@ -146,8 +133,8 @@ function s:handler.getPreviewHeight()
 endfunction
 
 "
-function s:handler.targetsPath()
-  return 0
+function s:handler.isOpenable(enteredPattern)
+  return 1
 endfunction
 
 "
@@ -158,7 +145,7 @@ endfunction
 
 "
 function s:handler.makePreviewLines(word, count)
-  let item = s:findItem(self.info.data, a:word)
+  let item = s:findItem(fuf#loadDataFile(s:MODE_NAME, 'items'), a:word)
   let lines = fuf#getFileLines(item.path)
   if empty(lines)
     return []
@@ -175,13 +162,14 @@ endfunction
 
 "
 function s:handler.onOpen(word, mode)
-  if a:mode == s:OPEN_TYPE_DELETE
-    call filter(self.info.data, 'v:val.word !=# a:word')
-    call fuf#saveInfoFile(s:MODE_NAME, self.info)
-    call fuf#launch(s:MODE_NAME, self.lastPattern, self.partialMatching)
+  if a:mode ==# s:OPEN_TYPE_DELETE
+    let items = fuf#loadDataFile(s:MODE_NAME, 'items')
+    call filter(items, 'v:val.word !=# a:word')
+    call fuf#saveDataFile(s:MODE_NAME, 'items', items)
+    let self.reservedMode = self.getModeName()
     return
   else
-    let item = s:findItem(self.info.data, a:word)
+    let item = s:findItem(fuf#loadDataFile(s:MODE_NAME, 'items'), a:word)
     if !empty(item)
         call s:jumpToBookmark(item.path, a:mode, item.pattern, item.lnum)
     endif
@@ -194,9 +182,9 @@ endfunction
 
 "
 function s:handler.onModeEnterPost()
-  call fuf#defineKeyMappingInHandler(g:fuf_bookmark_keyDelete,
-        \                            'onCr(' . s:OPEN_TYPE_DELETE . ', 0)')
-  let self.items = copy(self.info.data)
+  call fuf#defineKeyMappingInHandler(g:fuf_bookmarkfile_keyDelete,
+        \                            'onCr(' . s:OPEN_TYPE_DELETE . ')')
+  let self.items = fuf#loadDataFile(s:MODE_NAME, 'items')
   call map(self.items, 'fuf#makeNonPathItem(v:val.word, strftime(g:fuf_timeFormat, v:val.time))')
   call fuf#mapToSetSerialIndex(self.items, 1)
   call map(self.items, 'fuf#setAbbrWithFormattedWord(v:val, 1)')
