@@ -337,6 +337,7 @@ nnoremap zn zj
 
 nnoremap <Leader>r :R
 nnoremap <Leader>R :A
+nnoremap <Leader>n :A<Enter>
 
 "---------------------------------------------------------------------------
 " syntastic
