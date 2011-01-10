@@ -8,3 +8,6 @@ git submodule foreach git pull origin master
 cd bundle/
 ruby get.rb
 sh doc.sh
+
+# remove because it conflicts with the better snippets in bundle/0-snipMate
+rm -rf bundle/snipMate/snippets
