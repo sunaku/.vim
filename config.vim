@@ -90,7 +90,7 @@ autocmd FileType make setlocal noexpandtab
 autocmd FileType gitcommit setlocal textwidth=72 nofoldenable
 autocmd FileType ruby,eruby setlocal complete-=i
 autocmd FileType text,yaml,eruby,haml,sass setlocal foldmethod=indent
-autocmd FileType qf,conf,html,haml setlocal textwidth=0
+autocmd FileType qf,conf,crontab,html,haml setlocal textwidth=0
 autocmd FileType mail setlocal textwidth=68
 autocmd FileType diff setlocal textwidth+=1 " extra char for +/- indicators
 
