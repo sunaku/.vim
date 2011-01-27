@@ -1,3 +1,8 @@
+" Avoid installing twice or when in unsupported Vim version.
+if exists('g:loaded_file_line') || (v:version < 700)
+	finish
+endif
+let g:loaded_file_line = 1
 
 function! s:gotoline()
 	let file = bufname("%")
@@ -6,19 +11,18 @@ function! s:gotoline()
 
 	if len(names) != 0 && filereadable(names[1])
 		let l:bufn = bufnr("%")
-		exec ":e " . names[1]
+		exec "keepalt edit " . names[1]
 		exec ":" . names[2]
-		exec ":bdelete " . l:bufn
+		exec ":bwipeout " l:bufn
 		if foldlevel(names[2]) > 0
 			exec ":foldopen!"
 		endif
 
 		if (names[4] != '')
-			exec "normal " . names[4] . "|"
+			exec "normal! " . names[4] . '|'
 		endif
 	endif
 
 endfunction
 
 autocmd! BufNewFile *:* nested call s:gotoline()
-
