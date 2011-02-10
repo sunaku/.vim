@@ -176,6 +176,9 @@ nnoremap <Leader>_ $y$80p<Esc>:execute 's/\%>'. &textwidth .'v.//g'<Enter>
 " insert or update section separator at end of current line
 nmap <Leader>- A-<Esc><Leader>_
 
+" find merge conflict markers
+nnoremap <Leader>/c :set hlsearch<Enter> /^[<=>]\{7\}/<Enter>
+
 "---------------------------------------------------------------------------
 " toggles
 "---------------------------------------------------------------------------
