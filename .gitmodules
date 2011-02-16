@@ -43,3 +43,6 @@
 [submodule "bundle/0-snipMate/snippets"]
 	path = bundle/0-snipMate/snippets
 	url = git://github.com/scrooloose/snipmate-snippets.git
+[submodule "bundle/coffee-script"]
+	path = bundle/coffee-script
+	url = git://github.com/kchmck/vim-coffee-script.git
