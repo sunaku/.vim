@@ -31,13 +31,10 @@ filetype plugin indent on
 " appearance
 "-----------------------------------------------------------------------------
 
-if has('gui_running') || &t_Co > 8
-  colorscheme bclear
-  " prevent cursor disappearance when matching parenthesis on white background
-  " https://bbs.archlinux.org/viewtopic.php?pid=832906#p832906
-  if !has('gui_running')
-    hi MatchParen   guifg=#323232   guibg=#f00078
-  end
+if has('gui_running')
+  colorscheme wombat
+elseif &t_Co > 8
+  colorscheme zenburn
 elseif &term == 'linux'
   set background=dark
 else
