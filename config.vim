@@ -129,7 +129,7 @@ endfunction
 " helper for testing out new shortcuts
 function! TestShortcut(shortcut)
   let label = substitute(a:shortcut, '[<>]', ' ', 'g')
-  exec "noremap ". a:shortcut ." :echo '". label ."'<Enter>"
+  execute "noremap ". a:shortcut ." :echo '". label ."'<Enter>"
 endfunction
 
 " make the non-graphical Vim recognize <Alt><Number> key combinations
@@ -137,9 +137,14 @@ endfunction
 if !has('gui_running')
   let i = 0
   while i < 10
-    exec "set <A-". i .">=\e". i
+    execute "set <A-". i .">=\e". i
     let i += 1
   endwhile
+endif
+
+" fix arrow keys in insert mode
+if &term == 'rxvt-unicode-256color'
+  execute "inoremap \e[OA <Up>"
 endif
 
 " quickly exit from Vim
