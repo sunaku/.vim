@@ -6,6 +6,7 @@
 " http://push.cx/2008/256-color-xterms-in-ubuntu
 " http://tammersaleh.com/posts/the-modern-vim-config-with-pathogen
 " http://vim.wikia.com/wiki/Single_tags_file_for_a_source_tree
+" http://vimcasts.org/episodes/bubbling-text/
 
 "-----------------------------------------------------------------------------
 " bootstrap
@@ -179,6 +180,9 @@ nmap <Leader>- A-<Esc><Leader>_
 
 " find merge conflict markers
 nnoremap <Leader>/c :set hlsearch<Enter> /^[<=>]\{7\}/<Enter>
+
+" visually select the text that was last edited or pasted
+nmap gV `[v`]
 
 "---------------------------------------------------------------------------
 " toggles
