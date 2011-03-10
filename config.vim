@@ -47,6 +47,7 @@ set scrolloff=3                 " context lines around cursor
 set novisualbell                " don't flash the screen
 set laststatus=2                " always show status line
 set guicursor+=a:blinkwait0     " disable cursor blink in gvim
+set guifont="Monospace 9"
 
 set colorcolumn=+1              " show textwidth limit
 highlight! link ColorColumn Folded
