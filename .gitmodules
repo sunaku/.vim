@@ -46,3 +46,33 @@
 [submodule "bundle/coffee-script"]
 	path = bundle/coffee-script
 	url = git://github.com/kchmck/vim-coffee-script.git
+[submodule "bundle/AutoClose"]
+	path = bundle/AutoClose
+	url = git://github.com/vim-scripts/AutoClose.git
+[submodule "bundle/Color-Sampler-Pack"]
+	path = bundle/Color-Sampler-Pack
+	url = git://github.com/vim-scripts/Color-Sampler-Pack.git
+[submodule "bundle/CSApprox"]
+	path = bundle/CSApprox
+	url = git://github.com/vim-scripts/CSApprox.git
+[submodule "bundle/file-line"]
+	path = bundle/file-line
+	url = git://github.com/vim-scripts/file-line.git
+[submodule "bundle/FuzzyFinder"]
+	path = bundle/FuzzyFinder
+	url = git://github.com/vim-scripts/FuzzyFinder.git
+[submodule "bundle/L9"]
+	path = bundle/L9
+	url = git://github.com/vim-scripts/L9.git
+[submodule "bundle/matchit"]
+	path = bundle/matchit
+	url = git://github.com/vim-scripts/matchit.zip.git
+[submodule "bundle/taglist"]
+	path = bundle/taglist
+	url = git://github.com/vim-scripts/taglist.vim.git
+[submodule "bundle/ack"]
+	path = bundle/ack
+	url = git://github.com/vim-scripts/ack.vim.git
+[submodule "bundle/ColorSamplerPack"]
+	path = bundle/ColorSamplerPack
+	url = git://github.com/vim-scripts/Color-Sampler-Pack.git
