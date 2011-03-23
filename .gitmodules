@@ -73,3 +73,6 @@
 [submodule "bundle/colorschemes"]
 	path = bundle/colorschemes
 	url = git://github.com/flazz/vim-colorschemes.git
+[submodule "bundle/0-colorschemes-lucius"]
+	path = bundle/0-colorschemes-lucius
+	url = git://github.com/vim-scripts/Lucius.git
