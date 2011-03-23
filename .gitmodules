@@ -49,9 +49,6 @@
 [submodule "bundle/AutoClose"]
 	path = bundle/AutoClose
 	url = git://github.com/vim-scripts/AutoClose.git
-[submodule "bundle/Color-Sampler-Pack"]
-	path = bundle/Color-Sampler-Pack
-	url = git://github.com/vim-scripts/Color-Sampler-Pack.git
 [submodule "bundle/CSApprox"]
 	path = bundle/CSApprox
 	url = git://github.com/vim-scripts/CSApprox.git
@@ -73,6 +70,6 @@
 [submodule "bundle/ack"]
 	path = bundle/ack
 	url = git://github.com/vim-scripts/ack.vim.git
-[submodule "bundle/ColorSamplerPack"]
-	path = bundle/ColorSamplerPack
-	url = git://github.com/vim-scripts/Color-Sampler-Pack.git
+[submodule "bundle/colorschemes"]
+	path = bundle/colorschemes
+	url = git://github.com/flazz/vim-colorschemes.git
