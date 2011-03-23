@@ -33,31 +33,12 @@ Bundle management:
   to Vim's runtimepath (at the top of config.vim) so
   that Vim knows about them and loads them normally.
 
-  Installing or upgrading bundles:
+  Installing and upgrading bundles:
 
     cd ~/.vim
     sh bundle.sh
 
-  Adding bundles from vim.org:
-
-    #
-    # XXX is the ID number from URLs such as:
-    # http://vim.org/scripts/script.php?script_id=XXX
-    #
-    # YYY is the name (your choice) of the bundle
-    #
-    cd ~/.vim/bundle
-    echo 'script_id: XXX' > YYY.get
-
-  Removing bundles from vim.org:
-
-    #
-    # YYY is the name (your choice) of the bundle
-    #
-    cd ~/.vim/bundle
-    rm -rf YYY.get YYY/
-
-  Adding bundles from Git repositories:
+  Adding bundles from any Git repository:
 
     #
     # XXX is the URL of the bundle Git repository
@@ -65,12 +46,23 @@ Bundle management:
     # YYY is the name (your choice) of the bundle
     #
     git submodule add XXX bundle/YYY
-    git commit bundle/YYY -m "added bundle YYY"
+    git commit -m "install YYY bundle" bundle/YYY
 
-  Removing bundles from Git repositories:
+  Adding bundles from vim-scripts.org on GitHub:
+
+    #
+    # XXX is the name of the Vim script repository
+    #
+    # YYY is the name (your choice) of the bundle
+    #
+    git submodule add git://github.com/vim-scripts/XXX.git bundle/YYY
+    git commit -m "install YYY bundle" bundle/YYY
+
+  Removing bundles:
 
     #
     # YYY is the name (your choice) of the bundle
     #
     git rm --cached bundle/YYY
-    git commit bundle/YYY -m "removed bundle YYY"
+    git commit -m "remove YYY bundle" bundle/YYY
+    git clean -fd bundle/YYY

@@ -1,12 +1,15 @@
 #!/bin/sh
-# Installs or upgrades all bundles defined in bundle/ as necessary.
+# Installs and upgrades Vim scripts in the bundle/ directory as necessary.
 
+git submodule sync
 git submodule init
 git submodule status | awk '/^-/ { print $2 }' | xargs -r git submodule update
 git submodule foreach git pull origin master
 
-rm -vrf bundle/snipMate/snippets/ # conflicts with bundle/0-snipMate/snippets/
+# index help documentation in bundles
+for dir in bundle/*/doc/; do
+  vim -u NONE -c "helptags $dir" -c quit
+done
 
-cd bundle/
-ruby get.rb
-sh doc.sh
+# resolve conflicts between bundles
+rm -rf bundle/snipMate/snippets/ # conflicts with bundle/0-snipMate/snippets/
