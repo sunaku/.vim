@@ -191,7 +191,11 @@ nmap <Leader>- A-<Esc><Leader>_
 nnoremap <Leader>/c :set hlsearch<Enter> /^[<=>]\{7\}/<Enter>
 
 " visually select the text that was last edited or pasted
-nmap gV `[v`]
+nnoremap gV `[v`]
+
+" use extended regular expression syntax when searching
+noremap ? ?\v
+noremap / /\v
 
 "---------------------------------------------------------------------------
 " toggles
