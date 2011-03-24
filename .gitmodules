@@ -76,3 +76,6 @@
 [submodule "bundle/0-colorschemes-lucius"]
 	path = bundle/0-colorschemes-lucius
 	url = git://github.com/vim-scripts/Lucius.git
+[submodule "bundle/narrow"]
+	path = bundle/narrow
+	url = git://github.com/kana/vim-narrow.git

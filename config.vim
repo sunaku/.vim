@@ -317,12 +317,20 @@ nnoremap <A-Right> zr
 nnoremap <A-S-Right> zR
 
 "---------------------------------------------------------------------------
+" narrow
+"---------------------------------------------------------------------------
+
+vnoremap <Leader>n :Narrow<Enter>
+nnoremap <Leader>N :Widen<Enter>
+
+"---------------------------------------------------------------------------
 " rails
 "---------------------------------------------------------------------------
 
 nnoremap <Leader>r :R
 nnoremap <Leader>R :A
-nnoremap <Leader>n :A<Enter>
+nnoremap <Leader>h :A<Enter>
+nnoremap <Leader>H :R<Enter>
 
 "---------------------------------------------------------------------------
 " syntastic
