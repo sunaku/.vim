@@ -350,3 +350,22 @@ let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_quiet_warnings=1
 let g:syntastic_disabled_filetypes=['haml', 'sass']
+
+"---------------------------------------------------------------------------
+" fugitive
+"---------------------------------------------------------------------------
+
+nnoremap <Leader>gb :Gblame<Enter>
+nnoremap <Leader>gc :Gcommit<Enter>
+nnoremap <Leader>gd :Gdiff<Enter>
+nnoremap <Leader>ge :Gedit<Enter>
+nnoremap <Leader>gg :Ggrep<Space>
+nnoremap <Leader>g. :Gcd<Enter>
+nnoremap <Leader>gl :Glog<Enter>
+nnoremap <Leader>gm :Gmove<Space>
+nnoremap <Leader>gr :Gread<Enter>
+nnoremap <Leader>gs :Gstatus<Enter>
+nnoremap <Leader>gw :Gwrite<Enter>
+nnoremap <Leader>gx :Gremove<Enter>
+
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P

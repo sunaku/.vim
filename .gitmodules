@@ -85,3 +85,6 @@
 [submodule "bundle/screen"]
 	path = bundle/screen
 	url = git://github.com/ervandew/screen.git
+[submodule "bundle/fugitive"]
+	path = bundle/fugitive
+	url = git://github.com/tpope/vim-fugitive.git
