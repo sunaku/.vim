@@ -12,4 +12,4 @@ for dir in bundle/*/doc/; do
 done
 
 # resolve conflicts between bundles
-rm -rf bundle/snipMate/snippets/ # conflicts with bundle/0-snipMate/snippets/
+test -d bundle/0-snipMate/snippets/ && rm -rf bundle/snipMate/snippets/
