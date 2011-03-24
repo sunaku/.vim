@@ -300,10 +300,21 @@ nnoremap <A-0> <C-W>1<Bar>
 " folds
 "---------------------------------------------------------------------------
 
-nnoremap z<Up> zk
-nnoremap z<Down> zj
-nnoremap zp zk
-nnoremap zn zj
+" go to adjacent folds
+nnoremap <C-Up> zk
+nnoremap <C-Down> zj
+
+" open and close folds
+nnoremap <A-Down> zo
+nnoremap <A-S-Down> zO
+nnoremap <A-Up> zc
+nnoremap <A-S-Up> zM zv zc
+
+" change the foldlevel
+nnoremap <A-Left> zm
+nnoremap <A-S-Left> zM
+nnoremap <A-Right> zr
+nnoremap <A-S-Right> zR
 
 "---------------------------------------------------------------------------
 " rails
