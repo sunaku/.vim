@@ -172,7 +172,7 @@ nnoremap <C-L> :nohlsearch<Enter><C-L>
 
 " switch between single and double quotes
 "
-" NOTE: we explictly set a temporary marker (z) and restore
+" NOTE: we explicitly set a temporary marker (z) and restore
 "       it after the surround operation because otherwise the
 "       surround plugin will move the cursor to the opening
 "       quote of the operand after the operation, instead of
@@ -197,6 +197,7 @@ nmap gV `[v`]
 " toggles
 "---------------------------------------------------------------------------
 
+nnoremap <Leader>ts :set spell!<Enter>
 nnoremap <Leader>th :set nohlsearch!<Enter>
 nnoremap <Leader>tn :set number!<Enter>
 nnoremap <Leader>tz :set foldenable!<Enter>
