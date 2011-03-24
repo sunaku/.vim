@@ -269,11 +269,7 @@ nnoremap <Leader>F :NERDTreeFind<Enter>
 "---------------------------------------------------------------------------
 
 nnoremap <C-PageUp> :bprev<Enter>
-execute "nnoremap \e[5^ :bprev<Enter>"
-
 nnoremap <C-PageDown> :bnext<Enter>
-execute "nnoremap \e[6^ :bnext<Enter>"
-
 nnoremap <A-6> :FufBuffer<Enter>
 nnoremap <Leader>4 :bdelete<Enter>
 nnoremap <Leader>l :checktime<Enter>
@@ -285,11 +281,7 @@ nnoremap <Leader>W :saveas<Space>
 "---------------------------------------------------------------------------
 
 nnoremap <A-PageUp> <C-W>W
-execute "nnoremap \e\e[5~ <C-W>W"
-
 nnoremap <A-PageDown> <C-W>w
-execute "nnoremap \e\e[6~ <C-W>w"
-
 nnoremap <A-1> <C-W>o
 nnoremap <A-2> :rightbelow split<Enter>
 nnoremap <A-3> :rightbelow vsplit<Enter>
