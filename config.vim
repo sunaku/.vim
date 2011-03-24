@@ -50,7 +50,7 @@ set scrolloff=3                 " context lines around cursor
 set novisualbell                " don't flash the screen
 set laststatus=2                " always show status line
 set guicursor+=a:blinkwait0     " disable cursor blink in gvim
-set guifont="Monospace 9"
+set guifont=Tamsyn\ 12,Monospace\ 9
 
 set foldenable
 set foldmethod=indent           " indentation defines folds
