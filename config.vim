@@ -14,9 +14,9 @@
 
 " base this configuration on the official example vimrc,
 " which is maintained by the great Bram Moolenaar himself!
-let s:example = globpath(&runtimepath, 'vimrc_example.vim')
-if !empty(s:example)
-  execute 'source '. s:example
+silent! execute 'source '. globpath(&runtimepath, 'vimrc_example.vim')
+if has('gui_running')
+  silent! execute 'source '. globpath(&runtimepath, 'gvimrc_example.vim')
 endif
 
 " register bundles found in the runtimepath
