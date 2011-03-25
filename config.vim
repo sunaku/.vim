@@ -182,7 +182,8 @@ nmap <Leader>' mzcs"'`z
 nmap <Leader>" mzcs'"`z
 
 " repeat last character to the maximum width of current line
-nnoremap <Leader>_ $y$80p<Esc>:execute 's/\%>'. &textwidth .'v.//g'<Enter>
+nnoremap <Leader>_ :execute 's/.$/'. repeat('&', &textwidth+1) .'/'<Enter>
+      \:execute 's/\%>'. &textwidth .'v.//g'<Enter>
 
 " insert or update section separator at end of current line
 nmap <Leader>- A-<Esc><Leader>_
