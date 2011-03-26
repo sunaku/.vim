@@ -354,7 +354,7 @@ nnoremap <Leader>gd :Gdiff<Enter>
 nnoremap <Leader>ge :Gedit<Enter>
 nnoremap <Leader>gg :Ggrep<Space>
 nnoremap <Leader>g. :Gcd<Enter>
-nnoremap <Leader>gl :Glog<Enter>
+nnoremap <Leader>gl :Extradite<Enter>
 nnoremap <Leader>gm :Gmove<Space>
 nnoremap <Leader>gr :Gread<Enter>
 nnoremap <Leader>gs :Gstatus<Enter>
