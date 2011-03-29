@@ -46,6 +46,7 @@ else
 end
 
 set number                      " show line numbers
+set relativenumber              " ... relative to cursor
 set scrolloff=3                 " context lines around cursor
 set novisualbell                " don't flash the screen
 set laststatus=2                " always show status line
