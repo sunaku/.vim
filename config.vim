@@ -162,6 +162,10 @@ nnoremap Y y$
 nnoremap <Up> gk
 nnoremap <Down> gj
 
+" retain relative cursor position when paging the screen
+nnoremap <PageUp> <C-U>
+nnoremap <PageDown> <C-D>
+
 " list all occurrences of word under cursor in current buffer
 nnoremap <Leader>* [I
 
