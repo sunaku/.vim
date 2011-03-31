@@ -370,3 +370,12 @@ nnoremap <Leader>gw :Gwrite<Enter>
 nnoremap <Leader>gx :Gremove<Enter>
 
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+
+"-----------------------------------------------------------------------------
+" screen
+"-----------------------------------------------------------------------------
+
+nnoremap <Leader>xo :ScreenShell<Enter>
+nnoremap <Leader>xc :ScreenQuit<Enter>
+nnoremap <Leader>xs :ScreenSend<Enter>
+vnoremap <Leader>xs :ScreenSend<Enter>
