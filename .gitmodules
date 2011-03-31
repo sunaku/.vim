@@ -91,3 +91,6 @@
 [submodule "bundle/extradite"]
 	path = bundle/extradite
 	url = git://github.com/int3/vim-extradite.git
+[submodule "bundle/eregex"]
+	path = bundle/eregex
+	url = git://github.com/othree/eregex.vim.git
