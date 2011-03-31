@@ -36,7 +36,7 @@ set colorcolumn=+1              " show textwidth limit
 autocmd ColorScheme * highlight! link ColorColumn StatusLineNC
 
 if has('gui_running')
-  colorscheme wombat
+  colorscheme freya
 elseif &t_Co > 8
   colorscheme zenburn
 elseif &term == 'linux'
