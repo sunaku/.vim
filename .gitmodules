@@ -94,3 +94,6 @@
 [submodule "bundle/eregex"]
 	path = bundle/eregex
 	url = git://github.com/othree/eregex.vim.git
+[submodule "bundle/QFixToggle"]
+	path = bundle/QFixToggle
+	url = git://github.com/sunaku/QFixToggle.git

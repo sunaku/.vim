@@ -152,10 +152,6 @@ if &term == 'rxvt-unicode-256color'
   execute "inoremap \e[OA <Up>"
 endif
 
-" quickly exit from Vim
-nnoremap <Leader>q :q<Enter>
-nnoremap <Leader>Q :qa<Enter>
-
 " be consistent (go to EOL) with capitalized C and D commands
 nnoremap Y y$
 
@@ -327,6 +323,12 @@ nnoremap <A-S-Right> zR
 
 vnoremap <Leader>n :Narrow<Enter>
 nnoremap <Leader>N :Widen<Enter>
+
+"-----------------------------------------------------------------------------
+" quickfix
+"-----------------------------------------------------------------------------
+
+nnoremap <Leader>q :QFix<Enter>
 
 "-----------------------------------------------------------------------------
 " gundo
