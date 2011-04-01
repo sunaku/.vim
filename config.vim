@@ -38,7 +38,7 @@ autocmd ColorScheme * highlight! link ColorColumn StatusLineNC
 if has('gui_running')
   colorscheme freya
 elseif &t_Co > 8
-  colorscheme zenburn
+  colorscheme freya
 elseif &term == 'linux'
   set background=dark
 else
