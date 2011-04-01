@@ -198,10 +198,6 @@ nnoremap gV `[v`]
 " visually select a search result
 nnoremap g/ //e<Enter>v??<Enter>
 
-" use extended regular expression syntax when searching
-noremap ? ?\v
-noremap / /\v
-
 "-----------------------------------------------------------------------------
 " toggles
 "-----------------------------------------------------------------------------
