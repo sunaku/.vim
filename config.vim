@@ -45,8 +45,7 @@ else
   set background=light
 end
 
-set number                      " show line numbers
-set relativenumber              " ... relative to cursor
+set relativenumber              " show line numbers relative to cursor
 set scrolloff=3                 " context lines around cursor
 set novisualbell                " don't flash the screen
 set laststatus=2                " always show status line
@@ -204,7 +203,7 @@ nnoremap g/ //e<Enter>v??<Enter>
 
 nnoremap <Leader>ts :set spell!<Enter>
 nnoremap <Leader>th :set nohlsearch!<Enter>
-nnoremap <Leader>tn :set number!<Enter>
+nnoremap <Leader>tn :set relativenumber!<Enter>
 nnoremap <Leader>tz :set foldenable!<Enter>
 nnoremap <Leader>tp :set paste!<Enter>
 
