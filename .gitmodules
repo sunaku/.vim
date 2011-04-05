@@ -97,3 +97,6 @@
 [submodule "bundle/QFixToggle"]
 	path = bundle/QFixToggle
 	url = git://github.com/sunaku/QFixToggle.git
+[submodule "bundle/EasyMotion"]
+	path = bundle/EasyMotion
+	url = git://github.com/Lokaltog/vim-easymotion.git

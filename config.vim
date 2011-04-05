@@ -376,3 +376,11 @@ nnoremap <Leader>xo :ScreenShell<Enter>
 nnoremap <Leader>xc :ScreenQuit<Enter>
 nnoremap <Leader>xs :ScreenSend<Enter>
 vnoremap <Leader>xs :ScreenSend<Enter>
+
+"-----------------------------------------------------------------------------
+" EasyMotion
+"-----------------------------------------------------------------------------
+
+let EasyMotion_leader_key = '1'
+highlight link EasyMotionTarget ErrorMsg
+highlight link EasyMotionShade Comment
