@@ -76,6 +76,9 @@ set wildmode=list:longest,full  " turn on wild mode huge list
 set ignorecase                  " make searching case insensitive
 set smartcase                   " ... unless the query has capital letters
 
+set splitbelow                  " focus new window after horizontal splitting
+set splitright                  " focus new window after vertical splitting
+
 "-----------------------------------------------------------------------------
 " formatting
 "-----------------------------------------------------------------------------
@@ -283,8 +286,8 @@ nnoremap <Leader>W :saveas<Space>
 nnoremap <A-PageUp> <C-W>W
 nnoremap <A-PageDown> <C-W>w
 nnoremap <A-1> <C-W>o
-nnoremap <A-2> :rightbelow split<Enter>
-nnoremap <A-3> :rightbelow vsplit<Enter>
+nnoremap <A-2> <C-W>s
+nnoremap <A-3> <C-W>v
 nnoremap <A-4> <C-W>c
 nnoremap <A-5> <C-W>=
 nnoremap <A-7> <C-W>_
