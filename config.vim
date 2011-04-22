@@ -111,6 +111,8 @@ autocmd FileType eruby exe 'syn region  erubyOneLiner   matchgroup=erubyDelimite
 " saving
 "-----------------------------------------------------------------------------
 
+set nobackup writebackup " backup current file, deleted afterwards
+
 " remove trailing spaces before saving text files
 " http://vim.wikia.com/wiki/Remove_trailing_spaces
 autocmd BufWritePre * :call StripTrailingWhitespace()
