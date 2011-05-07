@@ -388,3 +388,11 @@ vnoremap <Leader>xs :ScreenSend<Enter>
 let EasyMotion_leader_key = '1'
 highlight link EasyMotionTarget ErrorMsg
 highlight link EasyMotionShade Comment
+
+"-----------------------------------------------------------------------------
+" Invisible chars
+"-----------------------------------------------------------------------------
+
+nmap <Leader>l :set list!<Enter>
+" represent tabs by ▸, eol by ¬
+set listchars=tab:▸\ ,eol:¬
