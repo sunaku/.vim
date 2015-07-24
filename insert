@@ -37,6 +37,9 @@ name=${name%.zip} # drop redundant .zip suffix
 
 # insert the bundle by creating a `*.get` file
 mkdir -p "$dir"
+if test "$category" != "$dir"; then
+	mkdir -p "$dir/$category"
+fi
 get="$dir/$category/$name.get"
 echo "$url" > "$get"
 git add -f "$get"
