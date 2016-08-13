@@ -7,5 +7,3 @@ call shortcut#map("<Space> ' r", 'Register -> Find and paste', 'Unite -no-split 
 call shortcut#map("<Space> ' ]", 'Tag -> Jump to...', 'Unite -no-split tag')
 call shortcut#map("<Space> ' *", 'Line -> Jump to word under cursor...', 'UniteWithCursorWord -no-split -immediately line')
 call shortcut#map("<Space> ' l", 'Line -> Jump to...', 'Unite -no-split line')
-call shortcut#map('<Space> p', 'Paste -> Append from history...', 'Unite -no-split history/yank -default-action=append')
-call shortcut#map('<Space> P', 'Paste -> Insert from history...', 'Unite -no-split history/yank')
