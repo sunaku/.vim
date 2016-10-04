@@ -267,7 +267,9 @@ Unlock a locked *BUNDLE*, so it can be updated again, by checking out `master`:
 
 ## Shortcuts
 
-This branch of the Vim configuration defines the following shortcuts.
+This branch of the Vim configuration defines the following shortcuts, which
+assume that you [type in Dvorak]( http://www.dvzine.org/zine/01-toc.html ).
+If this assumption doesn't apply to you, then try the [qwerty] branch instead.
 
 * `,` is the `<Leader>`, used in _some_ shortcuts in this configuration.
 
@@ -905,11 +907,11 @@ and [NeoSnippet.vim](https://github.com/Shougo/neosnippet.vim).
 
 Focus:
 
+* `<A-d>` focuses previously focused tmux pane.
 * `<A-h>` focuses window at left.
-* `<A-j>` focuses window above.
-* `<A-k>` focuses window below.
-* `<A-l>` focuses window at right.
-* `<A-;>` focuses previously focused tmux pane.
+* `<A-t>` focuses window above.
+* `<A-n>` focuses window below.
+* `<A-s>` focuses window at right.
 
 Scroll:
 

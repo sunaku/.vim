@@ -5,6 +5,10 @@ let g:sneak#use_ic_scs = 1
 
 " target selection
 let g:sneak#label = 1
+let g:sneak#target_labels =
+      \  'aoeuidhtnspyfgcrlqjkxbmwvz'
+      \ .'AOEUIDHTNSPYFGCRLQJKXBMWVZ'
+      \ .'1234567890'
 
 Shortcut! f (sneak) sneak forward onto {char}
 Shortcut! F (sneak) sneak backward onto {char}
