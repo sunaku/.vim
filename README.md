@@ -260,7 +260,9 @@ Unlock a locked *PACKAGE*, so it can be updated, by checking out its `master`:
 
 ## Shortcuts
 
-This branch of the Vim configuration defines the following shortcuts.
+This branch of the Vim configuration defines the following shortcuts, which
+assume that you [type in Dvorak]( http://www.dvzine.org/zine/01-toc.html ).
+If this assumption doesn't apply to you, then try the [qwerty] branch instead.
 
 * `<Space>` (space bar) precedes _most_ shortcuts in this configuration.
   Press it and wait a moment to view a searchable menu of all shortcuts.
