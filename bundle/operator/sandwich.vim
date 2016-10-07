@@ -1,3 +1,6 @@
+" Restore cursor position after performing surround operations.
+call operator#sandwich#set('all', 'all', 'cursor', 'keep')
+
 " If you want to use vim-sandwich with vim-surround keymappings.
 runtime macros/sandwich/keymap/surround.vim
 xmap s <Plug>(operator-sandwich-add)
