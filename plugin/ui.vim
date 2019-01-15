@@ -13,7 +13,7 @@ set confirm                    " ask before doing anything destructive
 set synmaxcol=256              " don't syntax highlight very long lines
 set lazyredraw                 " skip rendering during macro execution
 set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P " standard with ruler
-set scrolloff=3                " lines visible at top/bottom of window
+set scrolloff=2                " lines visible at top/bottom of window
 
 " FIXME: this doesn't work under regular Vim, but NeoVim is okay
 let progname = substitute($VIM, '.*[/\\]', '', '')
