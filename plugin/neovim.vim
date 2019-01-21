@@ -6,4 +6,4 @@ endif
 tnoremap <Esc> <C-\><C-N>
 
 " on focus, input to term
-autocmd WinEnter term://* normal! i
+" autocmd WinEnter term://* normal! i
