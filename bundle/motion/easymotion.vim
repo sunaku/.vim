@@ -1,5 +1,5 @@
 map s <Plug>(easymotion-prefix)
-let g:EasyMotion_keys = 'aoeuidhtnspyfgcrlqjkxbmwvz'
+let g:EasyMotion_keys = 'ciea'.'htsn'.'gxjk'.'rmfp'.'byou'.'ldwv'.'qz'
 let g:EasyMotion_smartcase = 1
 let g:EasyMotion_enter_jump_first = 1
 let g:EasyMotion_space_jump_first = 1
