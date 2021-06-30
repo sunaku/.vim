@@ -516,8 +516,6 @@ Shortcut              | Description
 ``<Space>Oc``         | (NERDCommenter) comment, sexily
 ``<Space>oD``         | (clap) expose filer in buffer's directory
 ``<Space>od``         | (clap) expose filer in working directory
-``<Space>OD``         | (VimFiler) browse buffer's directory
-``<Space>Od``         | (VimFiler) browse working directory
 ``<Space>oF``         | (fzf) open file under buffer's directory
 ``<Space>of``         | (fzf) open file under working directory
 ``<Space>Of``         | edit file as...
