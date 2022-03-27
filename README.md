@@ -408,8 +408,7 @@ Shortcut              | Description
 ``<Space>aw``         | split window right
 ``<Space>c*``         | (traces) interactive search and replace for word at cursor
 ``<Space>c/``         | (traces) interactive search and replace in selection or buffer
-``<Space>cc``         | (NERDCommenter) invert comment markers
-``<Space>cC``         | (NERDCommenter) toggle comment markers
+``<Space>c?``         | (abolish) interactive search and replace in selection or buffer
 ``<Space>cf``         | (eunuch) rename file
 ``<Space>Cg``         | (fugitive) git mv -f: rename file forcefully
 ``<Space>cg``         | (fugitive) git mv: rename file
@@ -565,7 +564,8 @@ Shortcut              | Description
 ``<Space>rh``         | (GitGutter) revert git hunk at cursor
 ``<Space>t#``         | (colorizer) toggle hex color code highlighting
 ``<Space>t>``         | (indentLine) toggle indentation lines
-``<Space>tc``         | (NERDCommenter) toggle alternate comment delimiters
+``<Space>tc``         | (NERDCommenter) invert comment markers
+``<Space>tC``         | (NERDCommenter) toggle comment markers
 ``<Space>td``         | (NERDTree) toggle tree visibility
 ``<Space>tg``         | (Twiggy) toggle git control panel
 ``<Space>tH``         | (GitGutter) toggle git hunk highlighting
@@ -599,6 +599,7 @@ Shortcut              | Description
 ``<Space>yx``         | (scratch) yank selection to scratch buffer
 ``<Space>zR``         | (narrow) widen view / disable narrowing
 ``<Space>zv``         | (narrow) narrow view to selection
+``<Space>~c``         | (NERDCommenter) toggle alternate comment delimiters
 ``=p``                | (unimpaired) Paste after cursor, linewise, reindenting.
 ``=P``                | (unimpaired) Paste before cursor, linewise, reindenting.
 ``>p``                | (unimpaired) Paste after cursor, linewise, increasing indent.

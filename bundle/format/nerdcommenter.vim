@@ -3,7 +3,7 @@ let NERDDefaultAlign = 'left'
 let NERDCommentEmptyLines = 1
 
 Shortcut (NERDCommenter) toggle alternate comment delimiters
-      \ map <Space>tc <Plug>NERDCommenterAltDelims
+      \ map <Space>~c <Plug>NERDCommenterAltDelims
 
 Shortcut (NERDCommenter) uncomment, deleting comment delimiters
       \ map <Space>dc <Plug>NERDCommenterUncomment
@@ -24,7 +24,7 @@ Shortcut (NERDCommenter) comment, sexily
       \ map <Space>Oc <Plug>NERDCommenterSexy
 
 Shortcut (NERDCommenter) invert comment markers
-      \ map <Space>cc <Plug>NERDCommenterInvert
+      \ map <Space>tc <Plug>NERDCommenterInvert
 
 Shortcut (NERDCommenter) comment from cursor to end of line
       \ map <Space>Ac <Plug>NERDCommenterToEOL
@@ -36,7 +36,7 @@ Shortcut (NERDCommenter) comment, minimally
       \ map <Space>iC <Plug>NERDCommenterMinimal
 
 Shortcut (NERDCommenter) toggle comment markers
-      \ map <Space>cC <Plug>NERDCommenterToggle
+      \ map <Space>tC <Plug>NERDCommenterToggle
 
 Shortcut (NERDCommenter) comment, inserting comment delimiters
       \ map <Space>ic <Plug>NERDCommenterComment
