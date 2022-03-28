@@ -47,10 +47,10 @@ Shortcut (EasyMotion) Beginning of line in all windows.
       \ map sl <Plug>(easymotion-overwin-line)
 
 Shortcut (EasyMotion) Beginning of word in all windows.
-      \ map sw <Plug>(easymotion-overwin-w)
+      \ map so <Plug>(easymotion-overwin-w)
 
 Shortcut (EasyMotion) Find {char} in all open windows.
-      \ map sc <Plug>(easymotion-overwin-f)
+      \ map sa <Plug>(easymotion-overwin-f)
 
 Shortcut (EasyMotion) Jump anywhere in current window.
       \ map ss <Plug>(easymotion-jumptoanywhere)

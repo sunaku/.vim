@@ -762,9 +762,9 @@ Shortcut              | Description
 ``s2``                | (EasyMotion) Search for 2 characters in current window.
 ``s3``                | (EasyMotion) Search for N characters in current window.
 ``S``                 | (EasyMotion) Jump anywhere in current line.
+``sa``                | (EasyMotion) Find {char} in all open windows.
 ``sB``                | (EasyMotion) Beginning of WORD backward.
 ``sb``                | (EasyMotion) Beginning of word backward.
-``sc``                | (EasyMotion) Find {char} in all open windows.
 ``sE``                | (EasyMotion) End of WORD forward.
 ``se``                | (EasyMotion) End of word forward.
 ``sF``                | (EasyMotion) Find {char} to the left.
@@ -776,11 +776,12 @@ Shortcut              | Description
 ``sl``                | (EasyMotion) Beginning of line in all windows.
 ``sN``                | (EasyMotion) Jump to latest "/" or "?" backward.
 ``sn``                | (EasyMotion) Jump to latest "/" or "?" forward.
+``so``                | (EasyMotion) Beginning of word in all windows.
 ``ss``                | (EasyMotion) Jump anywhere in current window.
 ``sT``                | (EasyMotion) Till after the {char} to the left.
 ``st``                | (EasyMotion) Till before the {char} to the right.
 ``sW``                | (EasyMotion) Beginning of WORD forward.
-``sw``                | (EasyMotion) Beginning of word in all windows.
+``sw``                | (EasyMotion) Beginning of word forward.
 ``T``                 | (EasyMotion) Jump backward, landing just after {char}.
 ``t``                 | (EasyMotion) Jump forward, landing just before {char}.
 ``va"``               | (textobj) select around double quotes
