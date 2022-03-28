@@ -401,6 +401,7 @@ Shortcut              | Description
 ``<Space>``           | fallback to shortcut menu on partial entry
 ``<Space>ac``         | (NERDCommenter) append comment at end of line
 ``<Space>Ac``         | (NERDCommenter) comment from cursor to end of line
+``<Space>aC``         | (NERDCommenter) comment, nesting
 ``<Space>ag``         | (fugitive) git commit --amend
 ``<Space>Ag``         | (fugitive) git commit --amend --reuse-message=HEAD
 ``<Space>at``         | append new tab
@@ -441,6 +442,8 @@ Shortcut              | Description
 ``<Space>ee``         | (clap) expose clap providers
 ``<Space>eE``         | (errormarker) expose error message for cursor position
 ``<Space>eF``         | (fzf) apply filetype
+``<Space>Ef``         | edit file as...
+``<Space>Eg``         | (fugitive) return to editing git buffer
 ``<Space>eg``         | (fzf) browse git log
 ``<Space>eG``         | (fzf) browse git log for buffer
 ``<Space>ej``         | (clap) expose jumplist
@@ -500,6 +503,7 @@ Shortcut              | Description
 ``<Space>Ic``         | (NERDCommenter) comment, aligning left delimiter
 ``<Space>ic``         | (NERDCommenter) comment, inserting comment delimiters
 ``<Space>iC``         | (NERDCommenter) comment, minimally
+``<Space>IC``         | (NERDCommenter) comment, sexily
 ``<Space>iD``         | (projectionist) change buffer's working directory to innermost root
 ``<Space>id``         | (projectionist) change working directory to innermost root
 ``<Space>if``         | (projectionist) create file relative to innermost root
@@ -513,14 +517,10 @@ Shortcut              | Description
 ``<Space>Nt``         | expose previous tab
 ``<Space>o.``         | (fzf) reopen file from history
 ``<Space>ob``         | (fzf) open buffer
-``<Space>oc``         | (NERDCommenter) comment, nesting
-``<Space>Oc``         | (NERDCommenter) comment, sexily
-``<Space>oD``         | (unite) expose filer in buffer's directory
+``<Space>Od``         | (unite) expose filer in buffer's directory
 ``<Space>od``         | (unite) expose filer in working directory
-``<Space>oF``         | (fzf) open file under buffer's directory
+``<Space>Of``         | (fzf) open file under buffer's directory
 ``<Space>of``         | (fzf) open file under working directory
-``<Space>Of``         | edit file as...
-``<Space>Og``         | (fugitive) return to editing git buffer
 ``<Space>og``         | (fzf) open git file (tracked by git)
 ``<Space>oG``         | (fzf) open git file that has changes
 ``<Space>oh``         | (fzf) open help topic

@@ -5,7 +5,7 @@ if !isdirectory(&undodir)   | call mkdir(&undodir,   'p', 0700) | endif
 if !isdirectory(&directory) | call mkdir(&directory, 'p', 0700) | endif
 
 Shortcut edit file as...
-      \ nnoremap <silent> <Space>Of :call feedkeys(':edit '.expand('%'), 't')<CR>
+      \ nnoremap <silent> <Space>Ef :call feedkeys(':edit '.expand('%'), 't')<CR>
 
 Shortcut save file as...
       \ nnoremap <silent> <Space>yf :call feedkeys(':saveas '.expand('%'), 't')<CR>

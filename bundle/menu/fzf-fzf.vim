@@ -57,7 +57,7 @@ Shortcut (fzf) open file under working directory
       \ nnoremap <silent> <Space>of :Files<CR>
 
 Shortcut (fzf) open file under buffer's directory
-      \ nnoremap <silent> <Space>oF :execute 'Files' expand('%:h')<CR>
+      \ nnoremap <silent> <Space>Of :execute 'Files' expand('%:h')<CR>
 
 Shortcut (fzf) open git file (tracked by git)
       \ nnoremap <silent> <Space>og :GFiles<CR>

@@ -21,7 +21,7 @@ Shortcut (NERDCommenter) yank then comment
       \ map <Space>yc <Plug>NERDCommenterYank
 
 Shortcut (NERDCommenter) comment, sexily
-      \ map <Space>Oc <Plug>NERDCommenterSexy
+      \ map <Space>IC <Plug>NERDCommenterSexy
 
 Shortcut (NERDCommenter) invert comment markers
       \ map <Space>tc <Plug>NERDCommenterInvert
@@ -30,7 +30,7 @@ Shortcut (NERDCommenter) comment from cursor to end of line
       \ map <Space>Ac <Plug>NERDCommenterToEOL
 
 Shortcut (NERDCommenter) comment, nesting
-      \ map <Space>oc <Plug>NERDCommenterNested
+      \ map <Space>aC <Plug>NERDCommenterNested
 
 Shortcut (NERDCommenter) comment, minimally
       \ map <Space>iC <Plug>NERDCommenterMinimal

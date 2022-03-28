@@ -22,4 +22,4 @@ Shortcut (unite) expose filer in working directory
       \ nnoremap <silent> <Space>od :Unite file file/new<CR>
 
 Shortcut (unite) expose filer in buffer's directory
-      \ nnoremap <silent> <Space>oD :UniteWithBufferDir file file/new<CR>
+      \ nnoremap <silent> <Space>Od :UniteWithBufferDir file file/new<CR>
