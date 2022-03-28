@@ -6,11 +6,11 @@ Shortcut (clap) expose yanks
 Shortcut (clap) expose registers
       \ nnoremap <silent> <Space>er :Clap registers<CR>
 
-Shortcut (clap) expose filer in working directory
-      \ nnoremap <silent> <Space>od :Clap filer<CR>
+" Shortcut (clap) expose filer in working directory
+"       \ nnoremap <silent> <Space>od :Clap filer<CR>
 
-Shortcut (clap) expose filer in buffer's directory
-      \ nnoremap <silent> <Space>oD :call feedkeys(":Clap filer\n".expand('%:h').'/', 'n')<bar>call feedkeys("\t", 't')<CR>
+" Shortcut (clap) expose filer in buffer's directory
+"       \ nnoremap <silent> <Space>oD :call feedkeys(":Clap filer\n".expand('%:h').'/', 'n')<bar>call feedkeys("\t", 't')<CR>
 
 " Shortcut (clap) open file under working directory
 "       \ nnoremap <silent> <Space>of :Clap files<CR>

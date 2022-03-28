@@ -515,8 +515,8 @@ Shortcut              | Description
 ``<Space>ob``         | (fzf) open buffer
 ``<Space>oc``         | (NERDCommenter) comment, nesting
 ``<Space>Oc``         | (NERDCommenter) comment, sexily
-``<Space>oD``         | (clap) expose filer in buffer's directory
-``<Space>od``         | (clap) expose filer in working directory
+``<Space>oD``         | (unite) expose filer in buffer's directory
+``<Space>od``         | (unite) expose filer in working directory
 ``<Space>oF``         | (fzf) open file under buffer's directory
 ``<Space>of``         | (fzf) open file under working directory
 ``<Space>Of``         | edit file as...
