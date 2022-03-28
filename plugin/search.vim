@@ -13,7 +13,3 @@ nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR
 " https://www.reddit.com/r/vim/comments/7l5pei/_/drkjo5h/
 nnoremap <expr> n 'Nn'[v:searchforward]
 nnoremap <expr> N 'nN'[v:searchforward]
-
-" enable "very magic" regular expressions -- :help /magic
-noremap / /\v
-noremap ? ?\v
