@@ -13,6 +13,7 @@ set confirm                    " ask before doing anything destructive
 set scrolloff=0                " lines visible at top/bottom of window
 set synmaxcol=720              " stop syntax coloring after this point
 set lazyredraw                 " skip rendering during macro execution
+set cursorline                 " highlight the currently focused line
 set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P " standard with ruler
 "set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V,%o%)\ %P "plus byte offset
 "set colorcolumn=+1             " highlight textwidth with colorcolumn

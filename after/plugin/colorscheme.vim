@@ -1,11 +1,10 @@
 if &term == 'linux' || $TERM == 'linux'
   colorscheme desert
 elseif &background == 'light'
-  let g:solarized_statusline = 'flat'
-  " colorscheme solarized8
   colorscheme PaperColor
+  " let g:solarized_statusline = 'flat'
+  " colorscheme solarized8
 else
-  " colorscheme gruvbox-material
-  colorscheme everforest
-  set cursorline
+  colorscheme gruvbox-material
+  " colorscheme everforest
 endif
