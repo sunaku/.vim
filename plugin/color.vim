@@ -1,5 +1,5 @@
 " enable support for 24-bit true color palette in colorschemes
-if has('termguicolors') && has('nvim') && $TERM != 'linux'
+if has('termguicolors') && $TERM != 'linux'
   set termguicolors
 endif
 
