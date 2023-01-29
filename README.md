@@ -691,6 +691,17 @@ Shortcut              | Description
 ``cop``               | toggle verbatim paste mode
 ``coQ``               | toggle automatic formatting in buffer
 ``coz``               | toggle code folding in buffer
+``cr-``               | (abolish) dash-case (not usually reversible)
+``cr.``               | (abolish) dot.case (not usually reversible)
+``cr<space>``         | (abolish) space case (not usually reversible)
+``cr_``               | (abolish) snake_case
+``crc``               | (abolish) camelCase
+``crk``               | (abolish) kebab-case (not usually reversible)
+``crm``               | (abolish) MixedCase
+``crs``               | (abolish) snake_case
+``crt``               | (abolish) Title Case (not usually reversible)
+``crU``               | (abolish) SNAKE_UPPERCASE
+``cru``               | (abolish) SNAKE_UPPERCASE
 ``cS``                | (sandwich) change automatic delimiters surrounding specified motion
 ``cs``                | (sandwich) change specified delimiters surrounding specified motion
 ``dmx``               | (signature) Remove mark 'x' where x is a-zA-Z
