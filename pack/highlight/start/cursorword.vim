@@ -6,7 +6,6 @@ augroup cursorword_highlight
 augroup END
 
 function! s:after_colorsheme_loaded() abort
-  " also make it bold (default is only to underline)
-  highlight CursorWord0 term=bold,underline cterm=bold,underline gui=bold,underline
-  highlight link CursorWord1 CursorWord0
+  " also make it bold (the default is only to underline)
+  highlight CursorWord term=bold,underline cterm=bold,underline gui=bold,underline
 endfunction
