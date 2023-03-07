@@ -1,3 +1,4 @@
+setlocal formatoptions-=t
 augroup graphviz_preview
   autocmd!
   autocmd BufWritePost *.{gv,dot} GraphvizCompile
