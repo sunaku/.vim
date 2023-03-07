@@ -385,7 +385,6 @@ Shortcut              | Description
 ``<Space>>t``         | move tab right
 ``<Space>?G``         | (fugitive) git grep: search repository for Vim search pattern
 ``<Space>^t``         | move tab to first place
-``<Space>``           | fallback to shortcut menu on partial entry
 ``<Space>ac``         | (NERDCommenter) append comment at end of line
 ``<Space>Ac``         | (NERDCommenter) comment from cursor to end of line
 ``<Space>aC``         | (NERDCommenter) comment, nesting
