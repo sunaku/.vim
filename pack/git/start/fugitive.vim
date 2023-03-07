@@ -66,7 +66,7 @@ Shortcut (fugitive) git diff: show changes against repository
       \ nnoremap <silent> <Space>hg :Gdiffsplit<CR>
 
 Shortcut (fugitive) return to editing git buffer
-      \ nnoremap <silent> <Space>Eg :Gedit<CR>
+      \ nnoremap <silent> <Space>eG :Gedit<CR>
 
 Shortcut (fugitive) git checkout: revert buffer to repository
       \ nnoremap <silent> <Space>rg :Gread<CR>

@@ -18,8 +18,8 @@ function! s:unite_my_settings()
   imap <silent> <buffer> <C-W> <Plug>(unite_delete_backward_path)
 endfunction
 
-Shortcut (unite) expose filer in working directory
+Shortcut (unite) open filer in working directory
       \ nnoremap <silent> <Space>od :Unite file file/new<CR>
 
-Shortcut (unite) expose filer in buffer's directory
+Shortcut (unite) open filer in buffer's directory
       \ nnoremap <silent> <Space>Od :UniteWithBufferDir file file/new<CR>

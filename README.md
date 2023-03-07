@@ -422,21 +422,18 @@ Shortcut              | Description
 ``<Space>e<Space>``   | (fzf) trigger mapping / keybinding / shortcut
 ``<Space>ea``         | (projectionist) expose alternate file
 ``<Space>eA``         | (projectionist) expose available projections
+``<Space>eB``         | (fzf) apply filetype
 ``<Space>ec``         | (fzf) apply colorscheme
 ``<Space>eD``         | (NERDTree) find current buffer in tree
 ``<Space>ed``         | (NERDTree) open tree and focus it
 ``<Space>eE``         | (errormarker) expose error message for cursor position
-``<Space>eF``         | (fzf) apply filetype
-``<Space>Ef``         | edit file as...
-``<Space>Eg``         | (fugitive) return to editing git buffer
-``<Space>eg``         | (fzf) browse git log
-``<Space>eG``         | (fzf) browse git log for buffer
-``<Space>eL``         | (fzf) expose line in any buffer
-``<Space>el``         | (fzf) expose line in buffer
+``<Space>eF``         | edit file as...
+``<Space>eG``         | (fugitive) return to editing git buffer
+``<Space>el``         | (fzf) expose line in any buffer
+``<Space>eL``         | (fzf) expose line in buffer
 ``<Space>em``         | (fzf) expose mark in buffer
 ``<Space>et``         | (fzf) expose tag in any buffer
 ``<Space>eT``         | (fzf) expose tag in buffer
-``<Space>Et``         | (taglist) show tag name at cursor
 ``<Space>ew``         | (fzf) expose window in any tab
 ``<Space>ex``         | (scratch) expose scratch buffer
 ``<Space>f"``         | convert single to double quotes at cursor
@@ -497,12 +494,13 @@ Shortcut              | Description
 ``<Space>Nt``         | expose previous tab
 ``<Space>o.``         | (fzf) reopen file from history
 ``<Space>ob``         | (fzf) open buffer
-``<Space>Od``         | (unite) expose filer in buffer's directory
-``<Space>od``         | (unite) expose filer in working directory
+``<Space>Od``         | (unite) open filer in buffer's directory
+``<Space>od``         | (unite) open filer in working directory
 ``<Space>Of``         | (fzf) open file under buffer's directory
 ``<Space>of``         | (fzf) open file under working directory
 ``<Space>og``         | (fzf) open git file (tracked by git)
 ``<Space>oG``         | (fzf) open git file that has changes
+``<Space>Og``         | (fzf) open git file under buffer's directory
 ``<Space>oh``         | (fzf) open help topic
 ``<Space>oH``         | (helpful) search for helptags and display Vim version information
 ``<Space>Ow``         | (visual-split) split window above
@@ -524,6 +522,8 @@ Shortcut              | Description
 ``<space>qD``         | (coc-fzf) Show diagnostics for current buffer
 ``<space>qe``         | (coc-fzf) Manage extensions
 ``<Space>qf``         | (Coc) Perform autofix of issue at cursor line.
+``<Space>qg``         | (fzf) browse git log
+``<Space>qG``         | (fzf) browse git log for buffer
 ``<space>qi``         | (coc-marketplace) Show available plugins for installation
 ``<space>qj``         | (Coc) Do default action for next item.
 ``<space>qk``         | (Coc) Do default action for previous item.
@@ -533,6 +533,7 @@ Shortcut              | Description
 ``<space>qp``         | (Coc) Resume latest coc list
 ``<space>qq``         | (coc-clap) expose Coc services
 ``<space>qs``         | (coc-fzf) Search workspace symbols
+``<Space>qt``         | (taglist) show tag name at cursor
 ``<Space>qv``         | (Coc) Format the selected region of code.
 ``<space>qy``         | (coc-fzf) Show yank history
 ``<Space>rB``         | (projectionist) replace buffer with "new file" template
@@ -572,7 +573,7 @@ Shortcut              | Description
 ``<Space>xv``         | (ExtractToVariable) extract selection into variable assignment
 ``<Space>yb``         | yank buffer contents
 ``<Space>yc``         | (NERDCommenter) yank then comment
-``<Space>Yf``         | save copy of file as...
+``<Space>yF``         | save copy of file as...
 ``<Space>yf``         | save file as...
 ``<Space>yw``         | (windowswap) yank window
 ``<Space>Yx``         | (scratch) clear scratch buffer and yank selection to it
@@ -826,8 +827,8 @@ Shortcut              | Description
 ``vit``               | (textobj) select inside XML tag
 ``viu``               | (textobj) select inside URL
 ``viv``               | (textobj) select inside variable name
-``viW``               | (textobj) select inside WORD
 ``viw``               | (textobj) select inside word
+``viW``               | (textobj) select inside WORD
 ``vix``               | (textobj) select inside XML attribute
 ``viy``               | (textobj) select inside syntax element
 ``vi{``               | (textobj) select inside {} block

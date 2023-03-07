@@ -62,14 +62,17 @@ Shortcut (fzf) open file under buffer's directory
 Shortcut (fzf) open git file (tracked by git)
       \ nnoremap <silent> <Space>og :GFiles<CR>
 
+Shortcut (fzf) open git file under buffer's directory
+      \ nnoremap <silent> <Space>Og :execute 'GFiles' expand('%:h')<CR>
+
 Shortcut (fzf) open git file that has changes
       \ nnoremap <silent> <Space>oG :GFiles?<CR>
 
 Shortcut (fzf) expose line in any buffer
-      \ nnoremap <silent> <Space>eL :Lines<CR>
+      \ nnoremap <silent> <Space>el :Lines<CR>
 
 Shortcut (fzf) expose line in buffer
-      \ nnoremap <silent> <Space>el :BLines<CR>
+      \ nnoremap <silent> <Space>eL :BLines<CR>
 
 Shortcut (fzf) expose mark in buffer
       \ nnoremap <silent> <Space>em :Marks<CR>
@@ -87,10 +90,10 @@ Shortcut (fzf) repeat search from history
       \ nnoremap <silent> <Space>e/ :Hist/<CR>
 
 Shortcut (fzf) browse git log
-      \ nnoremap <silent> <Space>eg :Commits<CR>
+      \ nnoremap <silent> <Space>qg :Commits<CR>
 
 Shortcut (fzf) browse git log for buffer
-      \ nnoremap <silent> <Space>eG :BCommits<CR>
+      \ nnoremap <silent> <Space>qG :BCommits<CR>
 
 Shortcut (fzf) run command from menu
       \ nnoremap <silent> <Space>e: :Commands<CR>
@@ -102,4 +105,4 @@ Shortcut (fzf) open help topic
       \ nnoremap <silent> <Space>oh :Helptags<CR>
 
 Shortcut (fzf) apply filetype
-      \ nnoremap <silent> <Space>eF :Filetypes<CR>
+      \ nnoremap <silent> <Space>eB :Filetypes<CR>

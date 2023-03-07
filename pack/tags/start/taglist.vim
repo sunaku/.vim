@@ -6,7 +6,7 @@ let Tlist_Exit_OnlyWindow = 1
 let Tlist_Use_SingleClick = 1
 
 Shortcut (taglist) show tag name at cursor
-      \ nnoremap <silent> <Space>Et :TlistShowPrototype<CR>
+      \ nnoremap <silent> <Space>qt :TlistShowPrototype<CR>
 
 Shortcut (taglist) toggle tags sidebar
       \ nnoremap <silent> <Space>tt :TlistToggle<CR>
