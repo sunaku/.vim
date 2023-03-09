@@ -1,10 +1,9 @@
 " less intense colors in the tabline
-highlight TabLineSel gui=reverse
-" highlight! link TabLine StatusLineNC
-" highlight! link TabLineSel Aqua
+highlight! link TabLine StatusLineNC
+highlight! link TabLineSel Aqua
 
-" mirror top & bottom of current buffer
-highlight! link StatusLine TabLine
+" make current window pane more obvious
+highlight! link StatusLine Pmenu
 
 " brighter text for current line number
 highlight! link CursorLineNr StatusLine
