@@ -5,6 +5,6 @@ elseif &background == 'light'
   " let g:solarized_statusline = 'flat'
   " colorscheme solarized8
 else
-  " colorscheme gruvbox-material
-  colorscheme everforest
+  colorscheme gruvbox-material
+  " colorscheme everforest
 endif
