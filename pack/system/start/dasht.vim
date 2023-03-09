@@ -1,8 +1,8 @@
 " Define docsets to consider as related:
 " filetype => list of docset name regexp
 let g:dasht_filetype_docsets = {
-      \ 'elixir': ['erlang'],
-      \ 'html': ['css', 'js'],
+      \ 'elixir': ['elixir', 'erlang'],
+      \ 'html': ['html', 'css', 'js'],
       \ }
 
 Shortcut (dasht) search related docsets at command prompt
