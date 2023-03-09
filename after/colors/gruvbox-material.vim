@@ -9,9 +9,6 @@ highlight! link StatusLine TabLine
 " brighter text for current line number
 highlight! link CursorLineNr StatusLine
 
-" brighter text for current line number
-highlight! link CursorLineNr StatusLine
-
 " disable italics (reverse video) for comments
 highlight Comment cterm=none gui=none
 
@@ -19,6 +16,9 @@ highlight Comment cterm=none gui=none
 highlight DiffText gui=bold
 highlight IncSearch gui=bold
 highlight Search gui=bold
+
+" make TODO legible on DiffText lines
+highlight! link Todo QuickFixLine
 
 " FZF integration
 let g:fzf_colors = {}
