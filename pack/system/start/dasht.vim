@@ -1,6 +1,7 @@
 " Define docsets to consider as related:
 " filetype => list of docset name regexp
 let g:dasht_filetype_docsets = {
+      \ 'eruby': ['ruby'],
       \ 'elixir': ['elixir', 'erlang'],
       \ 'html': ['html', 'css', 'js'],
       \ }
