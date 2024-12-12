@@ -8,7 +8,7 @@ function! Yank(text) abort
   if v:shell_error
     echoerr escape
   else
-    call writefile([escape], '/dev/tty', 'b')
+    call writefile([escape], '/dev/stderr', 'b')
   endif
 endfunction
 noremap <silent> <Leader>y y:<C-U>call Yank(@0)<CR>
