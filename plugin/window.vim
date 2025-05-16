@@ -1,6 +1,18 @@
 set splitright " focus new window after vertical splitting
 set splitbelow " focus new window after horizontal splitting
 
+Shortcut new buffer above
+      \ nnoremap <silent> <Space>On :aboveleft new<CR>
+
+Shortcut new buffer below
+      \ nnoremap <silent> <Space>on :belowright new<CR>
+
+Shortcut new buffer left
+      \ nnoremap <silent> <Space>in :aboveleft vnew<CR>
+
+Shortcut new buffer right
+      \ nnoremap <silent> <Space>an :belowright vnew<CR>
+
 Shortcut split window above
       \ nnoremap <silent> <Space>Ow :aboveleft split<CR>
 
