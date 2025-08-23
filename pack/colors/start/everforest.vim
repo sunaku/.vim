@@ -3,4 +3,4 @@ if $TERM == 'xterm-kitty'
 endif
 
 let g:everforest_disable_italic_comment = 1
-let g:everforest_background = 'soft'
+" let g:everforest_background = 'soft'
